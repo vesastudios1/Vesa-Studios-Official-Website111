@@ -339,26 +339,65 @@ nav.scrolled{background:rgba(10,10,10,.93);backdrop-filter:blur(14px);padding:14
 .dna-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s;}
 .dna-dot.active{background:var(--gold);transform:scale(1.5);}
 
-/* ═══ PACKAGES ═══ */
+/* Ensure right-side content reads over the animated bg */
+.dna-content-side{background:linear-gradient(to left, rgba(10,10,10,0.75) 0%, rgba(10,10,10,0.55) 60%, transparent 100%);}
+.dna-canvas-side{background:transparent;}
+
+/* ═══ PACKAGES — CUSTOM BUILDER ═══ */
 #packages{background:var(--dark);padding:120px 0;}
 .pkg-wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
-.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:.5px solid var(--border);margin-top:60px;}
-.pkg-card{background:var(--dark);padding:44px 36px;position:relative;overflow:hidden;transition:background .4s;}
-.pkg-card.feat{background:var(--dark2);}
-.pkg-card.feat::after{content:'MOST POPULAR';position:absolute;top:22px;right:-24px;font-size:7px;letter-spacing:.2em;background:var(--gold);color:var(--dark);padding:5px 30px;transform:rotate(45deg);font-weight:700;}
-.pkg-name{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;margin-bottom:5px;}
-.pkg-sub{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:26px;}
-.pkg-price{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:4px;}
-.pkg-note{font-size:9px;color:var(--muted);letter-spacing:.1em;margin-bottom:26px;}
-.pkg-div{height:.5px;background:var(--border);margin-bottom:22px;}
-.pkg-feats{list-style:none;}
-.pkg-feats li{font-size:12px;color:var(--muted);padding:7px 0;border-bottom:.5px solid rgba(201,168,76,.05);display:flex;align-items:center;gap:10px;}
-.pkg-feats li::before{content:'✦';color:var(--gold);font-size:7px;flex-shrink:0;}
-.pkg-btn{display:block;text-align:center;margin-top:30px;padding:14px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;transition:all .3s;}
-.pkg-outline{border:.5px solid var(--border);color:var(--muted);}
-.pkg-outline:hover{border-color:var(--gold);color:var(--gold);}
-.pkg-filled{background:var(--gold);color:var(--dark);font-weight:500;}
-.pkg-filled:hover{background:var(--gold2);}
+.pkg-builder{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:60px;align-items:start;}
+.pkg-services{display:flex;flex-direction:column;gap:10px;}
+.pkg-svc-card{border:.5px solid rgba(201,168,76,.14);background:var(--dark2);overflow:hidden;transition:border-color .35s;}
+.pkg-svc-card.expanded{border-color:rgba(201,168,76,.38);}
+.pkg-svc-header{display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:none;user-select:none;transition:background .3s;}
+.pkg-svc-header:hover{background:rgba(201,168,76,.03);}
+.pkg-svc-check{width:20px;height:20px;border:.5px solid rgba(201,168,76,.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .25s;font-size:11px;font-weight:700;color:transparent;}
+.pkg-svc-check.checked{background:var(--gold);border-color:var(--gold);color:var(--dark);}
+.pkg-svc-check.partial{background:rgba(201,168,76,.15);border-color:var(--gold);color:var(--gold);}
+.pkg-svc-icon{width:34px;height:34px;border:.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pkg-svc-icon svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.5;}
+.pkg-svc-title{flex:1;min-width:0;}
+.pkg-svc-title-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;line-height:1.2;}
+.pkg-svc-title-name em{font-style:italic;color:var(--gold);}
+.pkg-svc-count{font-size:9px;letter-spacing:.18em;color:var(--muted);margin-top:2px;}
+.pkg-svc-arrow{width:18px;height:18px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:transform .35s;}
+.pkg-svc-arrow svg{width:13px;height:13px;stroke:rgba(106,98,88,.6);fill:none;stroke-width:1.5;}
+.pkg-svc-card.expanded .pkg-svc-arrow{transform:rotate(180deg);}
+.pkg-svc-body{max-height:0;overflow:hidden;transition:max-height .42s cubic-bezier(.25,.46,.45,.94);}
+.pkg-svc-card.expanded .pkg-svc-body{max-height:420px;}
+.pkg-svc-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 22px 20px;}
+.pkg-opt{display:flex;align-items:flex-start;gap:10px;padding:12px 13px;border:.5px solid rgba(201,168,76,.1);background:var(--dark);cursor:none;transition:border-color .28s,background .28s;position:relative;overflow:hidden;}
+.pkg-opt:hover{border-color:rgba(201,168,76,.28);background:rgba(201,168,76,.02);}
+.pkg-opt.sel{border-color:var(--gold);background:rgba(201,168,76,.05);}
+.pkg-opt.sel::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--gold);}
+.pkg-opt-box{width:15px;height:15px;border:.5px solid rgba(201,168,76,.3);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:transparent;transition:all .22s;}
+.pkg-opt.sel .pkg-opt-box{background:var(--gold);border-color:var(--gold);color:var(--dark);}
+.pkg-opt-name{font-size:11px;font-weight:500;color:var(--text);letter-spacing:.03em;margin-bottom:2px;}
+.pkg-opt-desc{font-size:9.5px;color:var(--muted);line-height:1.4;}
+.pkg-summary{position:sticky;top:100px;border:.5px solid var(--border);background:var(--dark2);padding:30px 28px;}
+.pkg-sum-eyebrow{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.pkg-sum-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;margin-bottom:22px;}
+.pkg-sum-title em{font-style:italic;color:var(--gold);}
+.pkg-sum-empty{font-size:12.5px;color:rgba(106,98,88,.45);font-style:italic;text-align:center;padding:22px 0;border:.5px dashed rgba(201,168,76,.1);line-height:1.7;}
+.pkg-sum-list{display:flex;flex-direction:column;gap:5px;max-height:300px;overflow-y:auto;margin-bottom:0;}
+.pkg-sum-list::-webkit-scrollbar{width:2px;}
+.pkg-sum-list::-webkit-scrollbar-thumb{background:rgba(201,168,76,.25);}
+.pkg-sum-item{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;padding:8px 10px;background:rgba(201,168,76,.04);border-left:1.5px solid var(--gold);}
+.pkg-sum-item-name{font-size:11px;color:var(--text);line-height:1.3;}
+.pkg-sum-item-svc{font-size:9px;color:var(--muted);margin-top:1px;}
+.pkg-sum-remove{flex-shrink:0;cursor:none;opacity:.45;transition:opacity .2s;padding:1px;margin-top:1px;}
+.pkg-sum-remove:hover{opacity:1;}
+.pkg-sum-remove svg{width:10px;height:10px;stroke:var(--muted);fill:none;stroke-width:2;}
+.pkg-sum-divider{height:.5px;background:var(--border);margin:18px 0;}
+.pkg-sum-note{font-size:10px;color:var(--muted);line-height:1.65;margin-bottom:20px;}
+.pkg-sum-note strong{color:rgba(201,168,76,.75);font-weight:500;}
+.pkg-btn-wa{display:flex;align-items:center;justify-content:center;gap:9px;padding:13px 18px;background:var(--gold);color:var(--dark);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;cursor:none;transition:background .28s;margin-bottom:9px;}
+.pkg-btn-wa:hover{background:var(--gold2);}
+.pkg-btn-wa svg{width:13px;height:13px;stroke:var(--dark);fill:none;stroke-width:2;flex-shrink:0;}
+.pkg-btn-em{display:flex;align-items:center;justify-content:center;gap:9px;padding:13px 18px;border:.5px solid var(--border);color:var(--muted);font-size:9px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;cursor:none;transition:all .28s;}
+.pkg-btn-em:hover{border-color:var(--gold);color:var(--gold);}
+.pkg-btn-em svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;}
 
 /* ═══ TRAIN TRACK PROCESS ═══ */
 #process{position:relative;background:var(--dark2);}
@@ -451,7 +490,9 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
   .dna-sticky{flex-direction:column;}
   .dna-canvas-side{width:100%;height:40%;}
   .dna-content-side{width:100%;height:60%;padding:20px;}
-  .pkg-grid{grid-template-columns:1fr;}
+  .pkg-builder{grid-template-columns:1fr;}
+  .pkg-summary{position:static;}
+  .pkg-svc-options{grid-template-columns:1fr;}
   .port-grid{grid-template-columns:1fr 1fr;}
   .p-item:nth-child(n){grid-column:span 1;grid-row:auto;height:200px;}
   .train-content{flex-direction:column;}
@@ -909,6 +950,9 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
   <div class="dna-sticky-wrap" id="dna-wrap">
     <div class="dna-sticky" id="dna-sticky">
 
+      <!-- Full-width themed background canvas -->
+      <canvas id="svc-bg-canvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+
       <!-- Left: DNA canvas -->
       <div class="dna-canvas-side">
         <canvas id="dna-canvas"></canvas>
@@ -1031,37 +1075,166 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
   </div>
 </div>
 
-<!-- PACKAGES -->
+<!-- PACKAGES — CUSTOM BUILDER -->
 <div id="packages">
   <div class="pkg-wrap">
     <div class="reveal">
-      <p class="eyebrow">Investment</p>
-      <h2 class="sec-title">Choose Your <em>Package</em></h2>
-      <p style="font-size:14px;color:var(--muted);max-width:480px;line-height:1.8;margin-top:12px;">Customised for every brand. 50% advance to begin. Add or remove services freely.</p>
+      <p class="eyebrow">Build Your Package</p>
+      <h2 class="sec-title">Choose Your <em>Services</em></h2>
+      <p style="font-size:14px;color:var(--muted);max-width:520px;line-height:1.8;margin-top:12px;">Pick exactly what your brand needs. Mix and match freely — we'll reply with a custom quote within 24 hours.</p>
     </div>
-    <div class="pkg-grid reveal d2">
-      <div class="pkg-card">
-        <div class="pkg-name">Starter</div><div class="pkg-sub">Logo Only</div>
-        <div class="pkg-price">₹3,500</div><div class="pkg-note">One time · 3–5 working days</div>
-        <div class="pkg-div"></div>
-        <ul class="pkg-feats"><li>Logo Design (2 concepts)</li><li>Color Palette</li><li>PNG + PDF Files</li><li>1 Revision Round</li></ul>
-        <a href="https://wa.me/919226634637?text=Hi!+I'm+interested+in+the+Starter+package." class="pkg-btn pkg-outline">Get Started</a>
+    <div class="pkg-builder reveal d1">
+
+      <!-- LEFT: Service accordion cards -->
+      <div class="pkg-services" id="pkgServices">
+
+        <!-- 0: Brand Identity -->
+        <div class="pkg-svc-card" data-card="0">
+          <div class="pkg-svc-header" onclick="pkgToggle(0)">
+            <div class="pkg-svc-check" id="pkgMark0"></div>
+            <div class="pkg-svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
+            <div class="pkg-svc-title">
+              <div class="pkg-svc-title-name">Brand <em>Identity</em></div>
+              <div class="pkg-svc-count" id="pkgCount0">Select sub-services below</div>
+            </div>
+            <div class="pkg-svc-arrow"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+          </div>
+          <div class="pkg-svc-body">
+            <div class="pkg-svc-options">
+              <div class="pkg-opt" onclick="pkgOpt(this,0,0)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Logo Design</div><div class="pkg-opt-desc">3 unique concepts for your vision</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,0,1)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Color Palette</div><div class="pkg-opt-desc">Colors that speak your brand language</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,0,2)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Typography System</div><div class="pkg-opt-desc">Font pairs with authority & elegance</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,0,3)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Brand Guidelines</div><div class="pkg-opt-desc">Complete rulebook for consistent usage</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1: Website Design -->
+        <div class="pkg-svc-card" data-card="1">
+          <div class="pkg-svc-header" onclick="pkgToggle(1)">
+            <div class="pkg-svc-check" id="pkgMark1"></div>
+            <div class="pkg-svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <div class="pkg-svc-title">
+              <div class="pkg-svc-title-name">Website <em>Design</em></div>
+              <div class="pkg-svc-count" id="pkgCount1">Select sub-services below</div>
+            </div>
+            <div class="pkg-svc-arrow"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+          </div>
+          <div class="pkg-svc-body">
+            <div class="pkg-svc-options">
+              <div class="pkg-opt" onclick="pkgOpt(this,1,0)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Custom Design</div><div class="pkg-opt-desc">Fully tailored to your brand identity</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,1,1)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Mobile First</div><div class="pkg-opt-desc">Flawless on every device & screen size</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,1,2)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Lead Capture</div><div class="pkg-opt-desc">Forms & CTAs that generate real enquiries</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,1,3)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">SEO Ready</div><div class="pkg-opt-desc">Built to rank and get discovered on Google</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2: WhatsApp Automation -->
+        <div class="pkg-svc-card" data-card="2">
+          <div class="pkg-svc-header" onclick="pkgToggle(2)">
+            <div class="pkg-svc-check" id="pkgMark2"></div>
+            <div class="pkg-svc-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div class="pkg-svc-title">
+              <div class="pkg-svc-title-name">WhatsApp <em>Automation</em></div>
+              <div class="pkg-svc-count" id="pkgCount2">Select sub-services below</div>
+            </div>
+            <div class="pkg-svc-arrow"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+          </div>
+          <div class="pkg-svc-body">
+            <div class="pkg-svc-options">
+              <div class="pkg-opt" onclick="pkgOpt(this,2,0)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Auto Replies</div><div class="pkg-opt-desc">Instant responses to every enquiry, always</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,2,1)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Lead Capture Bot</div><div class="pkg-opt-desc">Qualify & collect leads automatically</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,2,2)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Broadcast Campaigns</div><div class="pkg-opt-desc">Send offers to hundreds in one click</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,2,3)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Catalogue Integration</div><div class="pkg-opt-desc">Full product/service catalogue on WhatsApp</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3: AI Integration -->
+        <div class="pkg-svc-card" data-card="3">
+          <div class="pkg-svc-header" onclick="pkgToggle(3)">
+            <div class="pkg-svc-check" id="pkgMark3"></div>
+            <div class="pkg-svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+            <div class="pkg-svc-title">
+              <div class="pkg-svc-title-name">AI <em>Integration</em></div>
+              <div class="pkg-svc-count" id="pkgCount3">Select sub-services below</div>
+            </div>
+            <div class="pkg-svc-arrow"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+          </div>
+          <div class="pkg-svc-body">
+            <div class="pkg-svc-options">
+              <div class="pkg-opt" onclick="pkgOpt(this,3,0)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">AI Chatbot</div><div class="pkg-opt-desc">Trained on your brand, answers anything</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,3,1)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Lead Qualification</div><div class="pkg-opt-desc">AI filters & scores leads automatically</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,3,2)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Smart Replies</div><div class="pkg-opt-desc">Context-aware responses for every query</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,3,3)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">24/7 Availability</div><div class="pkg-opt-desc">Never miss an enquiry, day or night</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4: Social Media Kit -->
+        <div class="pkg-svc-card" data-card="4">
+          <div class="pkg-svc-header" onclick="pkgToggle(4)">
+            <div class="pkg-svc-check" id="pkgMark4"></div>
+            <div class="pkg-svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/><rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/></svg></div>
+            <div class="pkg-svc-title">
+              <div class="pkg-svc-title-name">Social Media <em>Kit</em></div>
+              <div class="pkg-svc-count" id="pkgCount4">Select sub-services below</div>
+            </div>
+            <div class="pkg-svc-arrow"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+          </div>
+          <div class="pkg-svc-body">
+            <div class="pkg-svc-options">
+              <div class="pkg-opt" onclick="pkgOpt(this,4,0)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Post Templates</div><div class="pkg-opt-desc">Reusable designs for daily posting</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,4,1)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Story Templates</div><div class="pkg-opt-desc">Engaging story formats for all platforms</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,4,2)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Profile & Cover Art</div><div class="pkg-opt-desc">Polished first impressions everywhere</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,4,3)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Highlight Covers</div><div class="pkg-opt-desc">Branded Instagram highlight icons</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5: Print & Collateral -->
+        <div class="pkg-svc-card" data-card="5">
+          <div class="pkg-svc-header" onclick="pkgToggle(5)">
+            <div class="pkg-svc-check" id="pkgMark5"></div>
+            <div class="pkg-svc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+            <div class="pkg-svc-title">
+              <div class="pkg-svc-title-name">Print &amp; <em>Collateral</em></div>
+              <div class="pkg-svc-count" id="pkgCount5">Select sub-services below</div>
+            </div>
+            <div class="pkg-svc-arrow"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+          </div>
+          <div class="pkg-svc-body">
+            <div class="pkg-svc-options">
+              <div class="pkg-opt" onclick="pkgOpt(this,5,0)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Visiting Card</div><div class="pkg-opt-desc">Premium cards that leave an impression</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,5,1)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Letterhead</div><div class="pkg-opt-desc">Official stationery with your brand voice</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,5,2)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Brochure Design</div><div class="pkg-opt-desc">Multi-page design that sells for you</div></div></div>
+              <div class="pkg-opt" onclick="pkgOpt(this,5,3)"><div class="pkg-opt-box"></div><div><div class="pkg-opt-name">Banners & Signage</div><div class="pkg-opt-desc">Large-format designs for events & offices</div></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /pkg-services -->
+
+      <!-- RIGHT: Summary panel -->
+      <div class="pkg-summary">
+        <div class="pkg-sum-eyebrow">Your Selection</div>
+        <div class="pkg-sum-title">Custom <em>Package</em></div>
+        <div id="pkgEmpty" class="pkg-sum-empty">No services selected yet.<br>Open a card above and pick what you need.</div>
+        <div class="pkg-sum-list" id="pkgList" style="display:none"></div>
+        <div class="pkg-sum-divider"></div>
+        <p class="pkg-sum-note"><strong>How it works:</strong> Select services &amp; sub-options, then send us your list. We reply with a tailored quote within 24 hours — no commitment needed.</p>
+        <a href="#" class="pkg-btn-wa" onclick="pkgSendWA(event)">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Send via WhatsApp
+        </a>
+        <a href="#" class="pkg-btn-em" onclick="pkgSendEmail(event)">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Send via Email
+        </a>
       </div>
-      <div class="pkg-card feat">
-        <div class="pkg-name">Brand Identity</div><div class="pkg-sub">Full Visual Identity</div>
-        <div class="pkg-price">₹10,000</div><div class="pkg-note">One time · 5–7 working days</div>
-        <div class="pkg-div"></div>
-        <ul class="pkg-feats"><li>Logo Design (3 concepts)</li><li>Brand Color &amp; Typography</li><li>Visiting Card Design</li><li>Letterhead Design</li><li>Social Media Kit</li><li>WhatsApp Catalogue</li><li>All Source Files</li><li>2 Revision Rounds</li></ul>
-        <a href="https://wa.me/919226634637?text=Hi!+I'm+interested+in+the+Brand+Identity+package." class="pkg-btn pkg-filled">Get Started</a>
-      </div>
-      <div class="pkg-card">
-        <div class="pkg-name">Full Ecosystem</div><div class="pkg-sub">Brand + Digital + AI</div>
-        <div class="pkg-price">₹25,000</div><div class="pkg-note">One time · 14–21 working days</div>
-        <div class="pkg-div"></div>
-        <ul class="pkg-feats"><li>Everything in Brand Identity</li><li>Custom Website Design</li><li>WhatsApp Automation</li><li>AI Chatbot Integration</li><li>Lead Capture System</li><li>SEO Setup</li><li>3 Revision Rounds</li><li>30 Days Support</li></ul>
-        <a href="https://wa.me/919226634637?text=Hi!+I'm+interested+in+the+Full+Ecosystem+package." class="pkg-btn pkg-outline">Get Started</a>
-      </div>
-    </div>
+
+    </div><!-- /pkg-builder -->
   </div>
 </div>
 
@@ -1244,7 +1417,7 @@ document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;});
   ring.style.left=rx+'px'; ring.style.top=ry+'px';
   requestAnimationFrame(animC);
 })();
-document.querySelectorAll('a,button,.svc-sub-item,.p-item,.pkg-card').forEach(el=>{
+document.querySelectorAll('a,button,.svc-sub-item,.p-item,.pkg-svc-header,.pkg-opt').forEach(el=>{
   el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
 });
@@ -1364,7 +1537,891 @@ revEls.forEach(el=>revObserver.observe(el));
     currentSvc=idx;
     targetRot=idx*0.9;
     document.querySelectorAll('.dna-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+    if(window.__svcBgSet) window.__svcBgSet(idx >= 0 ? idx : -1);
   };
+})();
+
+/* ══ SERVICE BACKGROUND SYSTEM ══ */
+(function(){
+  const cv = document.getElementById('svc-bg-canvas');
+  if(!cv) return;
+  const ctx = cv.getContext('2d');
+  let W, H, dpr;
+  let currentSvc = -1, targetSvc = -1;
+  let blendAlpha = 0;
+  let t = 0;
+
+  function resize(){
+    dpr = window.devicePixelRatio||1;
+    const sticky = document.getElementById('dna-sticky');
+    W = sticky.offsetWidth; H = sticky.offsetHeight;
+    cv.width = W*dpr; cv.height = H*dpr;
+    cv.style.width = W+'px'; cv.style.height = H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // ══════════════════════════════════════════════════════════
+  // SERVICE 1 — BRAND IDENTITY
+  // Floating logo mockups, color palettes, typography specimens
+  // ══════════════════════════════════════════════════════════
+  const logoShapes = [
+    // Each: [cx%, cy%, type, color, size, rotSpeed]
+    [0.12, 0.18, 'hex',   '#FF6B6B', 38, 0.003],
+    [0.28, 0.72, 'circle','#FFD93D', 30, -0.004],
+    [0.65, 0.15, 'square','#4D96FF', 34, 0.005],
+    [0.82, 0.55, 'tri',   '#6BCB77', 40, -0.003],
+    [0.45, 0.85, 'hex',   '#FF6FC8', 28, 0.006],
+    [0.72, 0.82, 'circle','#C9A84C', 26, -0.005],
+    [0.18, 0.48, 'square','#A78BFA', 22, 0.004],
+    [0.55, 0.38, 'tri',   '#F97316', 32, -0.003],
+  ];
+  // Palette swatches floating
+  const palettes = [
+    { x: 0.05, y: 0.38, colors: ['#1A1A2E','#16213E','#0F3460','#E94560'] },
+    { x: 0.7,  y: 0.06, colors: ['#2D3561','#C05C7E','#F3826F','#FFD460'] },
+    { x: 0.38, y: 0.92, colors: ['#114B5F','#1A936F','#88D498','#C6DABF'] },
+    { x: 0.82, y: 0.28, colors: ['#2B2D42','#8D99AE','#EDF2F4','#EF233C'] },
+  ];
+
+  function drawLogoShape(ctx, x, y, type, color, size, rot){
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(rot);
+    ctx.strokeStyle = color + '55';
+    ctx.fillStyle   = color + '18';
+    ctx.lineWidth   = 1.2;
+    if(type === 'hex'){
+      ctx.beginPath();
+      for(let i=0;i<6;i++){
+        const a = i/6*Math.PI*2 - Math.PI/6;
+        i===0 ? ctx.moveTo(Math.cos(a)*size, Math.sin(a)*size)
+              : ctx.lineTo(Math.cos(a)*size, Math.sin(a)*size);
+      }
+      ctx.closePath(); ctx.fill(); ctx.stroke();
+      // Inner hex
+      ctx.strokeStyle = color + '33'; ctx.lineWidth = 0.6;
+      ctx.beginPath();
+      for(let i=0;i<6;i++){
+        const a = i/6*Math.PI*2 - Math.PI/6;
+        i===0 ? ctx.moveTo(Math.cos(a)*size*0.6, Math.sin(a)*size*0.6)
+              : ctx.lineTo(Math.cos(a)*size*0.6, Math.sin(a)*size*0.6);
+      }
+      ctx.closePath(); ctx.stroke();
+    } else if(type === 'circle'){
+      ctx.beginPath(); ctx.arc(0,0,size,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.arc(0,0,size*0.55,0,Math.PI*2); ctx.stroke();
+      // Cross-hair
+      ctx.strokeStyle = color + '40';
+      ctx.beginPath(); ctx.moveTo(-size,0); ctx.lineTo(size,0); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0,-size); ctx.lineTo(0,size); ctx.stroke();
+    } else if(type === 'square'){
+      ctx.beginPath(); ctx.roundRect(-size,-size,size*2,size*2,4); ctx.fill(); ctx.stroke();
+      ctx.strokeStyle = color + '30';
+      ctx.beginPath(); ctx.roundRect(-size*0.55,-size*0.55,size*1.1,size*1.1,2); ctx.stroke();
+    } else if(type === 'tri'){
+      ctx.beginPath();
+      ctx.moveTo(0,-size); ctx.lineTo(size*0.866,size*0.5); ctx.lineTo(-size*0.866,size*0.5);
+      ctx.closePath(); ctx.fill(); ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawBrandIdentity(ctx, W, H, t, alpha){
+    ctx.save(); ctx.globalAlpha = alpha;
+
+    // Subtle dot grid bg
+    ctx.fillStyle = 'rgba(201,168,76,0.06)';
+    for(let gx=0;gx<W;gx+=40) for(let gy=0;gy<H;gy+=40){
+      ctx.beginPath(); ctx.arc(gx,gy,1,0,Math.PI*2); ctx.fill();
+    }
+
+    // Floating logo shapes
+    logoShapes.forEach((s,i)=>{
+      const [cpx, cpy, type, color, size, rotSpd] = s;
+      const drift = Math.sin(t*0.007+i*1.4)*12;
+      const driftX = Math.cos(t*0.005+i*1.1)*8;
+      const rot = t * rotSpd;
+      ctx.save();
+      ctx.globalAlpha = alpha * (0.55 + 0.2*Math.sin(t*0.008+i));
+      drawLogoShape(ctx, cpx*W+driftX, cpy*H+drift, type, color, size, rot);
+      ctx.restore();
+    });
+
+    // Color palette swatches
+    palettes.forEach((p,pi)=>{
+      const drift = Math.sin(t*0.006+pi*2)*8;
+      const driftX = Math.cos(t*0.004+pi)*6;
+      const swW = 22, swH = 64;
+      ctx.save(); ctx.globalAlpha = alpha * 0.5;
+      p.colors.forEach((c,ci)=>{
+        ctx.fillStyle = c;
+        ctx.beginPath();
+        ctx.roundRect(p.x*W + driftX + ci*swW, p.y*H + drift, swW-1, swH, ci===0?[3,0,0,3]:ci===3?[0,3,3,0]:[0]);
+        ctx.fill();
+      });
+      // Border around whole swatch
+      ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth=0.7;
+      ctx.strokeRect(p.x*W + driftX, p.y*H + drift, swW*4-1, swH);
+      ctx.restore();
+    });
+
+    // Large ghost typography — brand names
+    const typoData = [
+      {text:'Aa', x:0.25, y:0.42, size:120, rot:-0.08},
+      {text:'Bb', x:0.68, y:0.7,  size:90,  rot:0.05},
+      {text:'©',  x:0.5,  y:0.22, size:70,  rot:0},
+    ];
+    typoData.forEach((td,i)=>{
+      const drift = Math.sin(t*0.006+i*2)*10;
+      ctx.save();
+      ctx.globalAlpha = alpha * 0.055;
+      ctx.font = `300 ${td.size}px 'Cormorant Garamond', serif`;
+      ctx.fillStyle = '#C9A84C';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.translate(td.x*W, td.y*H+drift);
+      ctx.rotate(td.rot);
+      ctx.fillText(td.text, 0, 0);
+      ctx.restore();
+    });
+
+    // Flowing golden lines (like brand guide grid)
+    ctx.save(); ctx.globalAlpha = alpha * 0.08;
+    ctx.strokeStyle = '#C9A84C'; ctx.lineWidth = 0.5;
+    for(let i=0;i<4;i++){
+      const y = H*(0.25 + i*0.2) + Math.sin(t*0.004+i)*15;
+      ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
+    }
+    ctx.restore();
+
+    ctx.restore();
+  }
+
+  // ══════════════════════════════════════════════════════════
+  // SERVICE 2 — WEBSITE DESIGN
+  // 3 full browser windows floating with different colour themes
+  // ══════════════════════════════════════════════════════════
+  const websiteThemes = [
+    { x:0.02, y:0.05, w:0.42, h:0.52, accent:'#4D96FF', bg:'rgba(17,24,39,0.85)', driftPhase:0 },
+    { x:0.5,  y:0.08, w:0.44, h:0.44, accent:'#F97316', bg:'rgba(15,10,30,0.85)',  driftPhase:1.5 },
+    { x:0.12, y:0.58, w:0.38, h:0.37, accent:'#10B981', bg:'rgba(5,20,15,0.85)',   driftPhase:3 },
+    { x:0.56, y:0.54, w:0.4,  h:0.41, accent:'#EC4899', bg:'rgba(25,5,20,0.85)',   driftPhase:4.5 },
+  ];
+
+  function drawBrowserWindow(ctx, x, y, w, h, accent, bg, t, globalAlpha){
+    ctx.save(); ctx.globalAlpha = globalAlpha;
+    const bw = w, bh = h;
+    // Shadow
+    ctx.shadowColor = accent + '33'; ctx.shadowBlur = 30;
+    // Window body
+    ctx.fillStyle = bg;
+    ctx.beginPath(); ctx.roundRect(x, y, bw, bh, 6); ctx.fill();
+    ctx.shadowBlur = 0;
+    // Border
+    ctx.strokeStyle = accent + '50'; ctx.lineWidth = 0.8;
+    ctx.beginPath(); ctx.roundRect(x, y, bw, bh, 6); ctx.stroke();
+    // Title bar
+    ctx.fillStyle = accent + '22';
+    ctx.beginPath(); ctx.roundRect(x, y, bw, 22, [6,6,0,0]); ctx.fill();
+    // Traffic lights
+    const tlColors = ['#FF5F57','#FFBD2E','#28C840'];
+    tlColors.forEach((c,i)=>{
+      ctx.beginPath(); ctx.arc(x+12+i*16, y+11, 4, 0, Math.PI*2);
+      ctx.fillStyle = c; ctx.fill();
+    });
+    // URL bar
+    ctx.fillStyle = 'rgba(255,255,255,0.06)';
+    ctx.beginPath(); ctx.roundRect(x+60, y+6, bw-80, 11, 5); ctx.fill();
+    ctx.fillStyle = accent + '60';
+    ctx.font = '6px monospace'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText('vesastudios.site', x+66, y+12);
+
+    // Hero section mockup
+    const heroH = bh * 0.38;
+    const heroGrd = ctx.createLinearGradient(x, y+22, x, y+22+heroH);
+    heroGrd.addColorStop(0, accent + '25');
+    heroGrd.addColorStop(1, accent + '08');
+    ctx.fillStyle = heroGrd;
+    ctx.fillRect(x, y+22, bw, heroH);
+    // Hero text lines
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.fillRect(x+bw*0.08, y+22+heroH*0.3, bw*0.55, 7);
+    ctx.fillStyle = 'rgba(255,255,255,0.15)';
+    ctx.fillRect(x+bw*0.08, y+22+heroH*0.5, bw*0.38, 4);
+    // CTA button
+    ctx.fillStyle = accent + 'AA';
+    ctx.beginPath(); ctx.roundRect(x+bw*0.08, y+22+heroH*0.68, bw*0.22, 11, 3); ctx.fill();
+    // Nav items
+    [0.45,0.57,0.69,0.81].forEach(nx=>{
+      ctx.fillStyle = 'rgba(255,255,255,0.22)';
+      ctx.fillRect(x+bw*nx, y+28, bw*0.07, 3);
+    });
+
+    // Content rows below hero
+    const rowStart = y+22+heroH+12;
+    for(let row=0;row<3;row++){
+      const ry = rowStart + row*((bh-heroH-34)/3);
+      // Card blocks
+      for(let card=0;card<3;card++){
+        const cx2 = x+bw*0.04 + card*(bw*0.31);
+        ctx.fillStyle = 'rgba(255,255,255,0.04)';
+        ctx.beginPath(); ctx.roundRect(cx2, ry, bw*0.29, (bh-heroH-58)/3*0.8, 3); ctx.fill();
+        ctx.strokeStyle = accent + '25'; ctx.lineWidth=0.4;
+        ctx.beginPath(); ctx.roundRect(cx2, ry, bw*0.29, (bh-heroH-58)/3*0.8, 3); ctx.stroke();
+        // img placeholder
+        ctx.fillStyle = accent + '20';
+        ctx.fillRect(cx2+3, ry+3, bw*0.29-6, (bh-heroH-58)/3*0.38);
+        // text lines
+        ctx.fillStyle = 'rgba(255,255,255,0.18)';
+        ctx.fillRect(cx2+4, ry+(bh-heroH-58)/3*0.44, bw*0.2, 3);
+        ctx.fillStyle = 'rgba(255,255,255,0.08)';
+        ctx.fillRect(cx2+4, ry+(bh-heroH-58)/3*0.56, bw*0.14, 2);
+      }
+    }
+    ctx.restore();
+  }
+
+  function drawWebsiteDesign(ctx, W, H, t, alpha){
+    ctx.save(); ctx.globalAlpha = alpha;
+    // Dot grid backdrop
+    ctx.fillStyle = 'rgba(91,141,239,0.04)';
+    for(let gx=0;gx<W;gx+=36) for(let gy=0;gy<H;gy+=36){
+      ctx.beginPath(); ctx.arc(gx,gy,0.8,0,Math.PI*2); ctx.fill();
+    }
+    // Browser windows
+    websiteThemes.forEach((wt,i)=>{
+      const drift = Math.sin(t*0.007+wt.driftPhase)*10;
+      const driftX = Math.cos(t*0.005+wt.driftPhase)*7;
+      const sAlpha = 0.55 + 0.18*Math.sin(t*0.009+i);
+      drawBrowserWindow(ctx, wt.x*W+driftX, wt.y*H+drift, wt.w*W, wt.h*H, wt.accent, wt.bg, t, alpha*sAlpha);
+    });
+    // Cursor — animated
+    const curX = W*0.78 + Math.sin(t*0.018)*80;
+    const curY = H*0.35 + Math.cos(t*0.014)*60;
+    ctx.save(); ctx.globalAlpha = alpha * (0.5+0.4*Math.sin(t*0.04));
+    ctx.strokeStyle = '#fff'; ctx.lineWidth=1.2; ctx.fillStyle='rgba(255,255,255,0.7)';
+    ctx.beginPath(); ctx.moveTo(curX,curY); ctx.lineTo(curX+8,curY+14); ctx.lineTo(curX+5,curY+9);
+    ctx.lineTo(curX+11,curY+9); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.restore();
+    ctx.restore();
+  }
+
+  // ══════════════════════════════════════════════════════════
+  // SERVICE 3 — WHATSAPP AUTOMATION
+  // Full WhatsApp-style chat interface with animated bot conversation
+  // ══════════════════════════════════════════════════════════
+  const waChatMessages = [
+    { text:"Hi! I'm interested in a logo.", sent:false, w:0.38, time:'10:24' },
+    { text:"Hi! Great to hear from you 👋 What industry?", sent:true, w:0.46, time:'10:24' },
+    { text:"We're a wellness brand.", sent:false, w:0.34, time:'10:25' },
+    { text:"Perfect! I'll send you 3 concepts in 48hrs.", sent:true, w:0.48, time:'10:25' },
+    { text:"How much does it cost?", sent:false, w:0.3, time:'10:26' },
+    { text:"Starts at ₹4,999 for full brand kit 🎨", sent:true, w:0.44, time:'10:26' },
+    { text:"Sounds great! Let's proceed.", sent:false, w:0.35, time:'10:27' },
+    { text:"Order confirmed ✅ Payment link sent!", sent:true, w:0.44, time:'10:27' },
+  ];
+
+  function drawWhatsApp(ctx, W, H, t, alpha){
+    ctx.save(); ctx.globalAlpha = alpha;
+    // WhatsApp gradient bg pattern
+    const waBg = ctx.createLinearGradient(0,0,0,H);
+    waBg.addColorStop(0,'rgba(11,20,14,0.0)');
+    waBg.addColorStop(1,'rgba(11,20,14,0.0)');
+    ctx.fillStyle = waBg; ctx.fillRect(0,0,W,H);
+
+    // Subtle WA pattern (leaf-like dots)
+    ctx.fillStyle = 'rgba(37,211,102,0.03)';
+    for(let gx=0;gx<W;gx+=50) for(let gy=0;gy<H;gy+=50){
+      ctx.beginPath(); ctx.arc(gx,gy,6,0,Math.PI*2); ctx.fill();
+    }
+
+    // Chat window frame — centered, large
+    const chatW = Math.min(W*0.52, 360);
+    const chatH = H*0.85;
+    const chatX = W*0.5 - chatW/2 + Math.sin(t*0.004)*6;
+    const chatY = H*0.5 - chatH/2 + Math.cos(t*0.003)*4;
+
+    // Window shadow
+    ctx.save(); ctx.shadowColor='rgba(0,0,0,0.6)'; ctx.shadowBlur=60;
+    ctx.fillStyle='rgba(18,18,18,0.0)'; ctx.fillRect(chatX,chatY,chatW,chatH); ctx.restore();
+
+    // Chat bg
+    ctx.fillStyle = 'rgba(14,22,16,0.82)';
+    ctx.beginPath(); ctx.roundRect(chatX,chatY,chatW,chatH,10); ctx.fill();
+    ctx.strokeStyle = 'rgba(37,211,102,0.25)'; ctx.lineWidth=0.8;
+    ctx.beginPath(); ctx.roundRect(chatX,chatY,chatW,chatH,10); ctx.stroke();
+
+    // Header bar
+    ctx.fillStyle = 'rgba(24,36,26,0.95)';
+    ctx.beginPath(); ctx.roundRect(chatX,chatY,chatW,52,[10,10,0,0]); ctx.fill();
+    // Avatar
+    ctx.fillStyle = '#25D366';
+    ctx.beginPath(); ctx.arc(chatX+28,chatY+26,14,0,Math.PI*2); ctx.fill();
+    // Bot icon in avatar
+    ctx.fillStyle = '#fff'; ctx.font='bold 11px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('🤖',chatX+28,chatY+26);
+    // Name
+    ctx.fillStyle='rgba(255,255,255,0.9)'; ctx.font='600 11px DM Sans,sans-serif';
+    ctx.textAlign='left'; ctx.fillText('Vesa Bot',chatX+50,chatY+22);
+    ctx.fillStyle='rgba(37,211,102,0.7)'; ctx.font='9px DM Sans,sans-serif';
+    ctx.fillText('● Online',chatX+50,chatY+36);
+    // WhatsApp logo hint
+    ctx.fillStyle='#25D366'; ctx.font='bold 18px sans-serif'; ctx.textAlign='right';
+    ctx.fillText('📱',chatX+chatW-12,chatY+32);
+
+    // Message area
+    const msgAreaY = chatY + 58;
+    const msgAreaH = chatH - 58 - 44;
+    // WA wallpaper dots
+    ctx.save(); ctx.beginPath(); ctx.rect(chatX,msgAreaY,chatW,msgAreaH); ctx.clip();
+    ctx.fillStyle='rgba(37,211,102,0.025)';
+    for(let gx=chatX;gx<chatX+chatW;gx+=22) for(let gy=msgAreaY;gy<msgAreaY+msgAreaH;gy+=22){
+      ctx.beginPath(); ctx.arc(gx,gy,2,0,Math.PI*2); ctx.fill();
+    }
+    ctx.restore();
+
+    // Animated message reveal — messages appear one by one cycling
+    const msgCycle = Math.floor(t / 90) % waChatMessages.length;
+    const visibleCount = Math.min(5, msgCycle+1);
+    const startIdx = Math.max(0, msgCycle-4);
+    let msgY = msgAreaY + 10;
+    ctx.save(); ctx.beginPath(); ctx.rect(chatX,msgAreaY,chatW,msgAreaH); ctx.clip();
+    for(let mi=startIdx; mi<=msgCycle && mi<waChatMessages.length; mi++){
+      const msg = waChatMessages[mi];
+      const bw = msg.w*chatW;
+      const bh = 32;
+      const bx = msg.sent ? chatX+chatW - bw - 14 : chatX+14;
+      const entranceT = mi < msgCycle ? 1 : Math.min(1,(t%90)/30);
+
+      ctx.save(); ctx.globalAlpha = alpha * entranceT;
+      ctx.fillStyle = msg.sent ? 'rgba(37,211,102,0.25)' : 'rgba(255,255,255,0.1)';
+      ctx.beginPath(); ctx.roundRect(bx,msgY,bw,bh, msg.sent?[10,3,10,10]:[3,10,10,10]); ctx.fill();
+      ctx.strokeStyle = msg.sent ? 'rgba(37,211,102,0.45)' : 'rgba(255,255,255,0.15)';
+      ctx.lineWidth=0.5; ctx.stroke();
+      // Msg text hint lines
+      ctx.fillStyle = msg.sent ? 'rgba(37,211,102,0.5)' : 'rgba(255,255,255,0.35)';
+      ctx.fillRect(bx+8, msgY+10, bw*0.65, 3);
+      ctx.fillStyle = msg.sent ? 'rgba(37,211,102,0.2)' : 'rgba(255,255,255,0.12)';
+      ctx.fillRect(bx+8, msgY+17, bw*0.4, 2);
+      // Time
+      ctx.fillStyle = 'rgba(255,255,255,0.2)'; ctx.font='6px DM Sans,sans-serif';
+      ctx.textAlign = msg.sent?'right':'left';
+      ctx.fillText(msg.time, msg.sent?bx+bw-6:bx+6, msgY+bh-5);
+      // Double tick for sent
+      if(msg.sent){
+        ctx.fillStyle='rgba(37,211,102,0.6)'; ctx.font='7px sans-serif'; ctx.textAlign='right';
+        ctx.fillText('✓✓',bx+bw-8,msgY+bh-5);
+      }
+      ctx.restore();
+      msgY += bh + 8;
+    }
+
+    // Typing indicator
+    const typingAlpha = 0.5+0.5*Math.sin(t*0.05);
+    ctx.save(); ctx.globalAlpha = alpha * typingAlpha * 0.8;
+    ctx.fillStyle='rgba(255,255,255,0.08)';
+    ctx.beginPath(); ctx.roundRect(chatX+14, msgAreaY+msgAreaH-28, 60, 20, 10); ctx.fill();
+    [0,1,2].forEach(d=>{
+      const by = Math.sin(t*0.1+d*1.2)*3;
+      ctx.beginPath(); ctx.arc(chatX+28+d*14, msgAreaY+msgAreaH-18+by, 3, 0, Math.PI*2);
+      ctx.fillStyle=`rgba(37,211,102,${0.4+0.4*Math.sin(t*0.08+d)})`; ctx.fill();
+    });
+    ctx.restore();
+    ctx.restore();
+
+    // Input bar
+    ctx.fillStyle = 'rgba(24,36,26,0.9)';
+    ctx.beginPath(); ctx.roundRect(chatX,chatY+chatH-44,chatW,44,[0,0,10,10]); ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,0.06)';
+    ctx.beginPath(); ctx.roundRect(chatX+8,chatY+chatH-36,chatW-60,28,14); ctx.fill();
+    ctx.fillStyle='#25D366';
+    ctx.beginPath(); ctx.arc(chatX+chatW-20,chatY+chatH-22,13,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='#fff'; ctx.font='bold 11px sans-serif'; ctx.textAlign='center';
+    ctx.fillText('➤',chatX+chatW-20,chatY+chatH-21);
+
+    // Signal waves around chat
+    ctx.save(); ctx.globalAlpha = alpha * 0.08;
+    [60,90,120].forEach(r=>{
+      ctx.beginPath(); ctx.arc(W*0.06, H*0.12, r, -0.7, 0.2);
+      ctx.strokeStyle='#25D366'; ctx.lineWidth=1.5; ctx.stroke();
+    });
+    ctx.restore();
+
+    ctx.restore();
+  }
+
+  // ══════════════════════════════════════════════════════════
+  // SERVICE 4 — AI AUTOMATION
+  // Robot/circuit board with neural network + glowing data flows
+  // ══════════════════════════════════════════════════════════
+  function drawRobotFace(ctx, cx, cy, size, t){
+    const s = size;
+    ctx.save(); ctx.translate(cx, cy);
+    // Body outline
+    ctx.strokeStyle='rgba(167,139,250,0.5)'; ctx.lineWidth=1.5;
+    ctx.fillStyle='rgba(167,139,250,0.05)';
+    ctx.beginPath(); ctx.roundRect(-s*0.45,-s*0.5,s*0.9,s,8); ctx.fill(); ctx.stroke();
+    // Head
+    ctx.fillStyle='rgba(167,139,250,0.08)';
+    ctx.strokeStyle='rgba(167,139,250,0.6)';
+    ctx.beginPath(); ctx.roundRect(-s*0.3,-s*0.75,s*0.6,s*0.4,6); ctx.fill(); ctx.stroke();
+    // Eyes — glowing
+    [-1,1].forEach(side=>{
+      const eyeX = side*s*0.1;
+      const eyeY = -s*0.62;
+      const blink = Math.sin(t*0.015)>0.95 ? 2 : 7;
+      // Eye socket
+      ctx.fillStyle='rgba(30,20,50,0.8)';
+      ctx.beginPath(); ctx.ellipse(eyeX,eyeY,9,blink,0,0,Math.PI*2); ctx.fill();
+      // Eye glow
+      const eyeGrd = ctx.createRadialGradient(eyeX,eyeY,0,eyeX,eyeY,8);
+      eyeGrd.addColorStop(0,'rgba(167,139,250,0.9)');
+      eyeGrd.addColorStop(0.4,'rgba(139,92,246,0.6)');
+      eyeGrd.addColorStop(1,'rgba(139,92,246,0)');
+      ctx.fillStyle=eyeGrd;
+      ctx.beginPath(); ctx.ellipse(eyeX,eyeY,7,blink*0.85,0,0,Math.PI*2); ctx.fill();
+    });
+    // Antenna
+    ctx.strokeStyle='rgba(167,139,250,0.5)'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(0,-s*0.75); ctx.lineTo(0,-s*0.9); ctx.stroke();
+    const antPulse = Math.sin(t*0.06)*0.5+0.5;
+    ctx.fillStyle=`rgba(167,139,250,${0.5+antPulse*0.5})`;
+    ctx.beginPath(); ctx.arc(0,-s*0.92,4,0,Math.PI*2); ctx.fill();
+    // Scan line on face
+    const scanY = -s*0.75 + ((t*0.8)%(s*0.4));
+    ctx.save(); ctx.beginPath(); ctx.roundRect(-s*0.3,-s*0.75,s*0.6,s*0.4,6); ctx.clip();
+    ctx.strokeStyle=`rgba(167,139,250,${0.12+0.1*Math.sin(t*0.04)})`; ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.moveTo(-s*0.3,scanY); ctx.lineTo(s*0.3,scanY); ctx.stroke();
+    ctx.restore();
+    // Mouth — LED dots
+    for(let md=-2;md<=2;md++){
+      const mPulse = Math.sin(t*0.08+md*0.5)*0.5+0.5;
+      ctx.fillStyle=`rgba(167,139,250,${0.3+mPulse*0.5})`;
+      ctx.beginPath(); ctx.arc(md*s*0.06,-s*0.57,2.5,0,Math.PI*2); ctx.fill();
+    }
+    // Chest panel
+    ctx.strokeStyle='rgba(167,139,250,0.3)'; ctx.lineWidth=0.7;
+    ctx.strokeRect(-s*0.25,-s*0.2,s*0.5,s*0.3);
+    // Progress bar in chest
+    const prog = (t*0.005)%1;
+    ctx.fillStyle='rgba(167,139,250,0.1)'; ctx.fillRect(-s*0.22,-s*0.1,s*0.44,6);
+    ctx.fillStyle='rgba(167,139,250,0.6)'; ctx.fillRect(-s*0.22,-s*0.1,s*0.44*prog,6);
+    // Arms
+    [-1,1].forEach(side=>{
+      const armAngle = Math.sin(t*0.02+side)*0.15;
+      ctx.save(); ctx.translate(side*s*0.45,-s*0.2); ctx.rotate(armAngle);
+      ctx.strokeStyle='rgba(167,139,250,0.35)'; ctx.lineWidth=6; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(0,s*0.35); ctx.stroke();
+      // Hand
+      ctx.fillStyle='rgba(167,139,250,0.25)';
+      ctx.beginPath(); ctx.arc(0,s*0.37,8,0,Math.PI*2); ctx.fill();
+      ctx.restore();
+    });
+    ctx.restore();
+  }
+
+  function drawAI(ctx, W, H, t, alpha){
+    ctx.save(); ctx.globalAlpha = alpha;
+    // Background circuit board grid
+    ctx.strokeStyle='rgba(167,139,250,0.04)'; ctx.lineWidth=0.5;
+    for(let gx=0;gx<W;gx+=32) for(let gy=0;gy<H;gy+=32){
+      ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke();
+    }
+    // Circuit corner dots
+    ctx.fillStyle='rgba(167,139,250,0.12)';
+    for(let gx=0;gx<W;gx+=32) for(let gy=0;gy<H;gy+=32){
+      if(Math.random()>0.7){ ctx.beginPath(); ctx.arc(gx,gy,2,0,Math.PI*2); ctx.fill(); }
+    }
+
+    // Large robot face — main focal element
+    const robotX = W*0.5 + Math.sin(t*0.005)*8;
+    const robotY = H*0.5 + Math.cos(t*0.004)*5;
+    drawRobotFace(ctx, robotX, robotY, Math.min(W,H)*0.42, t);
+
+    // Radial neural network around robot
+    const nodeCount = 10;
+    const radii = [W*0.28, W*0.42];
+    const allNodes = [];
+    radii.forEach((r,ri)=>{
+      for(let ni=0;ni<nodeCount;ni++){
+        const a = (ni/nodeCount)*Math.PI*2 + t*(ri===0?0.004:-0.003);
+        const nx = robotX + Math.cos(a)*r;
+        const ny = robotY + Math.sin(a)*r;
+        allNodes.push({x:nx, y:ny, r:ri, ni});
+      }
+    });
+    // Connections
+    allNodes.forEach((n,i)=>{
+      if(n.r===0){
+        // Connect inner to outer same index
+        const outer = allNodes[nodeCount+n.ni];
+        const pulse = (Math.sin(t*0.04+n.ni*0.7))*0.5+0.5;
+        ctx.beginPath(); ctx.moveTo(n.x,n.y); ctx.lineTo(outer.x,outer.y);
+        ctx.strokeStyle=`rgba(167,139,250,${0.05+pulse*0.12})`; ctx.lineWidth=0.7; ctx.stroke();
+        // Data packet
+        const pp = (t*0.009+n.ni*0.1)%1;
+        ctx.beginPath(); ctx.arc(n.x+(outer.x-n.x)*pp, n.y+(outer.y-n.y)*pp, 2, 0,Math.PI*2);
+        ctx.fillStyle=`rgba(167,139,250,${pulse*0.7})`; ctx.fill();
+        // Connect inner nodes
+        const next = allNodes[(n.ni+1)%nodeCount];
+        ctx.beginPath(); ctx.moveTo(n.x,n.y); ctx.lineTo(next.x,next.y);
+        ctx.strokeStyle='rgba(167,139,250,0.06)'; ctx.lineWidth=0.5; ctx.stroke();
+      }
+    });
+    // Draw nodes
+    allNodes.forEach((n,i)=>{
+      const pulse=Math.sin(t*0.05+i*0.8)*0.5+0.5;
+      ctx.beginPath(); ctx.arc(n.x,n.y, n.r===0?4:3, 0,Math.PI*2);
+      ctx.fillStyle=`rgba(167,139,250,${0.4+pulse*0.4})`; ctx.fill();
+      if(pulse>0.8){
+        ctx.beginPath(); ctx.arc(n.x,n.y,8,0,Math.PI*2);
+        ctx.strokeStyle='rgba(167,139,250,0.2)'; ctx.lineWidth=0.7; ctx.stroke();
+      }
+    });
+
+    // Floating code/data snippets
+    const dataSnippets = ['01001101','SELECT *','for i in range','npm install','const ai =','git push'];
+    dataSnippets.forEach((s,i)=>{
+      const sx = W*(0.04+Math.random()*0.08) + W*(i%3)*0.3 + Math.sin(t*0.006+i)*20;
+      const sy = H*(0.08+i*0.14) + Math.cos(t*0.005+i)*15;
+      ctx.save(); ctx.globalAlpha = alpha * 0.12;
+      ctx.font='9px monospace'; ctx.fillStyle='#A78BFA'; ctx.textAlign='left';
+      ctx.fillText(s, sx, sy);
+      ctx.restore();
+    });
+
+    ctx.restore();
+  }
+
+  // ══════════════════════════════════════════════════════════
+  // SERVICE 5 — SOCIAL MEDIA KIT
+  // Instagram-style profile grid + multi-platform viral posts
+  // ══════════════════════════════════════════════════════════
+  function drawInstagramProfile(ctx, x, y, w, h, t, sAlpha){
+    ctx.save(); ctx.globalAlpha = sAlpha;
+    // Phone frame
+    ctx.fillStyle='rgba(15,15,15,0.88)';
+    ctx.beginPath(); ctx.roundRect(x,y,w,h,14); ctx.fill();
+    ctx.strokeStyle='rgba(233,30,99,0.35)'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.roundRect(x,y,w,h,14); ctx.stroke();
+    // Status bar
+    ctx.fillStyle='rgba(255,255,255,0.08)'; ctx.fillRect(x,y,w,20);
+    ctx.fillStyle='rgba(255,255,255,0.25)'; ctx.font='7px DM Sans,sans-serif';
+    ctx.textAlign='center'; ctx.fillText('Instagram',x+w/2,y+13);
+
+    // Profile header
+    const profY = y+26;
+    // Avatar ring (gradient like IG story)
+    const igGrd = ctx.createLinearGradient(x+w/2-22, profY, x+w/2+22, profY+44);
+    igGrd.addColorStop(0,'#f09433'); igGrd.addColorStop(0.25,'#e6683c');
+    igGrd.addColorStop(0.5,'#dc2743'); igGrd.addColorStop(0.75,'#cc2366');
+    igGrd.addColorStop(1,'#bc1888');
+    ctx.strokeStyle=igGrd; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.arc(x+w/2, profY+22, 20, 0, Math.PI*2); ctx.stroke();
+    ctx.fillStyle='rgba(233,30,99,0.3)';
+    ctx.beginPath(); ctx.arc(x+w/2, profY+22, 16, 0, Math.PI*2); ctx.fill();
+    // Brand initial
+    ctx.fillStyle='rgba(255,255,255,0.8)'; ctx.font='bold 13px Bebas Neue,sans-serif';
+    ctx.textAlign='center'; ctx.fillText('V',x+w/2,profY+27);
+
+    // Stats row
+    const statsY = profY+50;
+    [['124','Posts'],['8.4K','Followers'],['312','Following']].forEach(([n,l],i)=>{
+      const sx = x + w*0.15 + i*(w*0.3);
+      ctx.fillStyle='rgba(255,255,255,0.85)'; ctx.font='bold 9px DM Sans,sans-serif';
+      ctx.textAlign='center'; ctx.fillText(n,sx,statsY);
+      ctx.fillStyle='rgba(255,255,255,0.3)'; ctx.font='7px DM Sans,sans-serif';
+      ctx.fillText(l,sx,statsY+10);
+    });
+
+    // Follow button
+    const fBtnY = statsY+18;
+    ctx.fillStyle='rgba(233,30,99,0.5)';
+    ctx.beginPath(); ctx.roundRect(x+w*0.1,fBtnY,w*0.8,18,4); ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,0.8)'; ctx.font='7px DM Sans,sans-serif'; ctx.textAlign='center';
+    ctx.fillText('Follow',x+w/2,fBtnY+12);
+
+    // Post grid
+    const gridY = fBtnY + 26;
+    const postSize = (w*0.9)/3 - 2;
+    const postColors = [
+      'rgba(233,30,99,0.3)','rgba(156,39,176,0.3)','rgba(63,81,181,0.3)',
+      'rgba(0,150,136,0.3)','rgba(255,152,0,0.3)','rgba(233,30,99,0.25)',
+    ];
+    for(let pg=0;pg<6;pg++){
+      const pr = Math.floor(pg/3), pc = pg%3;
+      const px2 = x + w*0.05 + pc*(postSize+2);
+      const py2 = gridY + pr*(postSize+2);
+      ctx.fillStyle = postColors[pg];
+      ctx.fillRect(px2,py2,postSize,postSize);
+      // Engagement on hover sim
+      const engaged = Math.sin(t*0.04+pg*1.3)>0.7;
+      if(engaged){
+        ctx.fillStyle='rgba(0,0,0,0.3)'; ctx.fillRect(px2,py2,postSize,postSize);
+        ctx.fillStyle='rgba(255,255,255,0.6)'; ctx.font='8px sans-serif'; ctx.textAlign='center';
+        ctx.fillText('❤',px2+postSize/2,py2+postSize/2+3);
+      }
+      // Like counter animation
+      const counter = Math.floor(100+pg*47+Math.sin(t*0.02+pg)*20);
+      ctx.fillStyle='rgba(255,255,255,0.2)'; ctx.font='6px DM Sans,sans-serif'; ctx.textAlign='center';
+      ctx.fillText(counter,px2+postSize/2,py2+postSize-4);
+    }
+    ctx.restore();
+  }
+
+  function drawSocialMedia(ctx, W, H, t, alpha){
+    ctx.save(); ctx.globalAlpha = alpha;
+
+    // Gradient mesh bg
+    const gradMesh = ctx.createRadialGradient(W*0.3,H*0.3,0,W*0.3,H*0.3,W*0.5);
+    gradMesh.addColorStop(0,'rgba(233,30,99,0.04)');
+    gradMesh.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=gradMesh; ctx.fillRect(0,0,W,H);
+
+    // Floating platform icons (platform silhouettes)
+    const platforms = [
+      { icon:'𝕏', color:'rgba(255,255,255,0.12)', x:0.04, y:0.08 },
+      { icon:'▶', color:'rgba(255,0,0,0.15)',       x:0.88, y:0.72 },
+      { icon:'in', color:'rgba(10,102,194,0.15)',   x:0.06, y:0.76 },
+      { icon:'f',  color:'rgba(24,119,242,0.12)',   x:0.88, y:0.1 },
+    ];
+    platforms.forEach((p,i)=>{
+      const drift = Math.sin(t*0.006+i*2)*12;
+      ctx.save(); ctx.globalAlpha = alpha * 0.4;
+      ctx.font='bold 32px sans-serif'; ctx.fillStyle=p.color;
+      ctx.textAlign='center'; ctx.fillText(p.icon,p.x*W,p.y*H+drift);
+      ctx.restore();
+    });
+
+    // Instagram profile phone — main feature
+    const phoneW = Math.min(W*0.28, 200);
+    const phoneH = phoneW * 1.95;
+    drawInstagramProfile(ctx,
+      W*0.5 - phoneW/2 + Math.sin(t*0.004)*8,
+      H*0.5 - phoneH/2 + Math.cos(t*0.003)*5,
+      phoneW, phoneH, t, alpha * 0.85
+    );
+
+    // Floating "viral" metrics
+    const metrics = [
+      {label:'❤ 12.4K', x:0.1,  y:0.2,  color:'rgba(233,30,99,0.7)'},
+      {label:'↗ 847',   x:0.84, y:0.35, color:'rgba(29,161,242,0.7)'},
+      {label:'📢 3.2K',  x:0.12, y:0.58, color:'rgba(255,152,0,0.7)'},
+      {label:'🔁 589',   x:0.82, y:0.62, color:'rgba(29,161,242,0.7)'},
+    ];
+    metrics.forEach((m,i)=>{
+      const drift = Math.sin(t*0.012+i*1.5)*8;
+      const rise = (t*0.3+i*60)%(H*0.4);
+      ctx.save(); ctx.globalAlpha = alpha * Math.max(0, 0.7 - rise/(H*0.4)*0.7);
+      ctx.font='bold 10px DM Sans,sans-serif'; ctx.fillStyle=m.color;
+      ctx.textAlign='center'; ctx.fillText(m.label, m.x*W, m.y*H + drift - rise*0.2);
+      ctx.restore();
+    });
+
+    // Notification bubbles
+    const notifs = ['+followers','+engagement','Post went viral!','🔔 New mention'];
+    notifs.forEach((n,i)=>{
+      const nPhase = (t*0.008+i*0.25)%1;
+      if(nPhase > 0.7) return;
+      const ny = H*(0.2+i*0.17) - nPhase*H*0.15;
+      const nx = i%2===0 ? W*0.08 : W*0.72;
+      ctx.save(); ctx.globalAlpha = alpha * (0.6-nPhase*0.8);
+      ctx.fillStyle='rgba(30,30,30,0.85)';
+      ctx.beginPath(); ctx.roundRect(nx,ny,130,22,11); ctx.fill();
+      ctx.strokeStyle='rgba(233,30,99,0.3)'; ctx.lineWidth=0.6; ctx.stroke();
+      ctx.fillStyle='rgba(255,255,255,0.6)'; ctx.font='7px DM Sans,sans-serif'; ctx.textAlign='center';
+      ctx.fillText(n,nx+65,ny+14);
+      ctx.restore();
+    });
+
+    ctx.restore();
+  }
+
+  // ══════════════════════════════════════════════════════════
+  // SERVICE 6 — PRINT & COLLATERAL
+  // Letterhead, business card, envelope floating elegantly
+  // ══════════════════════════════════════════════════════════
+  function drawLetterhead(ctx, x, y, w, h, t, idx){
+    const drift = Math.sin(t*0.005+idx*1.8)*8;
+    const driftX = Math.cos(t*0.004+idx)*5;
+    const rot = (idx%2===0?-0.03:0.025) + Math.sin(t*0.003+idx)*0.005;
+    ctx.save();
+    ctx.translate(x+w/2+driftX, y+h/2+drift);
+    ctx.rotate(rot);
+    // Paper shadow
+    ctx.shadowColor='rgba(0,0,0,0.4)'; ctx.shadowBlur=20; ctx.shadowOffsetY=5;
+    ctx.fillStyle='rgba(245,240,232,0.06)';
+    ctx.fillRect(-w/2,-h/2,w,h);
+    ctx.shadowBlur=0; ctx.shadowOffsetY=0;
+    // Paper border
+    ctx.strokeStyle='rgba(201,168,76,0.3)'; ctx.lineWidth=0.8;
+    ctx.strokeRect(-w/2,-h/2,w,h);
+    // Inner margin line
+    ctx.strokeStyle='rgba(201,168,76,0.12)'; ctx.lineWidth=0.4;
+    ctx.strokeRect(-w/2+8,-h/2+8,w-16,h-16);
+    // Gold accent bar at top
+    ctx.fillStyle='rgba(201,168,76,0.15)';
+    ctx.fillRect(-w/2,-h/2,w,6);
+    // Logo area
+    ctx.fillStyle='rgba(201,168,76,0.25)'; ctx.font='bold 10px Bebas Neue,sans-serif';
+    ctx.textAlign='left'; ctx.fillText('VESA STUDIOS',-w/2+14,-h/2+22);
+    ctx.strokeStyle='rgba(201,168,76,0.15)'; ctx.lineWidth=0.4;
+    ctx.beginPath(); ctx.moveTo(-w/2+14,-h/2+28); ctx.lineTo(w/2-14,-h/2+28); ctx.stroke();
+    // Content lines
+    const lineColors = ['rgba(245,240,232,0.12)','rgba(245,240,232,0.08)','rgba(245,240,232,0.06)'];
+    for(let l=0;l<6;l++){
+      const lw = w*(0.75-l*0.04);
+      ctx.fillStyle=lineColors[Math.min(l,2)];
+      ctx.fillRect(-w/2+14,-h/2+38+l*12,lw,3);
+    }
+    // Signature area
+    ctx.strokeStyle='rgba(201,168,76,0.2)'; ctx.lineWidth=0.5;
+    ctx.beginPath(); ctx.moveTo(-w/2+14,h/2-22); ctx.lineTo(-w/2+80,h/2-22); ctx.stroke();
+    ctx.fillStyle='rgba(201,168,76,0.2)'; ctx.font='7px DM Sans,sans-serif';
+    ctx.textAlign='left'; ctx.fillText('Signature',-w/2+14,h/2-13);
+    ctx.restore();
+  }
+
+  function drawBusinessCard(ctx, x, y, w, h, front, t, idx){
+    const drift = Math.sin(t*0.006+idx*2.2)*7;
+    const rot = (front ? -0.05 : 0.04) + Math.sin(t*0.004+idx*1.5)*0.008;
+    ctx.save();
+    ctx.translate(x+w/2, y+h/2+drift);
+    ctx.rotate(rot);
+    // Card shadow
+    ctx.shadowColor='rgba(0,0,0,0.5)'; ctx.shadowBlur=15; ctx.shadowOffsetY=4;
+    ctx.fillStyle = front ? 'rgba(10,10,10,0.92)' : 'rgba(18,14,8,0.92)';
+    ctx.beginPath(); ctx.roundRect(-w/2,-h/2,w,h,3); ctx.fill();
+    ctx.shadowBlur=0; ctx.shadowOffsetY=0;
+    // Card border
+    ctx.strokeStyle='rgba(201,168,76,0.45)'; ctx.lineWidth=0.7;
+    ctx.beginPath(); ctx.roundRect(-w/2,-h/2,w,h,3); ctx.stroke();
+    if(front){
+      // Gold corner accent
+      ctx.strokeStyle='rgba(201,168,76,0.3)'; ctx.lineWidth=0.5;
+      ctx.beginPath(); ctx.moveTo(-w/2+4,-h/2+4); ctx.lineTo(-w/2+16,-h/2+4); ctx.moveTo(-w/2+4,-h/2+4); ctx.lineTo(-w/2+4,-h/2+14); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(w/2-4,h/2-4); ctx.lineTo(w/2-16,h/2-4); ctx.moveTo(w/2-4,h/2-4); ctx.lineTo(w/2-4,h/2-14); ctx.stroke();
+      // Brand name
+      ctx.fillStyle='rgba(201,168,76,0.7)'; ctx.font='bold 12px Bebas Neue,sans-serif';
+      ctx.textAlign='center'; ctx.fillText('VESA STUDIOS',0,-h*0.08);
+      // Divider
+      ctx.strokeStyle='rgba(201,168,76,0.2)'; ctx.lineWidth=0.5;
+      ctx.beginPath(); ctx.moveTo(-w*0.3,0); ctx.lineTo(w*0.3,0); ctx.stroke();
+      // Name
+      ctx.fillStyle='rgba(245,240,232,0.7)'; ctx.font='500 8px DM Sans,sans-serif';
+      ctx.fillText('Vedant & Shreyash',0,h*0.14);
+      ctx.fillStyle='rgba(201,168,76,0.4)'; ctx.font='6px DM Sans,sans-serif';
+      ctx.fillText('CO-FOUNDERS',0,h*0.26);
+    } else {
+      // Back — gold pattern
+      ctx.save(); ctx.globalAlpha=0.08;
+      for(let gi=-3;gi<=3;gi++) for(let gj=-2;gj<=2;gj++){
+        ctx.strokeStyle='#C9A84C'; ctx.lineWidth=0.4;
+        ctx.strokeRect(gi*20,gj*20,18,18);
+      }
+      ctx.restore();
+      // Website
+      ctx.fillStyle='rgba(201,168,76,0.5)'; ctx.font='7px DM Sans,sans-serif';
+      ctx.textAlign='center'; ctx.fillText('vesastudios.site',0,h*0.1);
+      ctx.fillStyle='rgba(245,240,232,0.25)'; ctx.font='6px DM Sans,sans-serif';
+      ctx.fillText('+91 92266 34637',0,h*0.25);
+    }
+    ctx.restore();
+  }
+
+  function drawPrint(ctx, W, H, t, alpha){
+    ctx.save(); ctx.globalAlpha = alpha;
+
+    // Subtle texture lines
+    ctx.strokeStyle='rgba(120,144,156,0.03)'; ctx.lineWidth=0.4;
+    for(let gy=0;gy<H;gy+=8){
+      ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke();
+    }
+
+    // Letterheads floating
+    const letterheads = [
+      { x:W*0.03, y:H*0.06, w:W*0.38, h:H*0.56 },
+      { x:W*0.58, y:H*0.03, w:W*0.38, h:H*0.52 },
+      { x:W*0.22, y:H*0.5,  w:W*0.28, h:H*0.42 },
+    ];
+    letterheads.forEach((lh,i)=> drawLetterhead(ctx,lh.x,lh.y,lh.w,lh.h,t,i));
+
+    // Business cards
+    const cards = [
+      { x:W*0.5,  y:H*0.52, w:W*0.22, h:H*0.18, front:true },
+      { x:W*0.72, y:H*0.58, w:W*0.22, h:H*0.18, front:false },
+      { x:W*0.04, y:H*0.67, w:W*0.18, h:H*0.15, front:true },
+    ];
+    cards.forEach((c,i)=> drawBusinessCard(ctx,c.x,c.y,c.w,c.h,c.front,t,i+3));
+
+    // Envelope shape
+    const envX = W*0.62+Math.sin(t*0.005)*10;
+    const envY = H*0.18+Math.cos(t*0.004)*7;
+    const envW = W*0.3, envH = H*0.22;
+    ctx.save(); ctx.globalAlpha = alpha * 0.6;
+    ctx.fillStyle='rgba(240,235,225,0.05)';
+    ctx.strokeStyle='rgba(201,168,76,0.25)'; ctx.lineWidth=0.8;
+    ctx.beginPath(); ctx.rect(envX,envY,envW,envH); ctx.fill(); ctx.stroke();
+    // Envelope flap
+    ctx.beginPath();
+    ctx.moveTo(envX,envY); ctx.lineTo(envX+envW/2,envY+envH*0.42); ctx.lineTo(envX+envW,envY);
+    ctx.strokeStyle='rgba(201,168,76,0.2)'; ctx.lineWidth=0.7; ctx.stroke();
+    // Envelope bottom V
+    ctx.beginPath();
+    ctx.moveTo(envX,envY+envH); ctx.lineTo(envX+envW/2,envY+envH*0.55); ctx.lineTo(envX+envW,envY+envH);
+    ctx.stroke();
+    // Stamp placeholder
+    ctx.strokeStyle='rgba(201,168,76,0.3)'; ctx.lineWidth=0.6;
+    ctx.strokeRect(envX+envW-28,envY+8,20,24);
+    ctx.fillStyle='rgba(201,168,76,0.12)'; ctx.fillRect(envX+envW-28,envY+8,20,24);
+    ctx.restore();
+
+    // CMYK color dots
+    const cmykColors = ['rgba(0,188,212,0.22)','rgba(233,30,99,0.18)','rgba(255,193,7,0.22)','rgba(80,80,80,0.2)'];
+    cmykColors.forEach((c,i)=>{
+      const angle = t*0.006+i*(Math.PI*2/4);
+      const cx = W*0.5 + Math.cos(angle)*W*0.06;
+      const cy = H*0.88 + Math.sin(angle)*H*0.04;
+      ctx.beginPath(); ctx.arc(cx,cy,8,0,Math.PI*2);
+      ctx.fillStyle=c; ctx.fill();
+    });
+
+    ctx.restore();
+  }
+
+  const DRAWERS=[drawBrandIdentity,drawWebsiteDesign,drawWhatsApp,drawAI,drawSocialMedia,drawPrint];
+
+  // ── TRANSITION STATE ──────────────────────────────────────
+  let displaySvc=-1, nextSvc=-1, transition=0;
+
+  function setService(idx){
+    if(idx===displaySvc) return;
+    nextSvc=idx;
+    transition=0;
+  }
+  window.__svcBgSet = setService;
+
+  // ── RENDER LOOP ───────────────────────────────────────────
+  function draw(){
+    t++;
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#060810'; ctx.fillRect(0,0,W,H);
+
+    if(displaySvc===-1 && nextSvc===-1){ requestAnimationFrame(draw); return; }
+
+    if(nextSvc!==-1){
+      transition=Math.min(1, transition+0.016);
+      if(displaySvc!==-1) DRAWERS[displaySvc](ctx,W,H,t,1-transition);
+      DRAWERS[nextSvc](ctx,W,H,t,transition);
+      if(transition>=1){ displaySvc=nextSvc; nextSvc=-1; }
+    } else {
+      DRAWERS[displaySvc](ctx,W,H,t,1);
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
 })();
 
 /* ══ DNA SCROLL HANDLER ══ */
@@ -1535,6 +2592,114 @@ revEls.forEach(el=>revObserver.observe(el));
 
   window.addEventListener('scroll',update,{passive:true});
   update();
+})();
+
+/* ══ PACKAGE BUILDER ══ */
+(function(){
+  const SVC=['Brand Identity','Website Design','WhatsApp Automation','AI Integration','Social Media Kit','Print & Collateral'];
+  const OPTS=[
+    ['Logo Design','Color Palette','Typography System','Brand Guidelines'],
+    ['Custom Design','Mobile First','Lead Capture','SEO Ready'],
+    ['Auto Replies','Lead Capture Bot','Broadcast Campaigns','Catalogue Integration'],
+    ['AI Chatbot','Lead Qualification','Smart Replies','24/7 Availability'],
+    ['Post Templates','Story Templates','Profile & Cover Art','Highlight Covers'],
+    ['Visiting Card','Letterhead','Brochure Design','Banners & Signage']
+  ];
+  const state=Array.from({length:6},()=>[false,false,false,false]);
+
+  window.pkgToggle=function(i){
+    const card=document.querySelector('[data-card="'+i+'"]');
+    const open=card.classList.contains('expanded');
+    document.querySelectorAll('.pkg-svc-card').forEach(function(c){c.classList.remove('expanded');});
+    if(!open) card.classList.add('expanded');
+  };
+
+  window.pkgOpt=function(el,svc,opt){
+    state[svc][opt]=!state[svc][opt];
+    el.classList.toggle('sel',state[svc][opt]);
+    el.querySelector('.pkg-opt-box').textContent=state[svc][opt]?'✓':'';
+    refreshHeader(svc);
+    refreshSummary();
+  };
+
+  window.pkgRemove=function(svc,opt){
+    state[svc][opt]=false;
+    const tiles=document.querySelector('[data-card="'+svc+'"]').querySelectorAll('.pkg-opt');
+    tiles[opt].classList.remove('sel');
+    tiles[opt].querySelector('.pkg-opt-box').textContent='';
+    refreshHeader(svc);
+    refreshSummary();
+  };
+
+  function refreshHeader(svc){
+    const sel=state[svc].filter(Boolean).length;
+    const total=state[svc].length;
+    const mark=document.getElementById('pkgMark'+svc);
+    const count=document.getElementById('pkgCount'+svc);
+    if(sel===0){
+      mark.className='pkg-svc-check';mark.textContent='';
+      count.textContent='Select sub-services below';
+    } else if(sel===total){
+      mark.className='pkg-svc-check checked';mark.textContent='✓';
+      count.textContent='All '+total+' selected';
+    } else {
+      mark.className='pkg-svc-check partial';mark.textContent='–';
+      count.textContent=sel+' of '+total+' selected';
+    }
+  }
+
+  function refreshSummary(){
+    const list=document.getElementById('pkgList');
+    const empty=document.getElementById('pkgEmpty');
+    list.innerHTML='';
+    var any=false;
+    state.forEach(function(opts,svc){
+      opts.forEach(function(on,opt){
+        if(!on) return;
+        any=true;
+        var row=document.createElement('div');
+        row.className='pkg-sum-item';
+        row.innerHTML='<div><div class="pkg-sum-item-name">'+OPTS[svc][opt]+'</div>'
+          +'<div class="pkg-sum-item-svc">'+SVC[svc]+'</div></div>'
+          +'<div class="pkg-sum-remove" onclick="pkgRemove('+svc+','+opt+')" title="Remove">'
+          +'<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/>'
+          +'<line x1="6" y1="6" x2="18" y2="18"/></svg></div>';
+        list.appendChild(row);
+      });
+    });
+    list.style.display=any?'flex':'none';
+    empty.style.display=any?'none':'block';
+  }
+
+  function buildMsg(){
+    var lines=['Hi Vesa Studios! I would like a custom quote for the following services:\n'];
+    var any=false;
+    state.forEach(function(opts,svc){
+      var picked=opts.map(function(on,i){return on?OPTS[svc][i]:null;}).filter(Boolean);
+      if(!picked.length) return;
+      any=true;
+      lines.push('✦ '+SVC[svc]+': '+picked.join(', '));
+    });
+    if(!any) return null;
+    lines.push('\nPlease share a custom quote. Thank you!');
+    return lines.join('\n');
+  }
+
+  window.pkgSendWA=function(e){
+    e.preventDefault();
+    var msg=buildMsg();
+    if(!msg){alert('Please select at least one service first.');return;}
+    window.open('https://wa.me/919226634637?text='+encodeURIComponent(msg),'_blank');
+  };
+
+  window.pkgSendEmail=function(e){
+    e.preventDefault();
+    var msg=buildMsg();
+    if(!msg){alert('Please select at least one service first.');return;}
+    window.location.href='mailto:vesastudios1@gmail.com'
+      +'?subject='+encodeURIComponent('Custom Package Inquiry — Vesa Studios')
+      +'&body='+encodeURIComponent(msg);
+  };
 })();
 </script>
 </body>
