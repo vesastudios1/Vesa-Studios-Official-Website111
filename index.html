@@ -15,6 +15,9 @@
   gtag('js', new Date());
   gtag('config', 'G-Q2SQE86D4M');
 </script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4981690812346664"
+     crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Vesa Studios — Defining Brands</title>
@@ -405,13 +408,13 @@ nav.scrolled{background:rgba(10,10,10,.93);backdrop-filter:blur(14px);padding:14
 .train-sticky-wrap{height:600vh;position:relative;}
 .train-sticky{position:sticky;top:0;height:100vh;overflow:hidden;}
 
-/* Track background */
+/* Track background — full sticky area, always on top */
 .track-bg{position:absolute;inset:0;}
-#track-canvas{position:absolute;inset:0;width:100%;height:100%;}
+#track-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:20;pointer-events:none;}
 
-/* Step content */
-.train-content{position:absolute;inset:0;display:flex;align-items:center;}
-.train-left{width:50%;padding:80px 60px 80px 80px;position:relative;}
+/* Step content — sits below the track canvas */
+.train-content{position:absolute;inset:0;display:flex;align-items:center;z-index:5;}
+.train-left{width:50%;padding:80px 60px 80px 80px;position:relative;z-index:6;}
 .train-step-panel{position:absolute;top:0;left:80px;right:40px;bottom:0;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateX(-30px);transition:opacity .7s cubic-bezier(.25,.46,.45,.94),transform .7s;pointer-events:none;}
 .train-step-panel.active{opacity:1;transform:translateX(0);pointer-events:auto;}
 .step-station{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
@@ -424,9 +427,9 @@ nav.scrolled{background:rgba(10,10,10,.93);backdrop-filter:blur(14px);padding:14
 .step-detail-item{display:flex;align-items:center;gap:10px;font-size:11.5px;color:rgba(201,168,76,.7);}
 .step-detail-item::before{content:'→';font-size:10px;}
 
-/* Right side: 3D train window view */
-.train-right{width:50%;height:100%;position:relative;overflow:hidden;}
-.station-visual{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .6s;}
+/* Right side: station visual panels — full area, behind track canvas */
+.train-right{width:50%;height:100%;position:relative;overflow:hidden;z-index:4;}
+.station-visual{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .6s;z-index:4;}
 .station-visual.active{opacity:1;}
 .station-card{border:.5px solid var(--border);background:rgba(10,10,10,.8);backdrop-filter:blur(8px);padding:36px;max-width:340px;width:90%;}
 .station-card-title{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
@@ -483,6 +486,73 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.25,.46,.45,.94),transform .9s cubic-bezier(.25,.46,.45,.94);}
 .reveal.v{opacity:1;transform:translateY(0);}
 .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+
+/* ═══ STATION THEMES ═══ */
+/* Full-area theme backgrounds — placed on .train-sticky itself via a pseudo or sibling */
+#sv0,#sv1,#sv2,#sv3,#sv4 {
+  /* Each station visual covers only the right panel — background is set via ::before on .train-sticky */
+}
+
+/* Full-bleed background switcher — sits at z-index:1 behind everything */
+.train-sticky::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:#0a0a0a;
+  transition:background 0.8s ease;
+  pointer-events:none;
+}
+.train-sticky[data-theme="0"]::before { background:#0f0c05; }
+.train-sticky[data-theme="1"]::before { background:#04050F; }
+.train-sticky[data-theme="2"]::before { background:#0C0C0C; }
+.train-sticky[data-theme="3"]::before { background:#060404; }
+.train-sticky[data-theme="4"]::before { background:#030A06; }
+
+/* Station visuals cover the right half only */
+#sv0 { background: transparent; }
+#sv1 { background: transparent; }
+#sv2 { background: transparent; }
+#sv3 { background: transparent; }
+#sv4 { background: transparent; }
+
+/* Station 01 bars */
+.s1-bar-wrap { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+.s1-bar-label { font-size:9px; color:rgba(201,168,76,0.45); width:90px; flex-shrink:0; }
+.s1-bar-track { flex:1; height:4px; background:rgba(201,168,76,0.1); border-radius:2px; overflow:hidden; }
+.s1-bar { height:100%; background:linear-gradient(to right,#8B6914,#C9A84C); width:0%; border-radius:2px; transition:width 0.9s cubic-bezier(.4,0,.2,1); }
+.s1-chip { font-size:9px; letter-spacing:.12em; text-transform:uppercase; padding:5px 12px; border:0.5px solid rgba(201,168,76,0.25); color:rgba(201,168,76,0.5); cursor:pointer; transition:all .25s; border-radius:2px; }
+.s1-chip:hover,.s1-chip-active { border-color:#C9A84C; color:#C9A84C; background:rgba(201,168,76,0.07); }
+
+/* Station 02 moodboard */
+.s2-card { display:flex; align-items:center; gap:10px; padding:9px 14px; border:0.5px solid rgba(109,40,217,0.2); color:rgba(255,255,255,0.5); font-size:11px; cursor:pointer; transition:all .25s; border-radius:2px; }
+.s2-card:hover,.s2-card.s2-active { border-color:rgba(139,92,246,0.7); color:#fff; background:rgba(109,40,217,0.08); }
+.s2-dot { width:14px; height:14px; border-radius:50%; flex-shrink:0; }
+
+/* Station 03 sliders & checklist */
+.s3-slider-group { margin-bottom:8px; }
+.s3-slider-label { font-size:9px; color:rgba(255,255,255,0.3); letter-spacing:.1em; margin-bottom:4px; display:flex; justify-content:space-between; }
+.s3-slider { width:100%; -webkit-appearance:none; appearance:none; height:3px; background:rgba(255,255,255,0.1); outline:none; border-radius:2px; }
+.s3-slider::-webkit-slider-thumb { -webkit-appearance:none; width:12px; height:12px; background:#C9A84C; border-radius:50%; cursor:pointer; }
+.s3-check-item { display:flex; align-items:center; gap:8px; font-size:10px; color:rgba(255,255,255,0.25); padding:3px 0; transition:color .3s; }
+.s3-check-item::before { content:''; width:16px; height:16px; border:0.5px solid rgba(201,168,76,0.2); border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all .3s; }
+.s3-check-item.checked { color:rgba(201,168,76,0.8); }
+.s3-check-item.checked::before { background:#C9A84C; border-color:#C9A84C; content:'✓'; font-size:8px; color:#0a0a0a; text-align:center; line-height:16px; }
+
+/* Station 04 */
+.s4-file-card { border:0.5px solid rgba(184,115,51,0.2); background:rgba(184,115,51,0.04); padding:10px 12px; border-radius:2px; }
+.s4-file-icon { font-size:10px; font-weight:700; color:#B87333; letter-spacing:.1em; margin-bottom:3px; }
+.s4-file-name { font-size:9.5px; color:rgba(255,255,255,0.5); margin-bottom:2px; }
+.s4-file-status { font-size:8px; color:#10B981; letter-spacing:.15em; text-transform:uppercase; }
+
+/* Station 05 */
+@keyframes rocketFloat { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
+@keyframes s5pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(0.7);} }
+.s5-check-item { display:flex; align-items:center; gap:8px; font-size:10px; color:rgba(255,255,255,0.25); padding:3px 0; transition:color .3s; }
+.s5-check-item::before { content:''; width:16px; height:16px; border:0.5px solid rgba(16,185,129,0.2); border-radius:50%; flex-shrink:0; transition:all .3s; display:flex; align-items:center; justify-content:center; }
+.s5-check-item.checked { color:rgba(16,185,129,0.8); }
+.s5-check-item.checked::before { background:#10B981; border-color:#10B981; content:'✓'; font-size:8px; color:#030A06; text-align:center; line-height:16px; }
+.s5-milestone { font-size:8px; letter-spacing:.18em; text-transform:uppercase; padding:5px 12px; border:0.5px solid rgba(201,168,76,0.35); color:rgba(201,168,76,0.6); border-radius:99px; }
 
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:900px){
@@ -1303,43 +1373,228 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
             </div>
           </div>
         </div>
-        <!-- Right: visual card -->
+        <!-- Right: visual card — themed stations -->
         <div class="train-right">
-          <div class="station-visual active" data-vis="0">
-            <div class="station-card">
-              <div class="station-card-title">Discovery Phase</div>
-              <div class="station-card-body">"Every great brand starts with understanding what you truly stand for."</div>
-              <div class="station-num-big">01</div>
+
+          <!-- STATION 01: Warm amber cosmos -->
+          <div class="station-visual active" data-vis="0" id="sv0">
+            <canvas class="sv-canvas" id="sv-canvas-0" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+            <!-- Gold glow orbs -->
+            <div style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;">
+              <div class="s1-orb" style="width:260px;height:260px;top:-60px;right:-40px;background:radial-gradient(circle,rgba(201,168,76,0.18) 0%,transparent 70%);filter:blur(40px);position:absolute;border-radius:50%;"></div>
+              <div class="s1-orb" style="width:180px;height:180px;bottom:30px;left:10px;background:radial-gradient(circle,rgba(201,168,76,0.12) 0%,transparent 70%);filter:blur(30px);position:absolute;border-radius:50%;"></div>
+            </div>
+            <!-- Content -->
+            <div style="position:relative;z-index:2;width:90%;max-width:360px;padding:28px;">
+              <div style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#C9A84C;margin-bottom:18px;">Discovery Phase</div>
+              <!-- Competitor bars -->
+              <div style="margin-bottom:20px;">
+                <div style="font-size:9px;color:rgba(201,168,76,0.6);letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px;">Competitor Analysis</div>
+                <div class="s1-bar-wrap">
+                  <div class="s1-bar-label">Awareness</div><div class="s1-bar-track"><div class="s1-bar" style="--w:82%"></div></div>
+                </div>
+                <div class="s1-bar-wrap">
+                  <div class="s1-bar-label">Digital Presence</div><div class="s1-bar-track"><div class="s1-bar" style="--w:65%"></div></div>
+                </div>
+                <div class="s1-bar-wrap">
+                  <div class="s1-bar-label">Brand Clarity</div><div class="s1-bar-track"><div class="s1-bar" style="--w:48%"></div></div>
+                </div>
+                <div class="s1-bar-wrap">
+                  <div class="s1-bar-label">Consistency</div><div class="s1-bar-track"><div class="s1-bar" style="--w:71%"></div></div>
+                </div>
+              </div>
+              <!-- Questionnaire chips -->
+              <div style="font-size:9px;color:rgba(201,168,76,0.6);letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px;">Brand Questionnaire</div>
+              <div style="display:flex;flex-wrap:wrap;gap:7px;">
+                <div class="s1-chip" onclick="this.classList.toggle('s1-chip-active')">Vision</div>
+                <div class="s1-chip" onclick="this.classList.toggle('s1-chip-active')">Audience</div>
+                <div class="s1-chip" onclick="this.classList.toggle('s1-chip-active')">Tone</div>
+                <div class="s1-chip" onclick="this.classList.toggle('s1-chip-active')">Goals</div>
+                <div class="s1-chip" onclick="this.classList.toggle('s1-chip-active')">Rivals</div>
+              </div>
+              <!-- SVG Pie donut -->
+              <div style="margin-top:18px;display:flex;align-items:center;gap:16px;">
+                <svg id="s1-pie" width="72" height="72" viewBox="0 0 72 72" style="flex-shrink:0;">
+                  <circle cx="36" cy="36" r="28" fill="none" stroke="rgba(201,168,76,0.1)" stroke-width="10"/>
+                  <circle id="s1-pie-arc" cx="36" cy="36" r="28" fill="none" stroke="#C9A84C" stroke-width="10"
+                    stroke-dasharray="175.9" stroke-dashoffset="175.9" stroke-linecap="round"
+                    transform="rotate(-90 36 36)" style="transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1)"/>
+                </svg>
+                <div>
+                  <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#C9A84C;">78%</div>
+                  <div style="font-size:9px;color:rgba(201,168,76,0.5);letter-spacing:.1em;">Brand Gap Score</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="station-visual" data-vis="1">
-            <div class="station-card">
-              <div class="station-card-title">Design Phase</div>
-              <div class="station-card-body">"Three unique concepts. Each one a possible future for your brand."</div>
-              <div class="station-num-big">02</div>
+
+          <!-- STATION 02: Purple nebula space -->
+          <div class="station-visual" data-vis="1" id="sv1">
+            <canvas class="sv-canvas" id="sv-canvas-1" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+            <!-- Purple glow -->
+            <div style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;">
+              <div style="position:absolute;width:300px;height:300px;top:-80px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(109,40,217,0.28) 0%,transparent 70%);filter:blur(60px);border-radius:50%;"></div>
+              <!-- SVG grid texture -->
+              <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.06;" xmlns="http://www.w3.org/2000/svg">
+                <defs><pattern id="pgrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#8B5CF6" stroke-width="0.7"/>
+                </pattern></defs>
+                <rect width="100%" height="100%" fill="url(#pgrid)"/>
+              </svg>
+              <!-- Gold corner accent -->
+              <div style="position:absolute;top:20px;right:20px;width:60px;height:60px;border-top:1.5px solid rgba(201,168,76,0.4);border-right:1.5px solid rgba(201,168,76,0.4);"></div>
+            </div>
+            <!-- Moodboard cards -->
+            <div style="position:relative;z-index:2;width:90%;max-width:360px;padding:24px;">
+              <div style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#C9A84C;margin-bottom:14px;">Concept Development</div>
+              <div style="font-size:9px;color:rgba(139,92,246,0.7);letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px;">Choose Your Direction</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div class="s2-card" onclick="s2Select(this,'noir')" data-palette="noir">
+                  <span class="s2-dot" style="background:linear-gradient(135deg,#1a1a2e,#e94560);"></span>Bold Noir
+                </div>
+                <div class="s2-card" onclick="s2Select(this,'nebula')" data-palette="nebula">
+                  <span class="s2-dot" style="background:linear-gradient(135deg,#6D28D9,#C9A84C);"></span>Nebula
+                </div>
+                <div class="s2-card" onclick="s2Select(this,'organic')" data-palette="organic">
+                  <span class="s2-dot" style="background:linear-gradient(135deg,#114b5f,#88d498);"></span>Organic
+                </div>
+              </div>
+              <canvas id="s2-preview" width="320" height="80" style="width:100%;margin-top:14px;border-radius:4px;border:0.5px solid rgba(139,92,246,0.2);"></canvas>
             </div>
           </div>
-          <div class="station-visual" data-vis="2">
-            <div class="station-card">
-              <div class="station-card-title">Refinement Phase</div>
-              <div class="station-card-body">"Perfection is in the details. We don't stop until it's right."</div>
-              <div class="station-num-big">03</div>
+
+          <!-- STATION 03: Ink monochrome -->
+          <div class="station-visual" data-vis="2" id="sv2">
+            <!-- Dot grid texture -->
+            <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.04;" xmlns="http://www.w3.org/2000/svg">
+              <defs><pattern id="dotgrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="white"/>
+              </pattern></defs>
+              <rect width="100%" height="100%" fill="url(#dotgrid)"/>
+            </svg>
+            <!-- Brushstroke SVG -->
+            <svg id="s3-brush" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;" viewBox="0 0 500 400" preserveAspectRatio="none">
+              <path id="s3-brush-path" d="M-10,200 Q120,140 250,195 Q380,250 510,185" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="18" stroke-linecap="round"/>
+            </svg>
+            <div style="position:relative;z-index:2;width:90%;max-width:360px;padding:24px;">
+              <div style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#C9A84C;margin-bottom:14px;">Revisions & Refinement</div>
+              <!-- Sliders -->
+              <div style="font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;">Fine-tune Controls</div>
+              <div class="s3-slider-group">
+                <div class="s3-slider-label">Spacing <span id="s3v0">50</span></div>
+                <input type="range" class="s3-slider" min="0" max="100" value="50" oninput="s3Update(0,this.value)" style="cursor:pointer;">
+              </div>
+              <div class="s3-slider-group">
+                <div class="s3-slider-label">Weight <span id="s3v1">60</span></div>
+                <input type="range" class="s3-slider" min="0" max="100" value="60" oninput="s3Update(1,this.value)" style="cursor:pointer;">
+              </div>
+              <div class="s3-slider-group">
+                <div class="s3-slider-label">Contrast <span id="s3v2">75</span></div>
+                <input type="range" class="s3-slider" min="0" max="100" value="75" oninput="s3Update(2,this.value)" style="cursor:pointer;">
+              </div>
+              <div class="s3-slider-group">
+                <div class="s3-slider-label">Scale <span id="s3v3">45</span></div>
+                <input type="range" class="s3-slider" min="0" max="100" value="45" oninput="s3Update(3,this.value)" style="cursor:pointer;">
+              </div>
+              <!-- Logo preview canvas -->
+              <canvas id="s3-logo" width="320" height="60" style="width:100%;margin-top:12px;border:0.5px solid rgba(255,255,255,0.06);background:#0c0c0c;border-radius:2px;"></canvas>
+              <!-- Checklist -->
+              <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;" id="s3-checklist">
+                <div class="s3-check-item" data-idx="0">Typography</div>
+                <div class="s3-check-item" data-idx="1">Color palette</div>
+                <div class="s3-check-item" data-idx="2">Spacing system</div>
+                <div class="s3-check-item" data-idx="3">Logo variants</div>
+                <div class="s3-check-item" data-idx="4">Icon library</div>
+              </div>
             </div>
           </div>
-          <div class="station-visual" data-vis="3">
-            <div class="station-card">
-              <div class="station-card-title">Delivery Phase</div>
-              <div class="station-card-body">"Your brand, fully packaged and ready to conquer the world."</div>
-              <div class="station-num-big">04</div>
+
+          <!-- STATION 04: Copper circuit -->
+          <div class="station-visual" data-vis="3" id="sv3">
+            <!-- Circuit SVG bg -->
+            <svg id="s4-circuit" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.12;" viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice">
+              <g stroke="#B87333" stroke-width="1" fill="none">
+                <line x1="50" y1="80" x2="150" y2="80"/><circle cx="150" cy="80" r="3" fill="#B87333"/>
+                <line x1="150" y1="80" x2="150" y2="160"/><circle cx="150" cy="160" r="3" fill="#B87333"/>
+                <line x1="150" y1="160" x2="300" y2="160"/><circle cx="300" cy="160" r="3" fill="#B87333"/>
+                <line x1="300" y1="160" x2="300" y2="80"/><circle cx="300" cy="80" r="3" fill="#B87333"/>
+                <line x1="300" y1="80" x2="450" y2="80"/><circle cx="450" cy="80" r="3" fill="#B87333"/>
+                <line x1="80" y1="240" x2="220" y2="240"/><circle cx="220" cy="240" r="3" fill="#B87333"/>
+                <line x1="220" y1="240" x2="220" y2="320"/><circle cx="220" cy="320" r="3" fill="#B87333"/>
+                <line x1="220" y1="320" x2="400" y2="320"/><circle cx="400" cy="320" r="3" fill="#B87333"/>
+                <line x1="400" y1="320" x2="400" y2="200"/><circle cx="400" cy="200" r="3" fill="#B87333"/>
+                <line x1="400" y1="200" x2="480" y2="200"/>
+              </g>
+            </svg>
+            <canvas class="sv-canvas" id="sv-canvas-3" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+            <div style="position:relative;z-index:2;width:90%;max-width:360px;padding:24px;">
+              <div style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#C9A84C;margin-bottom:14px;">Delivery & Handoff</div>
+              <!-- File format cards -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;" id="s4-files">
+                <div class="s4-file-card" style="opacity:0;transition:opacity .4s .0s">
+                  <div class="s4-file-icon">AI</div>
+                  <div class="s4-file-name">AI Vector</div>
+                  <div class="s4-file-status">Ready</div>
+                </div>
+                <div class="s4-file-card" style="opacity:0;transition:opacity .4s .25s">
+                  <div class="s4-file-icon">PDF</div>
+                  <div class="s4-file-name">PDF</div>
+                  <div class="s4-file-status">Ready</div>
+                </div>
+                <div class="s4-file-card" style="opacity:0;transition:opacity .4s .5s">
+                  <div class="s4-file-icon">PNG</div>
+                  <div class="s4-file-name">PNG</div>
+                  <div class="s4-file-status">Ready</div>
+                </div>
+                <div class="s4-file-card" style="opacity:0;transition:opacity .4s .75s">
+                  <div class="s4-file-icon">📘</div>
+                  <div class="s4-file-name">Brand Guide</div>
+                  <div class="s4-file-status">Ready</div>
+                </div>
+              </div>
+              <!-- Sine wave canvas -->
+              <canvas id="s4-wave" height="48" style="width:100%;height:48px;margin-bottom:12px;"></canvas>
+              <!-- Progress bar -->
+              <div style="font-size:9px;color:rgba(184,115,51,0.7);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;">Usage Guidelines</div>
+              <div style="background:rgba(184,115,51,0.12);border-radius:2px;height:4px;overflow:hidden;">
+                <div id="s4-progress" style="height:100%;background:linear-gradient(to right,#B87333,#C9A84C);width:0%;transition:width 1.5s cubic-bezier(.4,0,.2,1);border-radius:2px;"></div>
+              </div>
+              <div style="font-size:9px;color:rgba(184,115,51,0.5);margin-top:4px;text-align:right;">92%</div>
             </div>
           </div>
-          <div class="station-visual" data-vis="4">
-            <div class="station-card" style="border-color:rgba(201,168,76,.5);">
-              <div class="station-card-title" style="color:var(--gold);">🚀 Go Live!</div>
-              <div class="station-card-body">"Your brand is now fully alive. Website. Automation. AI. All running."</div>
-              <div class="station-num-big">05</div>
+
+          <!-- STATION 05: Emerald green burst -->
+          <div class="station-visual" data-vis="4" id="sv4">
+            <canvas class="sv-canvas" id="sv-canvas-4" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+            <div style="position:relative;z-index:2;width:90%;max-width:360px;padding:24px;">
+              <!-- Rocket -->
+              <div style="text-align:center;margin-bottom:10px;">
+                <div id="s5-rocket" style="display:inline-block;font-size:2.4rem;animation:rocketFloat 2.5s ease-in-out infinite;">🚀</div>
+              </div>
+              <!-- Badge -->
+              <div style="text-align:center;margin-bottom:16px;">
+                <div id="s5-badge" style="display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border:1px solid #10B981;border-radius:99px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#10B981;position:relative;">
+                  <span style="width:7px;height:7px;border-radius:50%;background:#10B981;animation:s5pulse 1.4s ease-in-out infinite;display:inline-block;"></span>
+                  All Systems Live
+                </div>
+              </div>
+              <!-- Launch checklist -->
+              <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;" id="s5-checklist">
+                <div class="s5-check-item" data-idx="0">Website Launch</div>
+                <div class="s5-check-item" data-idx="1">WhatsApp Bot</div>
+                <div class="s5-check-item" data-idx="2">AI Integration</div>
+                <div class="s5-check-item" data-idx="3">SSL & Security</div>
+                <div class="s5-check-item" data-idx="4">Analytics Active</div>
+              </div>
+              <!-- Milestone badges -->
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <div class="s5-milestone">Website</div>
+                <div class="s5-milestone">Automation</div>
+                <div class="s5-milestone">AI</div>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -2701,6 +2956,274 @@ revEls.forEach(el=>revObserver.observe(el));
       +'?subject='+encodeURIComponent('Custom Package Inquiry — Vesa Studios')
       +'&body='+encodeURIComponent(msg);
   };
+})();
+
+/* ══ STATION THEME ANIMATIONS ══ */
+(function(){
+
+  /* ─── HELPERS ─── */
+  function setupCanvas(id){
+    const cv=document.getElementById(id);
+    if(!cv) return null;
+    const ctx=cv.getContext('2d');
+    function resize(){
+      const dpr=window.devicePixelRatio||1;
+      const p=cv.parentElement;
+      const W=p.offsetWidth||500, H=p.offsetHeight||400;
+      cv.width=W*dpr; cv.height=H*dpr;
+      cv.style.width=W+'px'; cv.style.height=H+'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    window.addEventListener('resize',resize); resize();
+    return {cv,ctx,get W(){return cv.offsetWidth;}, get H(){return cv.offsetHeight;}};
+  }
+
+  // Create a full-sticky ambient canvas for a given station
+  function createAmbientCanvas(stationIdx){
+    const sticky=document.getElementById('train-sticky');
+    if(!sticky) return null;
+    const cv=document.createElement('canvas');
+    cv.id='ambient-canvas-'+stationIdx;
+    cv.style.cssText='position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;opacity:0;transition:opacity 0.8s;';
+    sticky.appendChild(cv);
+    const ctx=cv.getContext('2d');
+    function resize(){
+      const dpr=window.devicePixelRatio||1;
+      cv.width=sticky.offsetWidth*dpr; cv.height=sticky.offsetHeight*dpr;
+      cv.style.width=sticky.offsetWidth+'px'; cv.style.height=sticky.offsetHeight+'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    window.addEventListener('resize',resize); resize();
+    return {cv,ctx,get W(){return sticky.offsetWidth;},get H(){return sticky.offsetHeight;}};
+  }
+
+  /* ─── STATION 01: Gold particle canvas (full width) ─── */
+  (function(){
+    const c=createAmbientCanvas(0); if(!c) return;
+    const dots=[];
+    for(let i=0;i<70;i++) dots.push({x:Math.random(),y:Math.random(),r:Math.random()*1.5+.3,vy:-(Math.random()*.0004+.0001),vx:(Math.random()-.5)*.0002,a:Math.random()*.35+.05});
+    let active=false; let raf;
+    function show(on){ c.cv.style.opacity=on?'1':'0'; }
+    function draw(){
+      if(!active){raf=null;return;}
+      const W=c.W,H=c.H;
+      c.ctx.clearRect(0,0,W,H);
+      dots.forEach(d=>{
+        d.y+=d.vy; d.x+=d.vx;
+        if(d.y<-0.01){d.y=1.01;d.x=Math.random();}
+        if(d.x<0) d.x=1; if(d.x>1) d.x=0;
+        c.ctx.beginPath(); c.ctx.arc(d.x*W,d.y*H,d.r,0,Math.PI*2);
+        c.ctx.fillStyle=`rgba(201,168,76,${d.a})`; c.ctx.fill();
+      });
+      raf=requestAnimationFrame(draw);
+    }
+    // Exposed so main handler can toggle
+    window.__ambientS0={show:function(on){active=on;show(on);if(on&&!raf)draw();}};
+  })();
+
+  /* ─── STATION 02: Twinkling star canvas (full width) ─── */
+  (function(){
+    const c=createAmbientCanvas(1); if(!c) return;
+    const stars=[];
+    for(let i=0;i<80;i++) stars.push({x:Math.random(),y:Math.random(),r:Math.random()*.9+.2,phase:Math.random()*Math.PI*2,speed:Math.random()*.04+.01});
+    let active=false; let t=0; let raf;
+    function show(on){ c.cv.style.opacity=on?'1':'0'; }
+    function draw(){
+      if(!active){raf=null;return;}
+      t++;
+      const W=c.W,H=c.H;
+      c.ctx.clearRect(0,0,W,H);
+      stars.forEach(s=>{
+        const a=0.12+0.45*(0.5+0.5*Math.sin(s.phase+t*s.speed));
+        c.ctx.beginPath(); c.ctx.arc(s.x*W,s.y*H,s.r,0,Math.PI*2);
+        c.ctx.fillStyle=`rgba(200,180,255,${a})`; c.ctx.fill();
+      });
+      raf=requestAnimationFrame(draw);
+    }
+    window.__ambientS1={show:function(on){active=on;show(on);if(on&&!raf)draw();}};
+  })();
+
+  /* ─── STATION 04: Copper sine wave — stays in right panel canvas ─── */
+
+  /* ─── STATION 01: Animate bars & pie on active ─── */
+  function triggerS1(){
+    document.querySelectorAll('.s1-bar').forEach(b=>{
+      b.style.width='0%';
+    });
+    setTimeout(()=>{
+      document.querySelectorAll('.s1-bar').forEach((b,i)=>{
+        setTimeout(()=>{ b.style.width=b.style.getPropertyValue('--w')||b.parentElement.dataset.w||'70%'; },i*150);
+      });
+    },100);
+    // Pie
+    const arc=document.getElementById('s1-pie-arc');
+    if(arc){ arc.style.strokeDashoffset='175.9'; setTimeout(()=>{ arc.style.strokeDashoffset=String(175.9*(1-0.78)); },150); }
+  }
+
+  /* ─── STATION 02: Moodboard preview canvas ─── */
+  window.s2Select=function(el,palette){
+    document.querySelectorAll('.s2-card').forEach(c=>c.classList.remove('s2-active'));
+    el.classList.add('s2-active');
+    const cv=document.getElementById('s2-preview');
+    if(!cv) return;
+    const ctx=cv.getContext('2d');
+    const W=cv.width, H=cv.height;
+    ctx.clearRect(0,0,W,H);
+    const palettes={
+      noir:{cols:['#1a1a2e','#16213e','#e94560','#f5f5f5']},
+      nebula:{cols:['#04050F','#6D28D9','#C9A84C','#e8d5a3']},
+      organic:{cols:['#114b5f','#1a936f','#88d498','#f3e9d2']}
+    };
+    const p=palettes[palette]||palettes.nebula;
+    // Radial gradient mix
+    p.cols.forEach((col,i)=>{
+      const gx=ctx.createRadialGradient(W*(0.15+i*0.22),H*.5,0,W*(0.15+i*0.22),H*.5,W*0.28);
+      gx.addColorStop(0,col+'cc'); gx.addColorStop(1,'transparent');
+      ctx.fillStyle=gx; ctx.fillRect(0,0,W,H);
+    });
+    // Star dots
+    for(let j=0;j<30;j++){
+      ctx.beginPath(); ctx.arc(Math.random()*W,Math.random()*H,Math.random()*.8+.2,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,0.35)'; ctx.fill();
+    }
+  };
+  // Init preview
+  setTimeout(()=>{ const el=document.querySelector('.s2-card'); if(el) window.s2Select(el,'noir'); },400);
+
+  /* ─── STATION 03: Live logo canvas ─── */
+  const s3vals=[50,60,75,45];
+  window.s3Update=function(idx,val){
+    s3vals[idx]=Number(val);
+    document.getElementById('s3v'+idx).textContent=val;
+    s3DrawLogo();
+  };
+  function s3DrawLogo(){
+    const cv=document.getElementById('s3-logo'); if(!cv) return;
+    const ctx=cv.getContext('2d');
+    const W=cv.width, H=cv.height;
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#0c0c0c'; ctx.fillRect(0,0,W,H);
+    const spacing=s3vals[0]/100, weight=s3vals[1]/100, contrast=s3vals[2]/100, scale=s3vals[3]/100;
+    const fontSize=Math.round(14+scale*22);
+    const letterSpacing=Math.round(spacing*12);
+    ctx.font=`${100+Math.round(weight*500)} ${fontSize}px 'Bebas Neue', sans-serif`;
+    const alpha=0.3+contrast*0.7;
+    ctx.fillStyle=`rgba(201,168,76,${alpha})`;
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('VESA STUDIOS', W/2, H/2);
+    ctx.strokeStyle=`rgba(201,168,76,${alpha*0.3})`; ctx.lineWidth=0.5;
+    ctx.strokeRect(W*0.05, H*0.15, W*0.9, H*0.7);
+  }
+  s3DrawLogo();
+
+  /* Station 03 checklist tick */
+  function triggerS3Checklist(){
+    document.querySelectorAll('.s3-check-item').forEach((el,i)=>{
+      el.classList.remove('checked');
+      setTimeout(()=>el.classList.add('checked'), 300+i*400);
+    });
+  }
+
+  /* ─── STATION 04: Sine wave canvas ─── */
+  (function(){
+    const cv=document.getElementById('s4-wave'); if(!cv) return;
+    const ctx=cv.getContext('2d');
+    const dpr=window.devicePixelRatio||1;
+    cv.width=cv.offsetWidth*dpr; cv.height=48*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const W=cv.offsetWidth, H=48;
+    let t=0; let active=false; let raf;
+    const sv=document.getElementById('sv3');
+    function draw(){
+      if(!active){raf=null;return;}
+      t++;
+      ctx.clearRect(0,0,W,H);
+      ctx.beginPath();
+      for(let x=0;x<W;x++){
+        const y=H/2+Math.sin((x/W)*Math.PI*4+t*0.07)*(H*0.3);
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle='rgba(184,115,51,0.7)'; ctx.lineWidth=1.5;
+      ctx.shadowColor='rgba(184,115,51,0.4)'; ctx.shadowBlur=6;
+      ctx.stroke(); ctx.shadowBlur=0;
+      raf=requestAnimationFrame(draw);
+    }
+    new IntersectionObserver(entries=>{
+      active=entries[0].isIntersecting && entries[0].intersectionRatio>0.1;
+      if(active && !raf) draw();
+    },{threshold:0.1}).observe(sv||cv);
+  })();
+
+  /* Station 04: file cards stagger + progress bar */
+  function triggerS4(){
+    document.querySelectorAll('#s4-files .s4-file-card').forEach(c=>{ c.style.opacity='0'; });
+    document.getElementById('s4-progress').style.width='0%';
+    setTimeout(()=>{
+      document.querySelectorAll('#s4-files .s4-file-card').forEach(c=>{ c.style.opacity='1'; });
+      setTimeout(()=>{ document.getElementById('s4-progress').style.width='92%'; },300);
+    },200);
+  }
+
+  /* ─── STATION 05: Rising particle canvas (full width) ─── */
+  (function(){
+    const c=createAmbientCanvas(4); if(!c) return;
+    const pts=[];
+    for(let i=0;i<60;i++) pts.push({x:Math.random(),y:Math.random(),r:Math.random()*1.8+.3,vy:-(Math.random()*.0005+.0001),vx:(Math.random()-.5)*.0002,a:Math.random()*.45+.1,gold:Math.random()>.5});
+    let active=false; let raf;
+    function draw(){
+      if(!active){raf=null;return;}
+      const W=c.W,H=c.H;
+      c.ctx.clearRect(0,0,W,H);
+      pts.forEach(p=>{
+        p.y+=p.vy; p.x+=p.vx;
+        if(p.y<-0.01){p.y=1.01;p.x=Math.random();}
+        if(p.x<0) p.x=1; if(p.x>1) p.x=0;
+        c.ctx.beginPath(); c.ctx.arc(p.x*W,p.y*H,p.r,0,Math.PI*2);
+        c.ctx.fillStyle=p.gold?`rgba(201,168,76,${p.a})`:`rgba(16,185,129,${p.a})`; c.ctx.fill();
+      });
+      raf=requestAnimationFrame(draw);
+    }
+    window.__ambientS4={show:function(on){active=on;c.cv.style.opacity=on?'1':'0';if(on&&!raf)draw();}};
+  })();
+
+  /* Station 05 checklist tick */
+  function triggerS5Checklist(){
+    document.querySelectorAll('.s5-check-item').forEach((el,i)=>{
+      el.classList.remove('checked');
+      setTimeout(()=>el.classList.add('checked'), 200+i*350);
+    });
+  }
+
+  /* ─── MAIN: Hook into scroll system to trigger per-station animations ─── */
+  (function(){
+    const wrap=document.getElementById('train-wrap');
+    const sticky=document.getElementById('train-sticky');
+    let lastStep=-1;
+    function onStep(step){
+      if(step===lastStep) return;
+      lastStep=step;
+      // Set full-width background theme
+      if(sticky) sticky.setAttribute('data-theme', step);
+      // Toggle ambient canvases
+      if(window.__ambientS0) window.__ambientS0.show(step===0);
+      if(window.__ambientS1) window.__ambientS1.show(step===1);
+      if(window.__ambientS4) window.__ambientS4.show(step===4);
+      if(step===0) triggerS1();
+      if(step===2) triggerS3Checklist();
+      if(step===3) triggerS4();
+      if(step===4) triggerS5Checklist();
+    }
+    // Patch into the existing scroll handler
+    const origSet=window.__trainSetProgress;
+    let prevStep=-1;
+    window.__trainSetProgress=function(p,step){
+      if(origSet) origSet(p,step);
+      if(step!==prevStep){ prevStep=step; onStep(step); }
+    };
+    // Trigger s1 on page load (step 0 is default)
+    setTimeout(()=>{ onStep(0); },600);
+  })();
+
 })();
 </script>
 </body>
