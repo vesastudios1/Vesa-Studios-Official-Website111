@@ -554,24 +554,268 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
 .s5-check-item.checked::before { background:#10B981; border-color:#10B981; content:'✓'; font-size:8px; color:#030A06; text-align:center; line-height:16px; }
 .s5-milestone { font-size:8px; letter-spacing:.18em; text-transform:uppercase; padding:5px 12px; border:0.5px solid rgba(201,168,76,0.35); color:rgba(201,168,76,0.6); border-radius:99px; }
 
+/* ═══ MOBILE MENU DRAWER ═══ */
+.hmb-bar{display:block;width:22px;height:1.5px;background:var(--gold);border-radius:2px;transition:all .3s;}
+#mob-drawer{
+  position:fixed;top:0;right:-100%;width:75%;max-width:300px;height:100vh;
+  background:rgba(10,10,10,0.98);backdrop-filter:blur(20px);
+  border-left:.5px solid var(--border);z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  transition:right .38s cubic-bezier(.25,.46,.45,.94);
+}
+#mob-drawer.open{right:0;}
+#mob-drawer ul{list-style:none;display:flex;flex-direction:column;gap:8px;width:100%;padding:0 40px;}
+#mob-drawer ul li a{
+  display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;padding:14px 0;
+  border-bottom:.5px solid rgba(201,168,76,.07);transition:color .25s;
+}
+#mob-drawer ul li a:hover{color:var(--gold);}
+.mob-drawer-cta{
+  display:block!important;margin-top:12px;
+  background:var(--gold)!important;color:var(--dark)!important;
+  text-align:center;padding:13px 0!important;border-bottom:none!important;
+  clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  font-weight:700!important;
+}
+#mob-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9998;
+  opacity:0;pointer-events:none;transition:opacity .35s;
+}
+#mob-overlay.open{opacity:1;pointer-events:auto;}
+
 /* ═══ RESPONSIVE ═══ */
+
+/* ── Tablet (≤900px) ── */
 @media(max-width:900px){
+  #mob-menu-btn{display:flex!important;}
+  body{cursor:auto;}
+  #cur,#cur-ring{display:none;}
+
+  /* NAV */
   nav{padding:16px 20px;}
   .nav-links{display:none;}
+  .nav-cta{padding:9px 18px;font-size:9px;}
+
+  /* HERO */
+  .letter{font-size:80px;}
+  #studios-word{font-size:80px;margin-left:12px;}
+  .founder-initial,.founder-suffix{font-size:54px;}
+  #founders-row{gap:40px;}
+  .hero-badge{left:24px;bottom:48px;}
+  .hero-scroll-hint{right:24px;bottom:48px;}
+
+  /* SERVICES DNA */
   .dna-sticky{flex-direction:column;}
   .dna-canvas-side{width:100%;height:40%;}
   .dna-content-side{width:100%;height:60%;padding:20px;}
+  .svc-name{font-size:1.8rem;}
+  .svc-sub-grid{grid-template-columns:1fr 1fr;}
+
+  /* PACKAGES */
+  #packages{padding:80px 0;}
+  .pkg-wrap{padding:0 24px;}
   .pkg-builder{grid-template-columns:1fr;}
-  .pkg-summary{position:static;}
-  .pkg-svc-options{grid-template-columns:1fr;}
-  .port-grid{grid-template-columns:1fr 1fr;}
-  .p-item:nth-child(n){grid-column:span 1;grid-row:auto;height:200px;}
+  .pkg-summary{position:static;margin-top:20px;}
+  .pkg-svc-options{grid-template-columns:1fr 1fr;}
+
+  /* PROCESS TRAIN */
   .train-content{flex-direction:column;}
-  .train-left,.train-right{width:100%;}
+  .train-left{width:100%;padding:40px 30px 20px;}
+  .train-right{width:100%;height:50%;}
+  .train-step-panel{left:30px;right:20px;}
+  .step-big-num{font-size:5rem;}
+  .step-title{font-size:2rem;}
+
+  /* CONTACT */
   .contact-grid{grid-template-columns:1fr;gap:40px;}
+  #contact{padding:80px 0;}
+  .contact-wrap{padding:0 24px;}
+
+  /* FOOTER */
+  footer{padding:40px 24px 20px;}
   .foot-top{flex-direction:column;gap:20px;}
-  body{cursor:auto;}
-  #cur,#cur-ring{display:none;}
+  .foot-links{flex-wrap:wrap;gap:16px;}
+  .foot-btm{flex-direction:column;gap:6px;text-align:center;}
+}
+
+/* ── Mobile (≤600px) ── */
+@media(max-width:600px){
+
+  /* ── NAV ── */
+  nav{padding:14px 16px;}
+  .nav-logo{font-size:22px;}
+  .nav-cta{padding:8px 14px;font-size:8.5px;letter-spacing:.15em;}
+
+  /* ── HERO ── */
+  #stage{height:220px;}
+  .letter{font-size:clamp(52px,14vw,72px);}
+  #studios-word{font-size:clamp(52px,14vw,72px);margin-left:8px;}
+  #wordmark{flex-wrap:wrap;justify-content:center;gap:0;}
+
+  .founder-initial,.founder-suffix{font-size:clamp(36px,10vw,52px);}
+  #founders-row{gap:20px;flex-wrap:wrap;justify-content:center;}
+
+  .hero-badge{left:16px;bottom:36px;}
+  .hero-tagline{font-size:13px;}
+  .hero-scroll-hint{right:16px;bottom:36px;font-size:8px;}
+
+  #scroll-track{right:12px;gap:5px;}
+  .track-dot{width:5px;height:5px;}
+
+  #scroll-hint{font-size:9px;letter-spacing:2px;bottom:14px;}
+
+  /* ── TICKER ── */
+  .ticker{padding:10px 0;}
+  .ticker-item{font-size:11px;padding:0 18px;}
+
+  /* ── SECTION TITLES ── */
+  .eyebrow{font-size:8px;letter-spacing:.25em;}
+  .sec-title{font-size:clamp(1.9rem,7vw,2.8rem);}
+
+  /* ── DNA SERVICES ── */
+  .dna-sticky-wrap{height:500vh;}
+  .dna-sticky{flex-direction:column;}
+  .dna-canvas-side{width:100%;height:35%;min-height:180px;}
+  .dna-content-side{
+    width:100%;
+    height:65%;
+    padding:16px 20px 20px;
+    background:linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.75) 100%);
+  }
+  .service-panel{
+    left:20px;right:20px;
+    top:0;bottom:0;
+    justify-content:flex-start;
+    padding-top:10px;
+    overflow:hidden;
+  }
+  .svc-num{font-size:3rem;margin-bottom:4px;}
+  .svc-icon-row{margin-bottom:10px;gap:10px;}
+  .svc-icon-box{width:36px;height:36px;}
+  .svc-name{font-size:1.55rem;margin-bottom:6px;}
+  .svc-desc{font-size:12px;line-height:1.65;margin-bottom:14px;max-width:100%;}
+  .svc-sub-grid{grid-template-columns:1fr 1fr;gap:6px;}
+  .svc-sub-item{padding:9px 11px;}
+  .svc-sub-name{font-size:10px;}
+  .svc-sub-desc{font-size:9px;}
+  .dna-progress{right:10px;gap:6px;}
+  .dna-dot{width:5px;height:5px;}
+
+  /* ── PACKAGES ── */
+  #packages{padding:60px 0;}
+  .pkg-wrap{padding:0 16px;}
+  .pkg-builder{grid-template-columns:1fr;gap:16px;margin-top:36px;}
+  .pkg-svc-header{padding:14px 16px;gap:10px;}
+  .pkg-svc-title-name{font-size:1.05rem;}
+  .pkg-svc-options{grid-template-columns:1fr;gap:6px;padding:0 16px 16px;}
+  .pkg-opt{padding:10px 11px;gap:8px;}
+  .pkg-opt-name{font-size:10.5px;}
+  .pkg-opt-desc{font-size:9px;}
+  .pkg-summary{padding:22px 18px;}
+  .pkg-sum-title{font-size:1.15rem;}
+  .pkg-btn-wa,.pkg-btn-em{padding:12px 14px;font-size:8.5px;}
+
+  /* ── PROCESS TRAIN ── */
+  .train-sticky-wrap{height:500vh;}
+  .train-content{flex-direction:column;}
+
+  .train-left{
+    width:100%;
+    padding:20px 20px 12px;
+    height:55%;
+    display:flex;
+    align-items:center;
+  }
+  .train-step-panel{
+    position:relative;
+    left:0;right:0;top:0;bottom:auto;
+    transform:none !important;
+    height:auto;
+    justify-content:center;
+    padding:0;
+  }
+  .train-step-panel.active{transform:none;}
+
+  .step-station{font-size:8px;letter-spacing:.2em;margin-bottom:8px;}
+  .step-big-num{font-size:3.5rem;margin-bottom:-6px;}
+  .step-title{font-size:1.65rem;line-height:1.1;margin-bottom:10px;}
+  .step-desc{font-size:12px;line-height:1.7;margin-bottom:14px;max-width:100%;}
+  .step-detail-item{font-size:10.5px;}
+  .step-details{gap:5px;}
+
+  .train-right{
+    width:100%;
+    height:45%;
+    position:relative;
+  }
+  .station-visual{
+    align-items:flex-start;
+    padding:10px 16px;
+  }
+  .station-card{
+    max-width:100%;
+    padding:18px 16px;
+    width:100%;
+  }
+  .station-card-title{font-size:8px;margin-bottom:10px;}
+  .station-card-body{font-size:1.05rem;line-height:1.5;}
+  .station-num-big{font-size:3rem;bottom:14px;right:14px;}
+
+  /* Station widget sizing on mobile */
+  .s1-bar-label{width:70px;font-size:8.5px;}
+  .s1-chip{font-size:8px;padding:4px 9px;}
+  .s2-card{font-size:10px;padding:7px 11px;}
+  .s3-slider-label{font-size:8px;}
+  .s4-file-card{padding:8px 10px;}
+  .s4-file-name{font-size:8.5px;}
+
+  /* ── CTA ── */
+  .cta-sec{padding:80px 20px;}
+  .cta-headline{font-size:clamp(2.2rem,8vw,3.2rem);}
+  .cta-body{font-size:13px;}
+  .cta-btns{flex-direction:column;align-items:center;gap:10px;}
+  .btn-p,.btn-s{width:100%;max-width:300px;justify-content:center;padding:14px 20px;font-size:9px;}
+  .cta-ring:nth-child(1){width:280px;height:280px;}
+  .cta-ring:nth-child(2){width:420px;height:420px;}
+  .cta-ring:nth-child(3){width:580px;height:580px;}
+
+  /* ── CONTACT ── */
+  #contact{padding:60px 0;}
+  .contact-wrap{padding:0 16px;}
+  .contact-grid{grid-template-columns:1fr;gap:30px;margin-top:36px;}
+  .c-item{padding:16px 0;gap:14px;}
+  .c-icon{width:32px;height:32px;}
+  .c-val{font-size:13px;}
+  .f-in,.f-ta{font-size:12px;padding:11px 13px;}
+  .f-ta{height:90px;}
+  .f-submit{padding:13px;font-size:9px;}
+  .f-group{margin-bottom:14px;}
+
+  /* ── FOOTER ── */
+  footer{padding:36px 16px 20px;}
+  .foot-top{flex-direction:column;gap:16px;margin-bottom:24px;padding-bottom:24px;}
+  .foot-logo{font-size:26px;}
+  .foot-links{flex-wrap:wrap;gap:12px;}
+  .foot-links a{font-size:9.5px;}
+  .foot-btm{flex-direction:column;gap:5px;text-align:center;font-size:9px;}
+
+  /* ── PORTFOLIO ── */
+  .port-grid{grid-template-columns:1fr;}
+  .p-item:nth-child(n){grid-column:span 1;grid-row:auto;height:200px;}
+}
+
+/* ── Very small screens (≤380px) ── */
+@media(max-width:380px){
+  .letter{font-size:44px;}
+  #studios-word{font-size:44px;margin-left:6px;}
+  .founder-initial,.founder-suffix{font-size:32px;}
+  #founders-row{gap:12px;}
+  .sec-title{font-size:1.7rem;}
+  .step-title{font-size:1.4rem;}
+  .svc-name{font-size:1.35rem;}
+  .pkg-svc-title-name{font-size:0.95rem;}
+  .nav-cta{display:none;}
 }
 </style>
 </head>
@@ -589,8 +833,26 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
     <li><a href="#process">Process</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://wa.me/919226634637" class="nav-cta">Get a Quote</a>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="https://wa.me/919226634637" class="nav-cta">Get a Quote</a>
+    <button id="mob-menu-btn" aria-label="Menu" style="display:none;background:none;border:none;padding:4px;cursor:pointer;flex-direction:column;gap:5px;align-items:center;justify-content:center;">
+      <span class="hmb-bar"></span>
+      <span class="hmb-bar"></span>
+      <span class="hmb-bar"></span>
+    </button>
+  </div>
 </nav>
+<!-- MOBILE DRAWER -->
+<div id="mob-drawer">
+  <ul>
+    <li><a href="#services" onclick="closeMobMenu()">Services</a></li>
+    <li><a href="#packages" onclick="closeMobMenu()">Packages</a></li>
+    <li><a href="#process" onclick="closeMobMenu()">Process</a></li>
+    <li><a href="#contact" onclick="closeMobMenu()">Contact</a></li>
+    <li><a href="https://wa.me/919226634637" class="mob-drawer-cta">Get a Quote</a></li>
+  </ul>
+</div>
+<div id="mob-overlay" onclick="closeMobMenu()"></div>
 
 <!-- HERO -->
 <div id="hero-scroll-wrap">
@@ -1145,6 +1407,359 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
     </div>
   </div>
 </div>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@300;400&display=swap');
+:root{
+  --gold:#C9A84C;--gold2:#E8D5A3;--gold3:rgba(201,168,76,.12);
+  --dark:#0A0A0A;--dark2:#111;--dark3:#181818;
+  --text:#F5F0E8;--muted:#6A6258;--border:rgba(201,168,76,.15);
+}
+#portfolio-section{
+  background:var(--dark);
+  padding:100px 48px 120px;
+  position:relative;
+  overflow:hidden;
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  color:var(--text);
+}
+#portfolio-section::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:1px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+}
+.port-eyebrow{
+  font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:14px;display:flex;align-items:center;gap:12px;
+}
+.port-eyebrow::before{content:'';width:28px;height:.5px;background:var(--gold);flex-shrink:0;}
+.port-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.4rem,4vw,3.8rem);
+  font-weight:300;line-height:1.05;
+  margin-bottom:12px;
+}
+.port-title em{font-style:italic;color:var(--gold);}
+.port-sub{
+  font-size:13.5px;color:var(--muted);max-width:480px;line-height:1.8;margin-bottom:60px;
+}
+.carousel-outer{position:relative;}
+.carousel-track-wrap{overflow:hidden;position:relative;}
+.carousel-track{
+  display:flex;gap:20px;
+  transition:transform .6s cubic-bezier(.25,.46,.45,.94);
+  will-change:transform;
+}
+.cat-card{
+  flex:0 0 calc(25% - 15px);
+  min-width:220px;
+  border:.5px solid var(--border);
+  background:var(--dark2);
+  position:relative;
+  overflow:hidden;
+  cursor:default;
+  transition:border-color .4s,background .4s;
+}
+.cat-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:2px;
+  background:var(--gold);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .45s cubic-bezier(.25,.46,.45,.94);
+}
+.cat-card:hover{border-color:rgba(201,168,76,.4);background:rgba(255,255,255,.02);}
+.cat-card:hover::before{transform:scaleX(1);}
+.cat-card-inner{padding:28px 24px 24px;}
+.cat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.5rem;font-weight:300;
+  color:rgba(201,168,76,.1);line-height:1;
+  margin-bottom:16px;
+}
+.cat-icon-box{
+  width:38px;height:38px;
+  border:.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:16px;
+}
+.cat-icon-box svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.5;}
+.cat-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;font-weight:300;margin-bottom:8px;
+}
+.cat-name em{font-style:italic;color:var(--gold);}
+.cat-desc{font-size:11.5px;color:var(--muted);line-height:1.7;margin-bottom:20px;}
+.cat-demos{display:flex;flex-direction:column;gap:6px;}
+.demo-item{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:8px;padding:9px 12px;
+  border:.5px solid rgba(201,168,76,.1);
+  background:rgba(201,168,76,.02);
+  text-decoration:none;
+  transition:border-color .25s,background .25s;
+  position:relative;
+}
+.demo-item:hover{border-color:var(--gold);background:rgba(201,168,76,.05);}
+.demo-item-name{font-size:10.5px;color:var(--text);letter-spacing:.03em;}
+.demo-item-arrow{
+  font-size:10px;color:var(--gold);opacity:0;
+  transition:opacity .25s,transform .25s;
+  flex-shrink:0;
+}
+.demo-item:hover .demo-item-arrow{opacity:1;transform:translateX(3px);}
+.soon-badge{
+  font-size:8px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(201,168,76,.35);
+  border:.5px solid rgba(201,168,76,.15);
+  padding:3px 8px;
+}
+.carousel-nav{
+  display:flex;align-items:center;gap:12px;
+  margin-top:36px;
+}
+.nav-btn{
+  width:40px;height:40px;
+  border:.5px solid var(--border);
+  background:transparent;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:border-color .3s,background .3s;
+  flex-shrink:0;
+}
+.nav-btn:hover{border-color:var(--gold);background:var(--gold3);}
+.nav-btn svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.5;}
+.nav-dots{display:flex;gap:8px;align-items:center;}
+.nav-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(255,255,255,.15);
+  cursor:pointer;
+  transition:background .3s,transform .3s;
+}
+.nav-dot.active{background:var(--gold);transform:scale(1.4);}
+.progress-line{
+  flex:1;height:.5px;background:rgba(255,255,255,.08);position:relative;margin-left:4px;
+}
+.progress-fill{
+  position:absolute;top:0;left:0;height:100%;
+  background:linear-gradient(to right,var(--gold),transparent);
+  transition:width .6s cubic-bezier(.25,.46,.45,.94);
+}
+</style>
+
+<section id="portfolio-section">
+  <h2 class="sr-only">Brand Portfolio — Demo work by Vesa Studios</h2>
+
+  <p class="port-eyebrow">Our Work</p>
+  <h2 class="port-title">Brand <em>Portfolio</em></h2>
+  <p class="port-sub">Real demos across every service we offer — from immersive websites to AI automations. Each piece shows exactly what we build for your brand.</p>
+
+  <div class="carousel-outer">
+    <div class="carousel-track-wrap" id="trackWrap">
+      <div class="carousel-track" id="track">
+
+        <div class="cat-card">
+          <div class="cat-card-inner">
+            <div class="cat-num">01</div>
+            <div class="cat-icon-box"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <div class="cat-name">Website <em>Design</em></div>
+            <p class="cat-desc">Full-stack websites built for impact. Immersive, fast, and conversion-focused.</p>
+            <div class="cat-demos">
+              <a class="demo-item" href="https://caffeine-addict.vercel.app" target="_blank">
+                <span class="demo-item-name">Caffeine Addict — Coffee brand</span>
+                <span class="demo-item-arrow">→</span>
+              </a>
+              <a class="demo-item" href="https://workaholic-swart.vercel.app/" target="_blank">
+                <span class="demo-item-name">Workaholic — Corporate operating system</span>
+                <span class="demo-item-arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <div class="cat-card-inner">
+            <div class="cat-num">02</div>
+            <div class="cat-icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
+            <div class="cat-name">Logo <em>Design</em></div>
+            <p class="cat-desc">Symbols that define. Bold, timeless identities crafted for recognition.</p>
+            <div class="cat-demos">
+              <a class="demo-item" href="logo-design.html" target="_blank">
+                <span class="demo-item-name">View Logo Design Portfolio</span>
+                <span class="demo-item-arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <div class="cat-card-inner">
+            <div class="cat-num">03</div>
+            <div class="cat-icon-box"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div class="cat-name">AI <em>Chatbots</em></div>
+            <p class="cat-desc">Trained on your brand. Live 24/7, answering everything your clients ask.</p>
+            <div class="cat-demos">
+              <div class="demo-item" style="cursor:default;">
+                <span class="demo-item-name" style="color:var(--muted);">Live demo launching</span>
+                <span class="soon-badge">Soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <div class="cat-card-inner">
+            <div class="cat-num">04</div>
+            <div class="cat-icon-box"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+            <div class="cat-name">AI <em>Automations</em></div>
+            <p class="cat-desc">WhatsApp bots, lead qualification, follow-ups — all running while you sleep.</p>
+            <div class="cat-demos">
+              <div class="demo-item" style="cursor:default;">
+                <span class="demo-item-name" style="color:var(--muted);">Demo flows coming</span>
+                <span class="soon-badge">Soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <div class="cat-card-inner">
+            <div class="cat-num">05</div>
+            <div class="cat-icon-box"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/><rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/></svg></div>
+            <div class="cat-name">Social <em>Media</em></div>
+            <p class="cat-desc">Scroll-stopping visual kits — posts, stories, reels templates, profile art.</p>
+            <div class="cat-demos">
+              <a class="demo-item" href="social-media.html" target="_blank">
+                <span class="demo-item-name">View Social Media Portfolio</span>
+                <span class="demo-item-arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <div class="cat-card-inner">
+            <div class="cat-num">06</div>
+            <div class="cat-icon-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>
+            <div class="cat-name">Print &amp; <em>Collateral</em></div>
+            <p class="cat-desc">Cards, letterheads, brochures, banners — premium print that speaks authority.</p>
+            <div class="cat-demos">
+              <a class="demo-item" href="print-collateral.html" target="_blank">
+                <span class="demo-item-name">View Print &amp; Collateral Portfolio</span>
+                <span class="demo-item-arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="carousel-nav">
+      <button class="nav-btn" id="prevBtn" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <button class="nav-btn" id="nextBtn" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
+      </button>
+      <div class="nav-dots" id="dots"></div>
+      <div class="progress-line"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const track = document.getElementById('track');
+  const wrap = document.getElementById('trackWrap');
+  const dotsEl = document.getElementById('dots');
+  const progressFill = document.getElementById('progressFill');
+  const originalCards = Array.from(track.querySelectorAll('.cat-card'));
+  const total = originalCards.length;
+  let current = 0;
+  let paused = false;
+  const SPEED = 2; // px per frame — increase for faster scroll
+
+  function getVisible(){
+    const w = wrap.offsetWidth;
+    if(w < 520) return 1;
+    if(w < 780) return 2;
+    if(w < 1040) return 3;
+    return 4;
+  }
+
+  // Clone cards to create infinite loop effect
+  function setupInfiniteClones(){
+    originalCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+  }
+  setupInfiniteClones();
+
+  const allCards = Array.from(track.querySelectorAll('.cat-card'));
+  let posX = 0;
+  let rafId;
+
+  function getCardWidth(){
+    return allCards[0].offsetWidth + 20; // card width + gap
+  }
+
+  function getTotalOriginalWidth(){
+    return getCardWidth() * total;
+  }
+
+  function animate(){
+    if(!paused){
+      posX += SPEED;
+      // When we've scrolled exactly one full set of originals, reset silently
+      if(posX >= getTotalOriginalWidth()){
+        posX -= getTotalOriginalWidth();
+      }
+      track.style.transform = `translateX(-${posX}px)`;
+
+      // Update dots based on which card is most visible
+      const cardW = getCardWidth();
+      const activeIdx = Math.round(posX / cardW) % total;
+      dotsEl.querySelectorAll('.nav-dot').forEach((d,i) => d.classList.toggle('active', i === activeIdx));
+      const pct = (activeIdx / (total - 1)) * 100;
+      progressFill.style.width = pct + '%';
+    }
+    rafId = requestAnimationFrame(animate);
+  }
+
+  function buildDots(){
+    dotsEl.innerHTML = '';
+    for(let i = 0; i < total; i++){
+      const d = document.createElement('div');
+      d.className = 'nav-dot' + (i === 0 ? ' active' : '');
+      dotsEl.appendChild(d);
+    }
+  }
+
+  // Hide prev/next buttons since it's now auto-scrolling
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  if(prevBtn) prevBtn.style.display = 'none';
+  if(nextBtn) nextBtn.style.display = 'none';
+
+  // Pause on hover
+  wrap.addEventListener('mouseenter', () => paused = true);
+  wrap.addEventListener('mouseleave', () => paused = false);
+
+  // Remove CSS transition so animation is smooth (we control it via rAF)
+  track.style.transition = 'none';
+
+  buildDots();
+  animate();
+
+  window.addEventListener('resize', () => { buildDots(); });
+})();
+</script>
 
 <!-- PACKAGES — CUSTOM BUILDER -->
 <div id="packages">
@@ -3224,6 +3839,32 @@ revEls.forEach(el=>revObserver.observe(el));
     setTimeout(()=>{ onStep(0); },600);
   })();
 
+})();
+
+/* ── Mobile Menu ── */
+(function(){
+  const btn=document.getElementById('mob-menu-btn');
+  const drawer=document.getElementById('mob-drawer');
+  const overlay=document.getElementById('mob-overlay');
+  if(!btn) return;
+  btn.addEventListener('click',function(){
+    const open=drawer.classList.toggle('open');
+    overlay.classList.toggle('open',open);
+    // animate bars
+    const bars=btn.querySelectorAll('.hmb-bar');
+    if(open){
+      bars[0].style.cssText='transform:translateY(6.5px) rotate(45deg)';
+      bars[1].style.cssText='opacity:0';
+      bars[2].style.cssText='transform:translateY(-6.5px) rotate(-45deg)';
+    } else {
+      bars.forEach(b=>b.style.cssText='');
+    }
+  });
+  window.closeMobMenu=function(){
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    btn.querySelectorAll('.hmb-bar').forEach(b=>b.style.cssText='');
+  };
 })();
 </script>
 </body>
