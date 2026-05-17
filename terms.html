@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Vesa Studios" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Terms & Conditions — Vesa Studios</title>
+  <meta name="description" content="Terms and Conditions for Vesa Studios — Defining Brands.">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold2: #E8D5A3;
+  --gold3: rgba(201,168,76,.12);
+  --dark: #0A0A0A;
+  --dark2: #111;
+  --dark3: #181818;
+  --dark4: #1e1e1e;
+  --text: #F5F0E8;
+  --muted: #6A6258;
+  --border: rgba(201,168,76,.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dark);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: clip;
+  cursor: none;
+}
+
+/* ── CURSOR ── */
+#cur { position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .25s,height .25s;mix-blend-mode:difference; }
+#cur-ring { position:fixed;width:36px;height:36px;border:1px solid rgba(201,168,76,.45);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .3s,height .3s; }
+body.hov #cur { width:22px;height:22px; }
+body.hov #cur-ring { width:64px;height:64px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 22px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(10,10,10,.93);
+  backdrop-filter: blur(14px);
+  border-bottom: .5px solid var(--border);
+  transition: all .4s;
+}
+.nav-logo { font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--text);text-decoration:none;letter-spacing:.06em; }
+.nav-logo span { color:var(--gold); }
+.nav-back {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  transition: color .3s;
+}
+.nav-back:hover { color: var(--gold); }
+.nav-back svg { width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5;transition:transform .3s; }
+.nav-back:hover svg { transform: translateX(-3px); }
+
+/* ── HERO BANNER ── */
+.terms-hero {
+  padding: 160px 48px 80px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: .5px solid var(--border);
+}
+.terms-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(201,168,76,.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.terms-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.hero-eyebrow {
+  font-size: 9px; letter-spacing: .35em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before { content:'';width:28px;height:.5px;background:var(--gold);flex-shrink:0; }
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 300; line-height: 1.05;
+  margin-bottom: 20px;
+}
+.hero-title em { font-style: italic; color: var(--gold); }
+.hero-meta {
+  font-size: 12px; color: var(--muted); letter-spacing: .05em;
+  display: flex; align-items: center; gap: 20px;
+}
+.hero-meta span { display:flex;align-items:center;gap:6px; }
+.hero-meta svg { width:12px;height:12px;stroke:var(--gold);fill:none;stroke-width:1.5; }
+
+/* ── LAYOUT ── */
+.terms-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 48px 120px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ── SIDEBAR TOC ── */
+.toc {
+  position: sticky;
+  top: 100px;
+}
+.toc-title {
+  font-size: 9px; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: .5px solid var(--border);
+}
+.toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.toc-list a {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 11px; color: var(--muted); text-decoration: none;
+  padding: 8px 10px;
+  border-left: 1.5px solid transparent;
+  transition: all .25s;
+  letter-spacing: .02em;
+}
+.toc-list a:hover,
+.toc-list a.active {
+  color: var(--gold);
+  border-left-color: var(--gold);
+  background: rgba(201,168,76,.04);
+  padding-left: 14px;
+}
+.toc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px; color: rgba(201,168,76,.4);
+  flex-shrink: 0; width: 16px;
+}
+
+/* ── CONTENT ── */
+.terms-content { min-width: 0; }
+
+.terms-section {
+  margin-bottom: 64px;
+  padding-bottom: 64px;
+  border-bottom: .5px solid rgba(201,168,76,.07);
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .8s cubic-bezier(.25,.46,.45,.94), transform .8s cubic-bezier(.25,.46,.45,.94);
+}
+.terms-section.visible { opacity: 1; transform: translateY(0); }
+.terms-section:last-child { border-bottom: none; margin-bottom: 0; }
+
+.sec-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem; font-weight: 300;
+  color: rgba(201,168,76,.08); line-height: 1;
+  margin-bottom: 4px;
+}
+.sec-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 300; line-height: 1.15;
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.sec-heading em { font-style: italic; color: var(--gold); }
+.sec-heading::after {
+  content: '';
+  flex: 1; height: .5px;
+  background: linear-gradient(to right, var(--border), transparent);
+}
+
+.sec-body { font-size: 13.5px; color: var(--muted); line-height: 1.9; }
+.sec-body p { margin-bottom: 14px; }
+.sec-body p:last-child { margin-bottom: 0; }
+.sec-body strong { color: rgba(245,240,232,.75); font-weight: 500; }
+
+.sec-list {
+  list-style: none;
+  margin: 16px 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.sec-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 13px; color: var(--muted); line-height: 1.7;
+}
+.sec-list li::before {
+  content: '→';
+  color: var(--gold); font-size: 10px;
+  flex-shrink: 0; margin-top: 4px;
+}
+
+.highlight-box {
+  border: .5px solid var(--border);
+  background: rgba(201,168,76,.04);
+  padding: 20px 24px;
+  margin: 20px 0;
+  position: relative;
+}
+.highlight-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 2px;
+  background: var(--gold);
+}
+.highlight-box p {
+  font-size: 13px; color: rgba(245,240,232,.6);
+  line-height: 1.8; margin: 0 !important;
+}
+
+/* ── CTA BOTTOM ── */
+.terms-cta {
+  background: var(--dark2);
+  border-top: .5px solid var(--border);
+  padding: 80px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.terms-cta::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  border: .5px solid rgba(201,168,76,.05);
+  pointer-events: none;
+}
+.cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 300; margin-bottom: 12px;
+}
+.cta-title em { font-style: italic; color: var(--gold); }
+.cta-sub { font-size: 13px; color: var(--muted); margin-bottom: 32px; line-height: 1.7; }
+.cta-btns { display:flex;gap:12px;justify-content:center;flex-wrap:wrap; }
+.btn-p {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 14px 32px;
+  background: var(--gold); color: var(--dark);
+  font-size: 9.5px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase;
+  text-decoration: none;
+  clip-path: polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+  transition: background .3s;
+}
+.btn-p:hover { background: var(--gold2); }
+.btn-p svg { width:13px;height:13px;stroke:var(--dark);fill:none;stroke-width:2; }
+.btn-s {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 14px 32px;
+  border: .5px solid var(--border); color: var(--muted);
+  font-size: 9.5px; letter-spacing: .22em; text-transform: uppercase;
+  text-decoration: none; transition: all .3s;
+}
+.btn-s:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark);
+  padding: 40px 48px 28px;
+  border-top: .5px solid var(--border);
+}
+.foot-btm {
+  display: flex; justify-content: space-between;
+  font-size: 10px; color: rgba(106,98,88,.4); letter-spacing: .07em;
+  flex-wrap: wrap; gap: 8px;
+}
+.foot-btm a { color: rgba(201,168,76,.4); text-decoration: none; transition: color .3s; }
+.foot-btm a:hover { color: var(--gold); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px) {
+  nav { padding: 16px 20px; }
+  .terms-hero { padding: 120px 20px 60px; }
+  .terms-wrap { grid-template-columns: 1fr; padding: 40px 20px 80px; gap: 0; }
+  .toc { display: none; }
+  .terms-cta { padding: 60px 20px; }
+  footer { padding: 30px 20px 20px; }
+  body { cursor: auto; }
+  #cur, #cur-ring { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Vesa<span>.</span></a>
+  <a href="/" class="nav-back">
+    <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+    Back to site
+  </a>
+</nav>
+
+<!-- HERO -->
+<div class="terms-hero">
+  <p class="hero-eyebrow">Legal</p>
+  <h1 class="hero-title">Terms &amp; <em>Conditions</em></h1>
+  <div class="hero-meta">
+    <span>
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Effective: January 1, 2026
+    </span>
+    <span>
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Pune, Maharashtra · India
+    </span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="terms-wrap">
+
+  <!-- SIDEBAR TOC -->
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span class="toc-num">01</span>Agreement</a></li>
+      <li><a href="#s2"><span class="toc-num">02</span>Services</a></li>
+      <li><a href="#s3"><span class="toc-num">03</span>Payment</a></li>
+      <li><a href="#s4"><span class="toc-num">04</span>Revisions</a></li>
+      <li><a href="#s5"><span class="toc-num">05</span>Intellectual Property</a></li>
+      <li><a href="#s6"><span class="toc-num">06</span>Confidentiality</a></li>
+      <li><a href="#s7"><span class="toc-num">07</span>Turnaround & Delivery</a></li>
+      <li><a href="#s8"><span class="toc-num">08</span>Client Responsibilities</a></li>
+      <li><a href="#s9"><span class="toc-num">09</span>Limitation of Liability</a></li>
+      <li><a href="#s10"><span class="toc-num">10</span>Cancellation & Refunds</a></li>
+      <li><a href="#s11"><span class="toc-num">11</span>Governing Law</a></li>
+      <li><a href="#s12"><span class="toc-num">12</span>Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- CONTENT -->
+  <div class="terms-content">
+
+    <div class="terms-section" id="s1">
+      <div class="sec-num">01</div>
+      <h2 class="sec-heading">Agreement to <em>Terms</em></h2>
+      <div class="sec-body">
+        <p>By engaging Vesa Studios for any design or digital service — whether through WhatsApp, email, or any other channel — you agree to be bound by these Terms and Conditions. Please read them carefully before proceeding.</p>
+        <p>These terms apply to all clients, projects, and services provided by <strong>Vesa Studios</strong>, a creative branding and design studio based in Pune, Maharashtra, India.</p>
+        <div class="highlight-box">
+          <p>If you do not agree to any part of these terms, please refrain from engaging our services. Proceeding with a project constitutes full acceptance of these terms.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="terms-section" id="s2">
+      <div class="sec-num">02</div>
+      <h2 class="sec-heading">Our <em>Services</em></h2>
+      <div class="sec-body">
+        <p>Vesa Studios provides the following creative and digital services:</p>
+        <ul class="sec-list">
+          <li>Brand Identity Design — logos, color palettes, typography systems, brand guidelines</li>
+          <li>Website Design & Development — custom HTML/CSS/JS websites</li>
+          <li>Social Media Kit Design — post templates, story templates, profile art</li>
+          <li>Print & Collateral Design — visiting cards, letterheads, brochures, banners</li>
+          <li>WhatsApp Automation — bot setup, auto-replies, broadcast campaigns</li>
+          <li>AI Integration — chatbot setup, lead qualification, smart reply systems</li>
+        </ul>
+        <p>The exact scope of each project will be agreed upon before work begins. Any additional requests outside the agreed scope may incur additional charges.</p>
+      </div>
+    </div>
+
+    <div class="terms-section" id="s3">
+      <div class="sec-num">03</div>
+      <h2 class="sec-heading">Payment <em>Terms</em></h2>
+      <div class="sec-body">
+        <p>All projects require a <strong>50% advance payment</strong> before work begins. The remaining balance is due upon project completion and before final files are delivered.</p>
+        <ul class="sec-list">
+          <li>Payments are accepted via UPI, bank transfer, or other mutually agreed methods</li>
+          <li>All prices are quoted in Indian Rupees (INR) unless stated otherwise</li>
+          <li>Invoices are to be paid within 3 business days of issuance</li>
+          <li>Final deliverables will only be released upon receipt of full payment</li>
+          <li>Prices are subject to change for new projects; existing agreed prices remain fixed</li>
+        </ul>
+        <div class="highlight-box">
+          <p>Non-payment or delayed payment may result in work being paused or cancelled. Vesa Studios reserves the right to withhold all deliverables until payment is received in full.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="terms-section" id="s4">
+      <div class="sec-num">04</div>
+      <h2 class="sec-heading">Revisions &amp; <em>Feedback</em></h2>
+      <div class="sec-body">
+        <p>Each project includes a set number of revision rounds as agreed upon in the project brief. Revisions refer to minor adjustments to the approved design direction — not a complete redesign.</p>
+        <ul class="sec-list">
+          <li>Revision requests must be submitted clearly in writing via WhatsApp or email</li>
+          <li>Revisions beyond the agreed number will be billed at an hourly or per-revision rate</li>
+          <li>A redesign or change in direction after concept approval is considered a new project</li>
+          <li>Feedback should be consolidated — multiple rounds of scattered feedback may count as separate revisions</li>
+        </ul>
+        <p>We encourage all feedback to be specific and actionable. Vague feedback like "make it better" may result in delays or additional charges.</p>
+      </div>
+    </div>
+
+    <div class="terms-section" id="s5">
+      <div class="sec-num">05</div>
+      <h2 class="sec-heading">Intellectual <em>Property</em></h2>
+      <div class="sec-body">
+        <p>Upon receipt of full payment, the client receives full ownership of all final approved design files created specifically for their project.</p>
+        <ul class="sec-list">
+          <li>Vesa Studios retains the right to display the completed work in our portfolio, on social media, and in marketing materials unless the client requests otherwise in writing</li>
+          <li>All concepts, drafts, and rejected designs remain the intellectual property of Vesa Studios</li>
+          <li>Third-party assets (stock images, fonts, icons) are subject to their respective licenses and are the client's responsibility to license for their own use</li>
+          <li>Source files (e.g., Adobe Illustrator .ai files) will only be shared if explicitly agreed upon and may carry an additional fee</li>
+        </ul>
+        <div class="highlight-box">
+          <p>You may not resell, redistribute, or claim as your own any design work from Vesa Studios that has not been fully paid for.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="terms-section" id="s6">
+      <div class="sec-num">06</div>
+      <h2 class="sec-heading"><em>Confidentiality</em></h2>
+      <div class="sec-body">
+        <p>Vesa Studios treats all client information — including business details, strategies, and project briefs — with strict confidentiality.</p>
+        <ul class="sec-list">
+          <li>We will not share your project details, content, or business information with third parties without your consent</li>
+          <li>Portfolio display is the only exception — if you wish to keep your project private, please inform us in writing before the project begins</li>
+          <li>Clients are also expected to keep all pricing, processes, and proprietary methods of Vesa Studios confidential</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="terms-section" id="s7">
+      <div class="sec-num">07</div>
+      <h2 class="sec-heading">Turnaround &amp; <em>Delivery</em></h2>
+      <div class="sec-body">
+        <p>Project timelines are estimated at the start of each engagement and are contingent on timely feedback and payment from the client.</p>
+        <ul class="sec-list">
+          <li>Standard turnaround for logo design: 3–7 business days after advance payment</li>
+          <li>Website design timelines vary by project complexity — typically 7–21 business days</li>
+          <li>Delays caused by slow client feedback or late payments will not be counted against our delivery timeline</li>
+          <li>Vesa Studios is not liable for delays caused by third-party platforms, hosting providers, or force majeure events</li>
+        </ul>
+        <p>Final files are delivered digitally via Google Drive, WeTransfer, or WhatsApp as agreed.</p>
+      </div>
+    </div>
+
+    <div class="terms-section" id="s8">
+      <div class="sec-num">08</div>
+      <h2 class="sec-heading">Client <em>Responsibilities</em></h2>
+      <div class="sec-body">
+        <p>To ensure a smooth project experience, clients are expected to:</p>
+        <ul class="sec-list">
+          <li>Provide all necessary materials (text, images, references) promptly at the start of the project</li>
+          <li>Respond to feedback requests and questions within 3 business days</li>
+          <li>Ensure all content provided is legally owned or licensed by the client</li>
+          <li>Not hold Vesa Studios liable for any copyright issues arising from client-provided materials</li>
+          <li>Review all deliverables thoroughly before approving — post-approval changes may incur additional charges</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="terms-section" id="s9">
+      <div class="sec-num">09</div>
+      <h2 class="sec-heading">Limitation of <em>Liability</em></h2>
+      <div class="sec-body">
+        <p>Vesa Studios provides design and digital services in good faith. However, we are not liable for:</p>
+        <ul class="sec-list">
+          <li>Any business outcomes, sales figures, or results arising from the use of our designs</li>
+          <li>Technical issues, downtime, or errors on third-party platforms or hosting services</li>
+          <li>Any indirect, incidental, or consequential damages arising from use of our deliverables</li>
+          <li>Loss of data due to client-side issues or third-party failures</li>
+        </ul>
+        <div class="highlight-box">
+          <p>Our total liability in any circumstance shall not exceed the total amount paid by the client for the specific project in question.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="terms-section" id="s10">
+      <div class="sec-num">10</div>
+      <h2 class="sec-heading">Cancellation &amp; <em>Refunds</em></h2>
+      <div class="sec-body">
+        <p>We understand that circumstances can change. Our cancellation policy is as follows:</p>
+        <ul class="sec-list">
+          <li><strong>Before work begins:</strong> Full advance refund minus any administrative fees</li>
+          <li><strong>After work has begun:</strong> No refund on the advance payment; work completed up to the point of cancellation will be billed accordingly</li>
+          <li><strong>After project completion:</strong> No refunds once final files have been delivered and approved</li>
+          <li>Cancellation requests must be submitted in writing via email or WhatsApp</li>
+        </ul>
+        <p>Vesa Studios reserves the right to terminate a project if a client behaves abusively, fails to pay, or breaches these terms. In such cases, no refund will be issued for work already completed.</p>
+      </div>
+    </div>
+
+    <div class="terms-section" id="s11">
+      <div class="sec-num">11</div>
+      <h2 class="sec-heading">Governing <em>Law</em></h2>
+      <div class="sec-body">
+        <p>These Terms and Conditions are governed by and construed in accordance with the laws of <strong>India</strong>. Any disputes arising from these terms or from any project engagement with Vesa Studios shall be subject to the exclusive jurisdiction of the courts of <strong>Pune, Maharashtra, India</strong>.</p>
+        <p>Vesa Studios makes no representation that the services described on this website are appropriate or available in locations outside India.</p>
+      </div>
+    </div>
+
+    <div class="terms-section" id="s12">
+      <div class="sec-num">12</div>
+      <h2 class="sec-heading">Contact <em>Us</em></h2>
+      <div class="sec-body">
+        <p>If you have any questions, concerns, or disputes regarding these Terms and Conditions, please reach out to us:</p>
+        <ul class="sec-list">
+          <li><strong>WhatsApp:</strong> +91 92266 34637</li>
+          <li><strong>Email:</strong> vesastudios1@gmail.com</li>
+          <li><strong>Website:</strong> vesastudios.site</li>
+          <li><strong>Location:</strong> Pune, Maharashtra, India</li>
+        </ul>
+        <p>We aim to respond to all enquiries within 24 business hours.</p>
+      </div>
+    </div>
+
+  </div><!-- /terms-content -->
+</div><!-- /terms-wrap -->
+
+<!-- CTA -->
+<div class="terms-cta">
+  <h2 class="cta-title">Ready to <em>Work Together?</em></h2>
+  <p class="cta-sub">Questions about our terms? We're happy to clarify anything before you get started.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/919226634637?text=Hi+Vesa+Studios!+I+have+a+question+about+your+terms." class="btn-p">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Ask on WhatsApp
+    </a>
+    <a href="mailto:vesastudios1@gmail.com" class="btn-s">Send an Email</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-btm">
+    <span>© 2026 Vesa Studios. All rights reserved.</span>
+    <span>
+      <a href="/">Home</a> &nbsp;·&nbsp;
+      <a href="/#contact">Contact</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms & Conditions</a>
+    </span>
+    <span>Pune, Maharashtra · India</span>
+  </div>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const cur = document.getElementById('cur');
+const ring = document.getElementById('cur-ring');
+let cx = 0, cy = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
+(function animC() {
+  rx += (cx - rx) * .16; ry += (cy - ry) * .16;
+  cur.style.left = cx + 'px'; cur.style.top = cy + 'px';
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animC);
+})();
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
+});
+
+/* ── SCROLL REVEAL ── */
+const sections = document.querySelectorAll('.terms-section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+sections.forEach(s => observer.observe(s));
+
+/* ── TOC ACTIVE STATE ── */
+const tocLinks = document.querySelectorAll('.toc-list a');
+const secEls = document.querySelectorAll('.terms-section');
+const tocObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector('.toc-list a[href="#' + e.target.id + '"]');
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.4 });
+secEls.forEach(s => tocObserver.observe(s));
+</script>
+
+</body>
+</html>
