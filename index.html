@@ -589,8 +589,11 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#packages">Packages</a></li>
+    <li><a href="#portfolio-section">Portfolio</a></li>
     <li><a href="#process">Process</a></li>
+    <li><a href="#pulse-entry">Pulse</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="/pulse.html">The Pulse</a></li>
   </ul>
   <a href="https://wa.me/919226634637" class="nav-cta">Get a Quote</a>
 </nav>
@@ -770,12 +773,14 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
 
     // Horizontal scan line that drifts down
     const scanY = ((t * 0.25) % (H + 60)) - 30;
+    if(isFinite(scanY) && H > 0){
     const scanGrad = ctx.createLinearGradient(0, scanY - 2, 0, scanY + 2);
     scanGrad.addColorStop(0,   'rgba(100,180,255,0)');
     scanGrad.addColorStop(0.5, 'rgba(100,180,255,0.04)');
     scanGrad.addColorStop(1,   'rgba(100,180,255,0)');
     ctx.fillStyle = scanGrad;
     ctx.fillRect(0, scanY - 2, W, 4);
+    }
 
     requestAnimationFrame(draw);
   }
@@ -1956,6 +1961,511 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
     </div>
   </div>
 </div>
+<style>
+#pulse-entry {
+  background: #0A0A0A;
+  padding: 80px 48px 88px;
+  position: relative;
+  overflow: hidden;
+  border-top: 0.5px solid rgba(201,168,76,0.1);
+}
+#pulse-entry::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: #E84300;
+}
+.pe-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 72px;
+}
+.pe-left { min-width: 0; }
+.pe-dateline {
+  font-family: 'Barlow', sans-serif;
+  font-size: 8.5px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #E84300;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pe-dateline-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #E84300;
+  animation: peDotPulse 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes peDotPulse {
+  0%,100% { opacity:1; }
+  50%      { opacity:0.2; }
+}
+.pe-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.6rem, 4.5vw, 4rem);
+  line-height: 0.94;
+  letter-spacing: 0.015em;
+  color: #F5F0E8;
+  margin-bottom: 20px;
+}
+.pe-heading em {
+  font-style: normal;
+  color: #E84300;
+}
+.pe-heading span {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+  color: rgba(245,240,232,0.45);
+  display: block;
+  line-height: 1.1;
+}
+.pe-conveyor-wrap {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border-top: 0.5px solid rgba(255,255,255,0.06);
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+  padding: 9px 0;
+}
+.pe-conveyor-wrap::before,
+.pe-conveyor-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+.pe-conveyor-wrap::before { left: 0; background: linear-gradient(to right, #0A0A0A, transparent); }
+.pe-conveyor-wrap::after  { right: 0; background: linear-gradient(to left, #0A0A0A, transparent); }
+.pe-conveyor {
+  display: flex;
+  width: max-content;
+  animation: peConvey 20s linear infinite;
+}
+.pe-conveyor:hover { animation-play-state: paused; }
+@keyframes peConvey {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.pe-topic {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(106,98,88,0.65);
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+.pe-topic:hover { color: rgba(232,67,0,0.8); }
+.pe-topic-sep {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: #E84300;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.pe-brief {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: rgba(106,98,88,0.75);
+  line-height: 1.7;
+  max-width: 460px;
+}
+.pe-brief strong {
+  font-style: normal;
+  color: rgba(201,168,76,0.7);
+  font-weight: 400;
+}
+.pe-right { flex-shrink: 0; }
+.np-btn {
+  position: relative;
+  width: 300px;
+  cursor: none;
+  text-decoration: none;
+  display: block;
+  font-family: 'Georgia', serif;
+}
+.np-page {
+  position: absolute;
+  inset: 0;
+  background: #f0ead8;
+  border: 0.5px solid #c8b99a;
+  transition: transform 0.4s cubic-bezier(.22,.68,0,1.2);
+}
+.np-page-2 { transform: translate(4px, 4px) rotate(0.8deg); z-index: 1; }
+.np-page-3 { transform: translate(7px, 7px) rotate(1.5deg); z-index: 0; }
+.np-btn:hover .np-page-2 { transform: translate(6px, 6px) rotate(1.3deg); }
+.np-btn:hover .np-page-3 { transform: translate(11px, 11px) rotate(2.4deg); }
+.np-face {
+  position: relative;
+  z-index: 2;
+  background: #f5efe0;
+  border: 0.5px solid #b8a88a;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(.22,.68,0,1.2);
+}
+.np-btn:hover .np-face { transform: translate(-3px, -3px); }
+.np-btn:active .np-face { transform: translate(0,0) scale(0.98); transition: transform 0.1s; }
+.np-masthead-bar {
+  background: #E84300;
+  padding: 5px 14px 4px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.np-pub {
+  font-family: 'Georgia', serif;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+}
+.np-date {
+  font-family: 'Georgia', serif;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.6);
+}
+.np-nameplate {
+  padding: 10px 14px 8px;
+  border-bottom: 3px double #1a1a1a;
+  text-align: center;
+}
+.np-name {
+  font-family: 'Georgia', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.np-name em { font-style: normal; color: #E84300; }
+.np-slug {
+  font-family: 'Georgia', serif;
+  font-size: 8px;
+  font-style: italic;
+  color: #555;
+  letter-spacing: 0.08em;
+  margin-top: 3px;
+}
+.np-dateline-strip {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 14px;
+  border-top: 0.5px solid #bbb;
+  border-bottom: 0.5px solid #bbb;
+  background: #ede7d3;
+}
+.np-dateline-strip span {
+  font-family: 'Georgia', serif;
+  font-size: 7px;
+  color: #777;
+  letter-spacing: 0.1em;
+}
+.np-cols {
+  display: grid;
+  grid-template-columns: 1fr 0.5px 1fr;
+  padding: 10px 14px;
+  min-height: 80px;
+  position: relative;
+}
+.np-col-divider { background: #bbb; margin: 0 8px; }
+.np-kicker {
+  font-size: 7px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #E84300;
+  font-family: 'Georgia', serif;
+  margin-bottom: 4px;
+}
+.np-hed {
+  font-family: 'Georgia', serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+.np-greek { display: flex; flex-direction: column; gap: 3px; margin-top: 6px; }
+.np-greek-line { height: 5px; background: #ccc; border-radius: 1px; }
+#peHtCanvas {
+  position: absolute;
+  top: 0; right: 0;
+  width: 120px; height: 80px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+.np-ticker {
+  background: #E84300;
+  overflow: hidden;
+  padding: 3px 0;
+}
+.np-ticker-inner {
+  display: flex;
+  width: max-content;
+  animation: npTick 14s linear infinite;
+  white-space: nowrap;
+}
+@keyframes npTick {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.np-ticker-item {
+  font-family: 'Georgia', serif;
+  font-size: 7.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.88);
+  padding: 0 16px;
+}
+.np-ticker-sep { color: rgba(255,255,255,0.4); padding: 0 2px; }
+.np-cta {
+  background: #1a1a1a;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.np-cta::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 40%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(232,67,0,0.22), transparent);
+  animation: npSweep 2.8s ease-in-out infinite;
+}
+@keyframes npSweep {
+  0%   { left: -60%; }
+  100% { left: 160%; }
+}
+.np-cta-label {
+  font-family: 'Georgia', serif;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #f5efe0;
+}
+.np-cta-arrow {
+  width: 22px; height: 22px;
+  border: 0.5px solid rgba(245,239,224,0.25);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s;
+}
+.np-btn:hover .np-cta-arrow { transform: translateX(4px); }
+.np-cta-arrow svg {
+  width: 11px; height: 11px;
+  stroke: #f5efe0; fill: none; stroke-width: 2;
+}
+.np-fold {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 0 0 18px 18px;
+  border-color: transparent transparent #c8b99a transparent;
+  z-index: 10;
+  transition: border-width 0.3s;
+}
+.np-btn:hover .np-fold { border-width: 0 0 26px 26px; }
+.np-fold::after {
+  content: '';
+  position: absolute;
+  bottom: -18px; right: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 0 0 18px 18px;
+  border-color: transparent transparent #e8dfc8 transparent;
+}
+#pulse-entry {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s cubic-bezier(.25,.46,.45,.94), transform 0.9s cubic-bezier(.25,.46,.45,.94);
+}
+#pulse-entry.pe-visible { opacity: 1; transform: translateY(0); }
+@media(max-width:900px){
+  #pulse-entry { padding: 56px 20px 64px; }
+  .pe-inner { grid-template-columns: 1fr; gap: 40px; }
+  .pe-right { justify-self: start; }
+  .pe-brief { max-width: 100%; }
+  .np-btn { width: 280px; }
+}
+</style>
+
+<section id="pulse-entry">
+  <div class="pe-inner">
+    <div class="pe-left">
+      <div class="pe-dateline">
+        <span class="pe-dateline-dot"></span>
+        Now Publishing · Vol. I · Pune, India
+      </div>
+      <h2 class="pe-heading">
+        READ THE<br>
+        <em>PULSE.</em>
+        <span>Technology, Design &amp; Ideas.</span>
+      </h2>
+      <div class="pe-conveyor-wrap">
+        <div class="pe-conveyor">
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Hotlist</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Tech</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Articles</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Reviews</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Surveys</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Opinion</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Analysis</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Interviews</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Reports</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Editorials</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Case Studies</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Columns</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Hotlist</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Tech</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Articles</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Reviews</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Surveys</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Opinion</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Analysis</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Interviews</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Reports</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Editorials</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Case Studies</span>
+          <span class="pe-topic"><span class="pe-topic-sep"></span>Columns</span>
+        </div>
+      </div>
+      <p class="pe-brief">
+        Independent technology newspaper covering <strong>ideas, analysis &amp; stories</strong>
+        that shape the world of design and digital business —
+        free to read, free to write.
+      </p>
+    </div>
+    <div class="pe-right">
+      <a href="/pulse" class="np-btn" id="peNpBtn">
+        <div class="np-page np-page-3"></div>
+        <div class="np-page np-page-2"></div>
+        <div class="np-face">
+          <div class="np-masthead-bar">
+            <span class="np-pub">Vesa Studios</span>
+            <span class="np-date">Vol. I · May 2026</span>
+          </div>
+          <div class="np-nameplate">
+            <div class="np-name">THE <em>PULSE</em></div>
+            <div class="np-slug">Technology · Design · Ideas · Pune, India</div>
+          </div>
+          <div class="np-dateline-strip">
+            <span>Est. 2026 · Free to read</span>
+            <span>&#9679; Live Edition</span>
+            <span>vesastudios.site/pulse</span>
+          </div>
+          <div class="np-cols">
+            <canvas id="peHtCanvas"></canvas>
+            <div class="np-col">
+              <div class="np-kicker">Lead Story</div>
+              <div class="np-hed">AI Chatbots for Small Business</div>
+              <div class="np-greek">
+                <div class="np-greek-line" style="width:92%"></div>
+                <div class="np-greek-line" style="width:78%"></div>
+                <div class="np-greek-line" style="width:86%"></div>
+                <div class="np-greek-line" style="width:62%"></div>
+              </div>
+            </div>
+            <div class="np-col-divider"></div>
+            <div class="np-col" style="padding-left:10px">
+              <div class="np-kicker">Opinion</div>
+              <div class="np-hed">The Real Cost of a Cheap Logo</div>
+              <div class="np-greek">
+                <div class="np-greek-line" style="width:95%"></div>
+                <div class="np-greek-line" style="width:80%"></div>
+                <div class="np-greek-line" style="width:72%"></div>
+                <div class="np-greek-line" style="width:88%"></div>
+                <div class="np-greek-line" style="width:55%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="np-ticker">
+            <div class="np-ticker-inner">
+              <span class="np-ticker-item">Hotlist <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Tech <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Articles <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Reviews <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Surveys <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Opinion <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Analysis <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Interviews <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Hotlist <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Tech <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Articles <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Reviews <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Surveys <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Opinion <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Analysis <span class="np-ticker-sep">·</span></span>
+              <span class="np-ticker-item">Interviews <span class="np-ticker-sep">·</span></span>
+            </div>
+          </div>
+          <div class="np-cta">
+            <span class="np-cta-label">Read the full edition</span>
+            <div class="np-cta-arrow">
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+            </div>
+          </div>
+          <div class="np-fold"></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var sec = document.getElementById('pulse-entry');
+  var obs = new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){ sec.classList.add('pe-visible'); obs.disconnect(); }
+  },{ threshold: 0.1 });
+  obs.observe(sec);
+
+  var btn = document.getElementById('peNpBtn');
+  if(btn){
+    btn.addEventListener('mouseenter', function(){ document.body.classList.add('hov'); });
+    btn.addEventListener('mouseleave', function(){ document.body.classList.remove('hov'); });
+  }
+
+  var cv = document.getElementById('peHtCanvas');
+  if(!cv) return;
+  var ctx = cv.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  cv.width = 120 * dpr; cv.height = 80 * dpr;
+  ctx.scale(dpr, dpr);
+  var t = 0;
+  function drawHt(){
+    ctx.clearRect(0,0,120,80);
+    for(var x=0;x<120;x+=6){
+      for(var y=0;y<80;y+=6){
+        var v = Math.sin(x/120*Math.PI*3 + t*0.018) * Math.cos(y/80*Math.PI*2 + t*0.012);
+        var r = Math.max(0,(v+0.6)*1.4);
+        ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
+        ctx.fillStyle='#1a1a1a'; ctx.fill();
+      }
+    }
+    t++;
+    requestAnimationFrame(drawHt);
+  }
+  drawHt();
+})();
+</script>
 
 <!-- CTA -->
 <div class="cta-sec">
@@ -2008,6 +2518,7 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
     <div class="foot-links">
       <a href="#services">Services</a><a href="#work">Work</a>
       <a href="#packages">Packages</a><a href="#contact">Contact</a>
+      <a href="/pulse.html">The Pulse</a>
     </div>
   </div>
   <div class="foot-terms"><a href="https://vesastudios.site/terms.html"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Terms &amp; Conditions</a></div>
@@ -2052,7 +2563,8 @@ revEls.forEach(el=>revObserver.observe(el));
   
   function resize(){
     const dpr=window.devicePixelRatio||1;
-    W=cv.offsetWidth; H=cv.offsetHeight;
+    W=cv.offsetWidth||window.innerWidth; H=cv.offsetHeight||window.innerHeight;
+    if(!W||!H) return;
     cv.width=W*dpr; cv.height=H*dpr;
     cv.style.width=W+'px'; cv.style.height=H+'px';
     ctx.setTransform(dpr,0,0,dpr,0,0);
@@ -2167,7 +2679,9 @@ revEls.forEach(el=>revObserver.observe(el));
   function resize(){
     dpr = window.devicePixelRatio||1;
     const sticky = document.getElementById('dna-sticky');
-    W = sticky.offsetWidth; H = sticky.offsetHeight;
+    W = sticky.offsetWidth || window.innerWidth;
+    H = sticky.offsetHeight || window.innerHeight;
+    if(!W || !H) return;
     cv.width = W*dpr; cv.height = H*dpr;
     cv.style.width = W+'px'; cv.style.height = H+'px';
     ctx.setTransform(dpr,0,0,dpr,0,0);
@@ -2323,6 +2837,7 @@ revEls.forEach(el=>revObserver.observe(el));
   ];
 
   function drawBrowserWindow(ctx, x, y, w, h, accent, bg, t, globalAlpha){
+    if(!isFinite(x)||!isFinite(y)||!isFinite(w)||!isFinite(h)||w<=0||h<=0) return;
     ctx.save(); ctx.globalAlpha = globalAlpha;
     const bw = w, bh = h;
     // Shadow
@@ -2352,11 +2867,17 @@ revEls.forEach(el=>revObserver.observe(el));
 
     // Hero section mockup
     const heroH = bh * 0.38;
+    if(isFinite(x) && isFinite(y) && isFinite(heroH) && heroH > 0){
     const heroGrd = ctx.createLinearGradient(x, y+22, x, y+22+heroH);
     heroGrd.addColorStop(0, accent + '25');
     heroGrd.addColorStop(1, accent + '08');
     ctx.fillStyle = heroGrd;
     ctx.fillRect(x, y+22, bw, heroH);
+    } else {
+    const heroH2 = bh * 0.38;
+    ctx.fillStyle = accent + '15';
+    ctx.fillRect(x, y+22, bw, heroH2);
+    }
     // Hero text lines
     ctx.fillStyle = 'rgba(255,255,255,0.35)';
     ctx.fillRect(x+bw*0.08, y+22+heroH*0.3, bw*0.55, 7);
@@ -2396,6 +2917,7 @@ revEls.forEach(el=>revObserver.observe(el));
   }
 
   function drawWebsiteDesign(ctx, W, H, t, alpha){
+    if(!W || !H || !isFinite(W) || !isFinite(H)) return;
     ctx.save(); ctx.globalAlpha = alpha;
     // Dot grid backdrop
     ctx.fillStyle = 'rgba(91,141,239,0.04)';
@@ -2436,6 +2958,7 @@ revEls.forEach(el=>revObserver.observe(el));
   ];
 
   function drawWhatsApp(ctx, W, H, t, alpha){
+    if(!W || !H || !isFinite(W) || !isFinite(H)) return;
     ctx.save(); ctx.globalAlpha = alpha;
     // WhatsApp gradient bg pattern
     const waBg = ctx.createLinearGradient(0,0,0,H);
@@ -2727,6 +3250,7 @@ revEls.forEach(el=>revObserver.observe(el));
     // Profile header
     const profY = y+26;
     // Avatar ring (gradient like IG story)
+    if(!isFinite(x+w/2-22) || !isFinite(profY) || !isFinite(x+w/2+22) || !isFinite(profY+44)) return;
     const igGrd = ctx.createLinearGradient(x+w/2-22, profY, x+w/2+22, profY+44);
     igGrd.addColorStop(0,'#f09433'); igGrd.addColorStop(0.25,'#e6683c');
     igGrd.addColorStop(0.5,'#dc2743'); igGrd.addColorStop(0.75,'#cc2366');
@@ -3070,10 +3594,11 @@ revEls.forEach(el=>revObserver.observe(el));
   let W,H;
   const STEPS=5;
 
-  function resize(){const dpr=window.devicePixelRatio||1;W=cv.offsetWidth;H=cv.offsetHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+'px';cv.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0);}
+  function resize(){const dpr=window.devicePixelRatio||1;W=cv.offsetWidth||window.innerWidth;H=cv.offsetHeight||window.innerHeight;if(!W||!H)return;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+'px';cv.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0);}
   window.addEventListener('resize',resize); resize();
 
   function drawTrack(progress, activeStep){
+    if(!W || !H) return;
     ctx.clearRect(0,0,W,H);
     const trackX=W*.5, padT=H*.1, padB=H*.1;
     const trackH=H-padT-padB;
@@ -3136,6 +3661,7 @@ revEls.forEach(el=>revObserver.observe(el));
     }
 
     // TRAIN LOCOMOTIVE
+    if(!isFinite(trainY)) return;
     const grd=ctx.createLinearGradient(trackX-16,trainY-18,trackX+16,trainY+18);
     grd.addColorStop(0,'#E8D5A3'); grd.addColorStop(0.5,'#C9A84C'); grd.addColorStop(1,'#8B6914');
     ctx.fillStyle=grd;
