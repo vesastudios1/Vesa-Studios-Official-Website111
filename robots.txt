@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vesastudios.site/sitemap.xml
