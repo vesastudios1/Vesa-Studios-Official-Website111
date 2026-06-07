@@ -26,6 +26,108 @@
 <meta property="og:description" content="Bold identities and creative design.">
 <meta property="og:url" content="https://vesastudios.site">
 <meta property="og:type" content="website">
+
+<!-- ═══ STRUCTURED DATA — Google Sitelinks ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Vesa Studios",
+  "alternateName": "Vesa Studios — Defining Brands",
+  "url": "https://vesastudios.site",
+  "description": "Bold brand identities, website design, WhatsApp automation, AI integrations, social media kits and print collateral for Indian businesses.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://vesastudios.site/?s={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Vesa Studios",
+    "url": "https://vesastudios.site",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://vesastudios.site/favicon-96x96.png"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-92266-34637",
+      "contactType": "customer service",
+      "availableLanguage": ["English", "Hindi", "Marathi"]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Pune",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
+    "sameAs": [
+      "https://www.instagram.com/vesastudios",
+      "https://www.linkedin.com/company/vesastudios"
+    ]
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Vesa Studios Pages",
+  "itemListElement": [
+    {
+      "@type": "SiteLinksSearchBox",
+      "url": "https://vesastudios.site"
+    },
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Logo Design Portfolio",
+      "description": "Bold, timeless logo identities crafted for Indian businesses — symbols that define your brand at every touchpoint.",
+      "url": "https://vesastudios.site/logo-design"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Social Media Kit Portfolio",
+      "description": "Scroll-stopping visual kits — posts, stories, reels templates and profile art for every social platform.",
+      "url": "https://vesastudios.site/social-media"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Print & Collateral Portfolio",
+      "description": "Premium visiting cards, letterheads, brochures and banners — print that speaks authority for your brand.",
+      "url": "https://vesastudios.site/print-collateral"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Websites Gallery",
+      "description": "Full-stack websites built for impact — immersive, fast and conversion-focused demos by Vesa Studios.",
+      "url": "https://vesastudios.site/websites-gallery"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "The Pulse — Editorial",
+      "description": "Independent technology and design editorial — ideas, analysis and stories shaping digital business in India.",
+      "url": "https://vesastudios.site/pulse"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "Terms & Conditions",
+      "description": "Terms and conditions for Vesa Studios services.",
+      "url": "https://vesastudios.site/terms"
+    }
+  ]
+}
+</script>
+<!-- ═══ END STRUCTURED DATA ═══ -->
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400&display=swap');
@@ -557,6 +659,41 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
 .s5-check-item.checked::before { background:#10B981; border-color:#10B981; content:'✓'; font-size:8px; color:#030A06; text-align:center; line-height:16px; }
 .s5-milestone { font-size:8px; letter-spacing:.18em; text-transform:uppercase; padding:5px 12px; border:0.5px solid rgba(201,168,76,0.35); color:rgba(201,168,76,0.6); border-radius:99px; }
 
+/* ═══ FAQ SECTION ═══ */
+#faq-section{padding:100px 0 120px;position:relative;overflow:hidden;background:var(--dark);}
+#faq-section::before{content:'';position:absolute;left:80px;right:80px;top:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.15) 30%,rgba(201,168,76,0.15) 70%,transparent);}
+.faq-inner{max-width:1200px;margin:0 auto;padding:0 80px;display:grid;grid-template-columns:280px 1fr;gap:80px;align-items:start;}
+.faq-header{position:sticky;top:100px;}
+.faq-eyebrow{display:inline-flex;align-items:center;gap:12px;margin-bottom:20px;}
+.faq-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);}
+.faq-eyebrow span{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);font-weight:400;}
+.faq-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,5vw,72px);line-height:0.92;letter-spacing:0.02em;color:var(--text);}
+.faq-title em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--gold);display:block;}
+.faq-sub{margin-top:20px;font-size:13px;color:var(--muted);line-height:1.8;}
+.faq-cta{display:inline-flex;align-items:center;gap:8px;margin-top:32px;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-weight:400;text-decoration:none;transition:gap 0.3s ease;}
+.faq-cta::after{content:'→';}
+.faq-cta:hover{gap:14px;}
+.faq-list{display:flex;flex-direction:column;}
+.faq-item{border-bottom:1px solid rgba(201,168,76,0.1);transition:border-color 0.3s ease;}
+.faq-item:first-child{border-top:1px solid rgba(201,168,76,0.1);}
+.faq-item.open{border-bottom-color:rgba(201,168,76,0.25);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;cursor:pointer;user-select:none;}
+.faq-q-left{display:flex;align-items:center;gap:18px;}
+.faq-num{font-size:9px;letter-spacing:0.22em;color:var(--gold);opacity:0.45;font-weight:400;flex-shrink:0;width:24px;}
+.faq-q-text{font-size:15px;font-weight:400;color:var(--text);line-height:1.45;transition:color 0.3s ease;}
+.faq-item.open .faq-q-text{color:#fff;}
+.faq-icon{width:24px;height:24px;flex-shrink:0;border:1px solid rgba(201,168,76,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color 0.3s ease,background 0.3s ease,transform 0.4s cubic-bezier(0.16,1,0.3,1);position:relative;}
+.faq-item.open .faq-icon{background:rgba(201,168,76,0.1);border-color:rgba(201,168,76,0.45);transform:rotate(45deg);}
+.faq-icon::before,.faq-icon::after{content:'';position:absolute;background:rgba(201,168,76,0.7);border-radius:1px;transition:background 0.3s ease;}
+.faq-icon::before{width:10px;height:1.2px;}
+.faq-icon::after{width:1.2px;height:10px;}
+.faq-item.open .faq-icon::before,.faq-item.open .faq-icon::after{background:#C9A84C;}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.4s cubic-bezier(0.16,1,0.3,1);}
+.faq-item.open .faq-a{grid-template-rows:1fr;}
+.faq-a-inner{overflow:hidden;}
+.faq-a-text{padding:0 0 26px 42px;font-size:13.5px;line-height:1.85;color:var(--muted);font-weight:300;}
+.faq-a-text strong{color:rgba(240,237,228,0.7);font-weight:400;}
+
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:900px){
   nav{padding:16px 20px;}
@@ -575,6 +712,9 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
   .foot-top{flex-direction:column;gap:20px;}
   body{cursor:auto;}
   #cur,#cur-ring{display:none;}
+  .faq-inner{grid-template-columns:1fr;gap:48px;padding:0 24px;}
+  .faq-header{position:static;}
+  #faq-section::before{left:24px;right:24px;}
 }
 </style>
 </head>
@@ -1161,349 +1301,228 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
   --dark:#0A0A0A;--dark2:#111;--dark3:#181818;
   --text:#F5F0E8;--muted:#6A6258;--border:rgba(201,168,76,.15);
 }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --gold:#C9A84C;
+  --gold-line:rgba(201,168,76,0.28);
+  --ink:#090907;
+  --ink2:#0F0F0D;
+  --text-primary:#F0EDE4;
+  --text-muted:rgba(240,237,228,0.42);
+}
+
+/* ─── SECTION ─── */
 #portfolio-section{
-  background:var(--dark);
-  padding:100px 48px 120px;
+  padding:120px 0 140px;
   position:relative;
   overflow:hidden;
-  font-family:'DM Sans',sans-serif;
-  font-weight:300;
-  color:var(--text);
 }
-#portfolio-section::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;
-  height:1px;
-  background:linear-gradient(to right,transparent,var(--gold),transparent);
-}
-.port-eyebrow{
-  font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);
-  margin-bottom:14px;display:flex;align-items:center;gap:12px;
-}
-.port-eyebrow::before{content:'';width:28px;height:.5px;background:var(--gold);flex-shrink:0;}
-.port-title{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2.4rem,4vw,3.8rem);
-  font-weight:300;line-height:1.05;
-  margin-bottom:12px;
-}
-.port-title em{font-style:italic;color:var(--gold);}
-.port-sub{
-  font-size:13.5px;color:var(--muted);max-width:480px;line-height:1.8;margin-bottom:60px;
-}
-.carousel-outer{position:relative;}
-.carousel-track-wrap{overflow:hidden;position:relative;}
-.carousel-track{
-  display:flex;gap:20px;
-  transition:transform .6s cubic-bezier(.25,.46,.45,.94);
-  will-change:transform;
-}
-.cat-card{
-  flex:0 0 calc(25% - 15px);
-  min-width:220px;
-  border:.5px solid var(--border);
-  background:var(--dark2);
-  position:relative;
-  overflow:hidden;
-  cursor:default;
-  transition:border-color .4s,background .4s;
-}
-.cat-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;
-  height:2px;
-  background:var(--gold);
-  transform:scaleX(0);
-  transform-origin:left;
-  transition:transform .45s cubic-bezier(.25,.46,.45,.94);
-}
-.cat-card:hover{border-color:rgba(201,168,76,.4);background:rgba(255,255,255,.02);}
-.cat-card:hover::before{transform:scaleX(1);}
-.cat-card-inner{padding:28px 24px 24px;}
-.cat-num{
-  font-family:'Cormorant Garamond',serif;
-  font-size:3.5rem;font-weight:300;
-  color:rgba(201,168,76,.1);line-height:1;
-  margin-bottom:16px;
-}
-.cat-icon-box{
-  width:38px;height:38px;
-  border:.5px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:16px;
-}
-.cat-icon-box svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.5;}
-.cat-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.35rem;font-weight:300;margin-bottom:8px;
-}
-.cat-name em{font-style:italic;color:var(--gold);}
-.cat-desc{font-size:11.5px;color:var(--muted);line-height:1.7;margin-bottom:20px;}
-.cat-demos{display:flex;flex-direction:column;gap:6px;}
-.demo-item{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:8px;padding:9px 12px;
-  border:.5px solid rgba(201,168,76,.1);
-  background:rgba(201,168,76,.02);
-  text-decoration:none;
-  transition:border-color .25s,background .25s;
-  position:relative;
-}
-.demo-item:hover{border-color:var(--gold);background:rgba(201,168,76,.05);}
-.demo-item-name{font-size:10.5px;color:var(--text);letter-spacing:.03em;}
-.demo-item-arrow{
-  font-size:10px;color:var(--gold);opacity:0;
-  transition:opacity .25s,transform .25s;
-  flex-shrink:0;
-}
-.demo-item:hover .demo-item-arrow{opacity:1;transform:translateX(3px);}
-.soon-badge{
-  font-size:8px;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(201,168,76,.35);
-  border:.5px solid rgba(201,168,76,.15);
-  padding:3px 8px;
-}
-.carousel-nav{
-  display:flex;align-items:center;gap:12px;
-  margin-top:36px;
-}
-.nav-btn{
-  width:40px;height:40px;
-  border:.5px solid var(--border);
-  background:transparent;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
-  transition:border-color .3s,background .3s;
-  flex-shrink:0;
-}
-.nav-btn:hover{border-color:var(--gold);background:var(--gold3);}
-.nav-btn svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.5;}
-.nav-dots{display:flex;gap:8px;align-items:center;}
-.nav-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:rgba(255,255,255,.15);
-  cursor:pointer;
-  transition:background .3s,transform .3s;
-}
-.nav-dot.active{background:var(--gold);transform:scale(1.4);}
-.progress-line{
-  flex:1;height:.5px;background:rgba(255,255,255,.08);position:relative;margin-left:4px;
-}
-.progress-fill{
-  position:absolute;top:0;left:0;height:100%;
-  background:linear-gradient(to right,var(--gold),transparent);
-  transition:width .6s cubic-bezier(.25,.46,.45,.94);
+
+/* ─── HEADER ─── */
+.pf-header{padding:0 80px;margin-bottom:72px;opacity:0;transform:translateY(24px);animation:fadeUp 0.9s ease 0.1s forwards;}
+.pf-eyebrow{display:inline-flex;align-items:center;gap:12px;margin-bottom:20px;}
+.pf-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);}
+.pf-eyebrow span{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);font-weight:400;}
+.pf-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,7.5vw,100px);line-height:0.92;letter-spacing:0.02em;}
+.pf-title em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--gold);}
+.pf-subtitle{margin-top:18px;font-size:14.5px;color:var(--text-muted);max-width:440px;line-height:1.75;}
+
+/* ─── BELT LABEL ─── */
+.belt-block{margin-bottom:6px;}
+.belt-label-row{display:flex;align-items:center;padding:0 80px;margin-bottom:16px;}
+.belt-label-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,3.5vw,44px);letter-spacing:0.04em;color:var(--text-primary);line-height:1;}
+.belt-label-title em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--gold);margin-left:8px;}
+.belt-label-line{flex:1;height:1px;background:var(--gold-line);margin:0 24px;}
+.belt-label-count{font-size:10px;letter-spacing:0.2em;color:var(--gold);opacity:0.5;font-weight:400;}
+
+/* ─── CONVEYOR BELT ─── */
+.belt-outer{width:100%;overflow:hidden;position:relative;mask-image:linear-gradient(to right,transparent 0%,black 5%,black 95%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 5%,black 95%,transparent 100%);}
+.belt-track{display:flex;gap:14px;width:max-content;padding:6px 0 10px;}
+.belt-track.ltr{animation:beltLTR 38s linear infinite;}
+.belt-track.rtl{animation:beltRTL 38s linear infinite;}
+.belt-outer:hover .belt-track{animation-play-state:paused;}
+
+/* ─── BELT DIVIDER ─── */
+.belt-divider{height:1px;margin:32px 80px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.15) 30%,rgba(201,168,76,0.15) 70%,transparent);}
+
+/* ─── BASE CARD ─── */
+.pf-card{flex:0 0 380px;height:270px;position:relative;overflow:hidden;display:block;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:border-color 0.4s ease,transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s ease;border-radius:2px;}
+.pf-card:hover{transform:translateY(-5px) scale(1.01);}
+.pf-card-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
+.pf-card-noise{position:absolute;inset:0;z-index:1;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;}
+.pf-card-shimmer{position:absolute;inset:0;z-index:2;opacity:0;transition:opacity 0.5s ease;pointer-events:none;}
+.pf-card:hover .pf-card-shimmer{opacity:1;}
+.pf-card-scan{position:absolute;top:0;left:0;right:0;height:2px;z-index:5;transform:scaleX(0);transform-origin:left;transition:transform 0.55s cubic-bezier(0.16,1,0.3,1);}
+.pf-card:hover .pf-card-scan{transform:scaleX(1);}
+.pf-card-body{position:relative;z-index:4;height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:26px 28px 22px;}
+.pf-card-idx{font-size:9px;letter-spacing:0.28em;font-weight:400;margin-bottom:8px;opacity:0.55;}
+.pf-card-name{font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:0.03em;line-height:0.92;}
+.pf-card-name em{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:27px;font-weight:300;line-height:1.15;}
+.pf-card-desc{font-size:11.5px;line-height:1.7;font-weight:300;margin-top:10px;color:rgba(240,237,228,0.5);}
+.pf-card-foot{display:flex;align-items:center;justify-content:space-between;}
+.pf-card-link{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;opacity:0;transform:translateX(-10px);transition:opacity 0.35s ease,transform 0.35s ease;text-decoration:none;font-weight:400;}
+.pf-card-link::after{content:'→';}
+.pf-card:hover .pf-card-link{opacity:1;transform:translateX(0);}
+.pf-status{font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 10px;font-weight:400;border-radius:1px;}
+
+/* Card themes */
+.card-website{background:#020B18;border-color:rgba(41,128,220,0.2);}
+.card-website:hover{border-color:rgba(41,128,220,0.7);box-shadow:0 20px 60px rgba(41,128,220,0.15);}
+.card-website .pf-card-scan{background:linear-gradient(90deg,#2980DC,#5BB8FF);}
+.card-website .pf-card-shimmer{background:radial-gradient(ellipse at 20% 80%,rgba(41,128,220,0.15) 0%,transparent 65%);}
+.card-website .pf-card-idx{color:#5BB8FF;}
+.card-website .pf-card-name{color:#E8F4FF;}
+.card-website .pf-card-name em{color:#5BB8FF;}
+.card-website .pf-card-link{color:#5BB8FF;}
+.card-website .pf-status{background:rgba(41,128,220,0.12);color:#5BB8FF;border:1px solid rgba(41,128,220,0.3);}
+.card-logo{background:#100A00;border-color:rgba(201,168,76,0.2);}
+.card-logo:hover{border-color:rgba(201,168,76,0.7);box-shadow:0 20px 60px rgba(201,168,76,0.12);}
+.card-logo .pf-card-scan{background:linear-gradient(90deg,#C9A84C,#FFD97A);}
+.card-logo .pf-card-shimmer{background:radial-gradient(ellipse at 80% 20%,rgba(201,168,76,0.18) 0%,transparent 65%);}
+.card-logo .pf-card-idx{color:#C9A84C;}
+.card-logo .pf-card-name{color:#FFF8E6;}
+.card-logo .pf-card-name em{color:#C9A84C;}
+.card-logo .pf-card-link{color:#C9A84C;}
+.card-logo .pf-status{background:rgba(201,168,76,0.1);color:#C9A84C;border:1px solid rgba(201,168,76,0.25);}
+.card-print{background:#0D0B09;border-color:rgba(210,190,150,0.18);}
+.card-print:hover{border-color:rgba(210,190,150,0.6);box-shadow:0 20px 60px rgba(210,190,150,0.08);}
+.card-print .pf-card-scan{background:linear-gradient(90deg,#D2BE96,#F0E6CC);}
+.card-print .pf-card-shimmer{background:radial-gradient(ellipse at 50% 100%,rgba(210,190,150,0.12) 0%,transparent 65%);}
+.card-print .pf-card-idx{color:#D2BE96;}
+.card-print .pf-card-name{color:#F5EDD8;}
+.card-print .pf-card-name em{color:#D2BE96;}
+.card-print .pf-card-link{color:#D2BE96;}
+.card-print .pf-status{background:rgba(210,190,150,0.08);color:#D2BE96;border:1px solid rgba(210,190,150,0.2);}
+.card-chatbot{background:#010E10;border-color:rgba(37,211,102,0.2);}
+.card-chatbot:hover{border-color:rgba(37,211,102,0.6);box-shadow:0 20px 60px rgba(37,211,102,0.12);}
+.card-chatbot .pf-card-scan{background:linear-gradient(90deg,#25D366,#7FFFB2);}
+.card-chatbot .pf-card-shimmer{background:radial-gradient(ellipse at 30% 30%,rgba(37,211,102,0.12) 0%,transparent 65%);}
+.card-chatbot .pf-card-idx{color:#25D366;}
+.card-chatbot .pf-card-name{color:#E0FFF0;}
+.card-chatbot .pf-card-name em{color:#25D366;}
+.card-chatbot .pf-card-link{color:#25D366;}
+.card-chatbot .pf-status{background:rgba(37,211,102,0.07);color:rgba(37,211,102,0.55);border:1px solid rgba(37,211,102,0.18);}
+.card-automation{background:#08050F;border-color:rgba(138,43,226,0.22);}
+.card-automation:hover{border-color:rgba(138,43,226,0.65);box-shadow:0 20px 60px rgba(138,43,226,0.2);}
+.card-automation .pf-card-scan{background:linear-gradient(90deg,#8A2BE2,#DA70D6,#00BFFF);}
+.card-automation .pf-card-shimmer{background:radial-gradient(ellipse at 70% 40%,rgba(138,43,226,0.15) 0%,transparent 65%);}
+.card-automation .pf-card-idx{color:#DA70D6;}
+.card-automation .pf-card-name{color:#F8F0FF;}
+.card-automation .pf-card-name em{color:#DA70D6;}
+.card-automation .pf-card-link{color:#DA70D6;}
+.card-automation .pf-status{background:rgba(138,43,226,0.08);color:rgba(218,112,214,0.55);border:1px solid rgba(138,43,226,0.2);}
+.card-social{background:#0F0008;border-color:rgba(220,60,140,0.2);}
+.card-social:hover{border-color:rgba(220,60,140,0.65);box-shadow:0 20px 60px rgba(220,60,140,0.18);}
+.card-social .pf-card-scan{background:linear-gradient(90deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+.card-social .pf-card-shimmer{background:radial-gradient(ellipse at 80% 50%,rgba(220,60,140,0.15) 0%,transparent 65%);}
+.card-social .pf-card-idx{color:#E1306C;}
+.card-social .pf-card-name{color:#FFE8F5;}
+.card-social .pf-card-name em{color:#FF80C8;}
+.card-social .pf-card-link{color:#FF80C8;}
+.card-social .pf-status{background:rgba(220,60,140,0.1);color:#FF80C8;border:1px solid rgba(220,60,140,0.25);}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+@keyframes beltLTR{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+@keyframes beltRTL{0%{transform:translateX(-50%);}100%{transform:translateX(0);}}
+
+@media(max-width:768px){
+  .pf-header{padding:0 24px;}
+  .belt-label-row{padding:0 24px;}
+  .belt-divider{margin:24px;}
+  .pf-card{flex:0 0 300px;height:250px;}
 }
 </style>
 
 <section id="portfolio-section">
-  <h2 class="sr-only">Brand Portfolio — Demo work by Vesa Studios</h2>
 
-  <p class="port-eyebrow">Our Work</p>
-  <h2 class="port-title">Brand <em>Portfolio</em></h2>
-  <p class="port-sub">Real demos across every service we offer — from immersive websites to AI automations. Each piece shows exactly what we build for your brand.</p>
+  <div class="pf-header">
+    <div class="pf-eyebrow"><span>Our Work</span></div>
+    <h2 class="pf-title">Brand <em>Portfolio</em></h2>
+    <p class="pf-subtitle">Real demos across every service we offer. Built the same way we'd build yours — immersive, precise, unforgettable.</p>
+  </div>
 
-  <div class="carousel-outer">
-    <div class="carousel-track-wrap" id="trackWrap">
-      <div class="carousel-track" id="track">
-
-        <div class="cat-card">
-          <div class="cat-card-inner">
-            <div class="cat-num">01</div>
-            <div class="cat-icon-box"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-            <div class="cat-name">Website <em>Design</em></div>
-            <p class="cat-desc">Full-stack websites built for impact. Immersive, fast, and conversion-focused.</p>
-            <div class="cat-demos">
-              <a class="demo-item" href="https://caffeine-addict.vercel.app" target="_blank">
-                <span class="demo-item-name">Caffeine Addict — Coffee brand</span>
-                <span class="demo-item-arrow">→</span>
-              </a>
-              <a class="demo-item" href="https://workaholic-swart.vercel.app/" target="_blank">
-                <span class="demo-item-name">Workaholic — Corporate operating system</span>
-                <span class="demo-item-arrow">→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="cat-card">
-          <div class="cat-card-inner">
-            <div class="cat-num">02</div>
-            <div class="cat-icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
-            <div class="cat-name">Logo <em>Design</em></div>
-            <p class="cat-desc">Symbols that define. Bold, timeless identities crafted for recognition.</p>
-            <div class="cat-demos">
-              <a class="demo-item" href="logo-design.html" target="_blank">
-                <span class="demo-item-name">View Logo Design Portfolio</span>
-                <span class="demo-item-arrow">→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="cat-card">
-          <div class="cat-card-inner">
-            <div class="cat-num">03</div>
-            <div class="cat-icon-box"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-            <div class="cat-name">AI <em>Chatbots</em></div>
-            <p class="cat-desc">Trained on your brand. Live 24/7, answering everything your clients ask.</p>
-            <div class="cat-demos">
-              <div class="demo-item" style="cursor:default;">
-                <span class="demo-item-name" style="color:var(--muted);">Live demo launching</span>
-                <span class="soon-badge">Soon</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="cat-card">
-          <div class="cat-card-inner">
-            <div class="cat-num">04</div>
-            <div class="cat-icon-box"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-            <div class="cat-name">AI <em>Automations</em></div>
-            <p class="cat-desc">WhatsApp bots, lead qualification, follow-ups — all running while you sleep.</p>
-            <div class="cat-demos">
-              <div class="demo-item" style="cursor:default;">
-                <span class="demo-item-name" style="color:var(--muted);">Demo flows coming</span>
-                <span class="soon-badge">Soon</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="cat-card">
-          <div class="cat-card-inner">
-            <div class="cat-num">05</div>
-            <div class="cat-icon-box"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/><rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/></svg></div>
-            <div class="cat-name">Social <em>Media</em></div>
-            <p class="cat-desc">Scroll-stopping visual kits — posts, stories, reels templates, profile art.</p>
-            <div class="cat-demos">
-              <a class="demo-item" href="social-media.html" target="_blank">
-                <span class="demo-item-name">View Social Media Portfolio</span>
-                <span class="demo-item-arrow">→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="cat-card">
-          <div class="cat-card-inner">
-            <div class="cat-num">06</div>
-            <div class="cat-icon-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>
-            <div class="cat-name">Print &amp; <em>Collateral</em></div>
-            <p class="cat-desc">Cards, letterheads, brochures, banners — premium print that speaks authority.</p>
-            <div class="cat-demos">
-              <a class="demo-item" href="print-collateral.html" target="_blank">
-                <span class="demo-item-name">View Print &amp; Collateral Portfolio</span>
-                <span class="demo-item-arrow">→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
+  <div class="belt-block">
+    <div class="belt-label-row">
+      <div class="belt-label-title">Craft &amp; <em>Identity</em></div>
+      <div class="belt-label-line"></div>
+      <div class="belt-label-count">01 → 03</div>
     </div>
-
-    <div class="carousel-nav">
-      <button class="nav-btn" id="prevBtn" aria-label="Previous">
-        <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
-      </button>
-      <button class="nav-btn" id="nextBtn" aria-label="Next">
-        <svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
-      </button>
-      <div class="nav-dots" id="dots"></div>
-      <div class="progress-line"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="belt-outer">
+      <div class="belt-track ltr" id="beltTop"></div>
     </div>
   </div>
+
+  <div class="belt-divider"></div>
+
+  <div class="belt-block">
+    <div class="belt-label-row">
+      <div class="belt-label-title">Digital &amp; <em>Intelligence</em></div>
+      <div class="belt-label-line"></div>
+      <div class="belt-label-count">04 → 06</div>
+    </div>
+    <div class="belt-outer">
+      <div class="belt-track rtl" id="beltBottom"></div>
+    </div>
+  </div>
+
 </section>
 
 <script>
 (function(){
-  const track = document.getElementById('track');
-  const wrap = document.getElementById('trackWrap');
-  const dotsEl = document.getElementById('dots');
-  const progressFill = document.getElementById('progressFill');
-  const originalCards = Array.from(track.querySelectorAll('.cat-card'));
-  const total = originalCards.length;
-  let current = 0;
-  let paused = false;
-  const SPEED = 2; // px per frame — increase for faster scroll
+const svgBg={
+website:`<svg width="380" height="270" viewBox="0 0 380 270" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="wg" cx="20%" cy="80%" r="70%"><stop offset="0%" stop-color="#0A2A50"/><stop offset="100%" stop-color="#020B18"/></radialGradient><radialGradient id="wglow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2980DC" stop-opacity="0.15"/><stop offset="100%" stop-color="#2980DC" stop-opacity="0"/></radialGradient><filter id="wblur"><feGaussianBlur stdDeviation="3"/></filter></defs><rect width="380" height="270" fill="url(#wg)"/><g stroke="rgba(41,128,220,0.04)" stroke-width="1"><line x1="0" y1="45" x2="380" y2="45"/><line x1="0" y1="90" x2="380" y2="90"/><line x1="0" y1="135" x2="380" y2="135"/><line x1="0" y1="180" x2="380" y2="180"/><line x1="0" y1="225" x2="380" y2="225"/><line x1="45" y1="0" x2="45" y2="270"/><line x1="90" y1="0" x2="90" y2="270"/><line x1="135" y1="0" x2="135" y2="270"/><line x1="180" y1="0" x2="180" y2="270"/><line x1="225" y1="0" x2="225" y2="270"/><line x1="270" y1="0" x2="270" y2="270"/><line x1="315" y1="0" x2="315" y2="270"/></g><ellipse cx="260" cy="130" rx="120" ry="80" fill="url(#wglow)" filter="url(#wblur)"/><rect x="155" y="28" width="210" height="200" rx="4" fill="rgba(5,18,40,0.9)" stroke="rgba(41,128,220,0.28)" stroke-width="1"/><rect x="155" y="28" width="210" height="24" rx="4" fill="rgba(10,30,60,0.9)"/><circle cx="167" cy="40" r="3.5" fill="rgba(255,80,80,0.6)"/><circle cx="178" cy="40" r="3.5" fill="rgba(255,200,50,0.5)"/><circle cx="189" cy="40" r="3.5" fill="rgba(50,220,100,0.5)"/><rect x="200" y="33" width="120" height="14" rx="2" fill="rgba(20,50,90,0.6)" stroke="rgba(41,128,220,0.15)" stroke-width="1"/><text x="206" y="43" font-family="monospace" font-size="6" fill="rgba(91,184,255,0.6)">vesastudios.site</text><rect x="155" y="52" width="210" height="18" fill="rgba(8,20,45,0.95)"/><rect x="160" y="57" width="22" height="7" rx="1" fill="rgba(41,128,220,0.25)"/><rect x="215" y="58" width="16" height="5" rx="1" fill="rgba(255,255,255,0.07)"/><rect x="236" y="58" width="16" height="5" rx="1" fill="rgba(255,255,255,0.07)"/><rect x="257" y="58" width="16" height="5" rx="1" fill="rgba(255,255,255,0.07)"/><rect x="278" y="58" width="16" height="5" rx="1" fill="rgba(255,255,255,0.07)"/><rect x="306" y="56" width="30" height="9" rx="2" fill="rgba(41,128,220,0.35)" stroke="rgba(41,128,220,0.5)" stroke-width="0.8"/><rect x="155" y="70" width="210" height="60" fill="rgba(5,14,32,0.8)"/><rect x="165" y="78" width="85" height="9" rx="1.5" fill="rgba(91,184,255,0.25)"/><rect x="165" y="92" width="60" height="6" rx="1" fill="rgba(255,255,255,0.1)"/><rect x="165" y="102" width="45" height="6" rx="1" fill="rgba(255,255,255,0.07)"/><rect x="165" y="114" width="38" height="12" rx="2" fill="rgba(41,128,220,0.5)" stroke="rgba(91,184,255,0.4)" stroke-width="0.8"/><rect x="280" y="72" width="78" height="56" rx="2" fill="rgba(20,50,95,0.5)" stroke="rgba(41,128,220,0.15)" stroke-width="1"/><rect x="155" y="135" width="210" height="2" fill="rgba(41,128,220,0.08)"/><rect x="162" y="142" width="58" height="40" rx="2" fill="rgba(10,28,60,0.8)" stroke="rgba(41,128,220,0.12)" stroke-width="1"/><rect x="226" y="142" width="58" height="40" rx="2" fill="rgba(10,28,60,0.8)" stroke="rgba(41,128,220,0.12)" stroke-width="1"/><rect x="290" y="142" width="58" height="40" rx="2" fill="rgba(10,28,60,0.8)" stroke="rgba(41,128,220,0.18)" stroke-width="1.2"/><rect x="166" y="147" width="35" height="3" rx="1" fill="rgba(91,184,255,0.15)"/><rect x="230" y="147" width="35" height="3" rx="1" fill="rgba(91,184,255,0.15)"/><rect x="294" y="147" width="35" height="3" rx="1" fill="rgba(91,184,255,0.2)"/><rect x="155" y="188" width="210" height="40" fill="rgba(4,12,28,0.9)"/><rect x="163" y="196" width="25" height="5" rx="1" fill="rgba(41,128,220,0.2)"/><circle cx="345" cy="156" r="3" fill="#5BB8FF" opacity="0.8"/><path d="M14 14 L14 28 M14 14 L28 14" stroke="rgba(41,128,220,0.4)" stroke-width="1.5" fill="none"/><path d="M366 256 L366 242 M366 256 L352 256" stroke="rgba(41,128,220,0.4)" stroke-width="1.5" fill="none"/></svg>`,
+logo:`<svg width="380" height="270" viewBox="0 0 380 270" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="lg" cx="55%" cy="45%" r="60%"><stop offset="0%" stop-color="#2A1800"/><stop offset="100%" stop-color="#0E0800"/></radialGradient><radialGradient id="lglow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#C9A84C" stop-opacity="0.18"/><stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/></radialGradient><filter id="lblur"><feGaussianBlur stdDeviation="8"/></filter></defs><rect width="380" height="270" fill="url(#lg)"/><ellipse cx="210" cy="130" rx="150" ry="100" fill="url(#lglow)" filter="url(#lblur)"/><rect x="145" y="40" width="195" height="170" rx="2" fill="none" stroke="rgba(201,168,76,0.06)" stroke-width="1" stroke-dasharray="3,4"/><line x1="215" y1="18" x2="215" y2="252" stroke="rgba(201,168,76,0.05)" stroke-width="1" stroke-dasharray="4,5"/><line x1="125" y1="125" x2="355" y2="125" stroke="rgba(201,168,76,0.05)" stroke-width="1" stroke-dasharray="4,5"/><g transform="translate(165,52)"><polygon points="30,0 58,16 58,48 30,64 2,48 2,16" fill="rgba(201,168,76,0.05)" stroke="rgba(201,168,76,0.35)" stroke-width="1.2"/><circle cx="30" cy="32" r="5" fill="rgba(201,168,76,0.25)" stroke="#C9A84C" stroke-width="0.8"/><circle cx="30" cy="32" r="2" fill="#C9A84C" opacity="0.8"/></g><g transform="translate(155,138)"><rect x="0" y="0" width="120" height="40" rx="2" fill="rgba(20,12,0,0.6)" stroke="rgba(201,168,76,0.15)" stroke-width="1"/><rect x="8" y="8" width="5" height="24" rx="1" fill="rgba(201,168,76,0.5)"/><rect x="35" y="8" width="18" height="4" rx="1" fill="rgba(201,168,76,0.45)"/><rect x="57" y="8" width="4" height="24" rx="1" fill="rgba(201,168,76,0.5)"/><rect x="57" y="8" width="16" height="4" rx="1" fill="rgba(201,168,76,0.5)"/><rect x="8" y="34" width="60" height="2" rx="1" fill="rgba(201,168,76,0.15)"/></g><g transform="translate(298,52)"><circle cx="28" cy="36" r="30" fill="rgba(15,10,0,0.7)" stroke="rgba(201,168,76,0.3)" stroke-width="1.2"/><polygon points="16,18 22,18 28,30 34,18 40,18 28,50" fill="rgba(201,168,76,0.55)"/></g><g transform="translate(290,150)"><rect x="0" y="0" width="60" height="60" rx="4" fill="rgba(10,6,0,0.5)" stroke="rgba(201,168,76,0.12)" stroke-width="1"/><polygon points="30,8 52,30 30,52 8,30" fill="none" stroke="rgba(201,168,76,0.35)" stroke-width="1.2"/><circle cx="30" cy="30" r="4" fill="rgba(201,168,76,0.3)" stroke="#C9A84C" stroke-width="0.8"/></g><path d="M12 12 L12 24 M12 12 L24 12" stroke="rgba(201,168,76,0.35)" stroke-width="1.3" fill="none"/><path d="M368 258 L368 246 M368 258 L356 258" stroke="rgba(201,168,76,0.35)" stroke-width="1.3" fill="none"/></svg>`,
+print:`<svg width="380" height="270" viewBox="0 0 380 270" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="pg" cx="55%" cy="35%" r="60%"><stop offset="0%" stop-color="#221B12"/><stop offset="100%" stop-color="#0C0A08"/></radialGradient><filter id="pshadow"><feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.5)"/></filter><filter id="pshadow2"><feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/></filter></defs><rect width="380" height="270" fill="url(#pg)"/><rect x="15" y="22" width="155" height="200" rx="2" fill="#1A1510" stroke="rgba(210,190,150,0.1)" stroke-width="1" filter="url(#pshadow)"/><rect x="15" y="22" width="155" height="3" rx="1" fill="rgba(210,190,150,0.2)"/><circle cx="30" cy="36" r="8" fill="none" stroke="rgba(210,190,150,0.35)" stroke-width="1"/><rect x="44" y="31" width="45" height="5" rx="1" fill="rgba(210,190,150,0.3)"/><rect x="24" y="60" width="120" height="3" rx="1" fill="rgba(210,190,150,0.08)"/><rect x="24" y="68" width="110" height="2" rx="1" fill="rgba(210,190,150,0.06)"/><rect x="24" y="75" width="130" height="2" rx="1" fill="rgba(210,190,150,0.06)"/><rect x="200" y="62" width="148" height="88" rx="3" fill="#130E09" stroke="rgba(210,190,150,0.06)" stroke-width="1"/><rect x="196" y="57" width="148" height="88" rx="3" fill="#161108" stroke="rgba(210,190,150,0.08)" stroke-width="1"/><rect x="188" y="46" width="148" height="88" rx="3" fill="#1E1810" stroke="rgba(210,190,150,0.22)" stroke-width="1" filter="url(#pshadow2)"/><rect x="188" y="46" width="148" height="4" rx="2" fill="rgba(210,190,150,0.18)"/><circle cx="210" cy="72" r="10" fill="none" stroke="rgba(210,190,150,0.4)" stroke-width="1.2"/><rect x="225" y="64" width="60" height="7" rx="1.5" fill="rgba(210,190,150,0.35)"/><rect x="188" y="155" width="148" height="88" rx="3" fill="#1C1609" stroke="rgba(210,190,150,0.15)" stroke-width="1"/><path d="M12 12 L12 26 M12 12 L26 12" stroke="rgba(210,190,150,0.35)" stroke-width="1.2" fill="none"/><path d="M368 258 L368 244 M368 258 L354 258" stroke="rgba(210,190,150,0.35)" stroke-width="1.2" fill="none"/></svg>`,
+chatbot:`<svg width="380" height="270" viewBox="0 0 380 270" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="wabg" cx="30%" cy="20%" r="70%"><stop offset="0%" stop-color="#001A0A"/><stop offset="100%" stop-color="#000D05"/></radialGradient><radialGradient id="waglow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#25D366" stop-opacity="0.14"/><stop offset="100%" stop-color="#25D366" stop-opacity="0"/></radialGradient><filter id="wablur"><feGaussianBlur stdDeviation="6"/></filter></defs><rect width="380" height="270" fill="url(#wabg)"/><ellipse cx="220" cy="140" rx="140" ry="100" fill="url(#waglow)" filter="url(#wablur)"/><rect x="162" y="14" width="196" height="238" rx="18" fill="rgba(5,20,10,0.95)" stroke="rgba(37,211,102,0.22)" stroke-width="1.2"/><rect x="164" y="16" width="192" height="234" rx="17" fill="rgba(3,14,7,0.97)"/><rect x="164" y="30" width="192" height="220" rx="3" fill="#0E1F14"/><rect x="164" y="30" width="192" height="38" fill="#1A2E1F" rx="2"/><circle cx="198" cy="49" r="11" fill="#25D366" opacity="0.15" stroke="rgba(37,211,102,0.35)" stroke-width="1"/><rect x="215" y="42" width="55" height="6" rx="1.5" fill="rgba(37,211,102,0.4)"/><rect x="215" y="52" width="35" height="4" rx="1" fill="rgba(37,211,102,0.18)"/><circle cx="205" cy="57" r="3" fill="#25D366"/><rect x="168" y="92" width="125" height="30" rx="6" fill="rgba(20,40,25,0.9)" stroke="rgba(37,211,102,0.12)" stroke-width="0.8"/><polygon points="168,100 162,108 168,108" fill="rgba(20,40,25,0.9)"/><rect x="174" y="98" width="85" height="5" rx="1.5" fill="rgba(200,230,210,0.18)"/><rect x="227" y="130" width="125" height="30" rx="6" fill="rgba(18,80,35,0.85)" stroke="rgba(37,211,102,0.2)" stroke-width="0.8"/><polygon points="352,138 358,146 352,146" fill="rgba(18,80,35,0.85)"/><rect x="233" y="136" width="75" height="5" rx="1.5" fill="rgba(37,211,102,0.35)"/><rect x="227" y="196" width="55" height="18" rx="9" fill="rgba(18,80,35,0.7)" stroke="rgba(37,211,102,0.2)" stroke-width="0.8"/><circle cx="242" cy="205" r="2.5" fill="rgba(37,211,102,0.6)"/><circle cx="254" cy="205" r="2.5" fill="rgba(37,211,102,0.4)"/><circle cx="266" cy="205" r="2.5" fill="rgba(37,211,102,0.25)"/><rect x="164" y="220" width="192" height="28" fill="#1A2E1F"/><rect x="168" y="225" width="145" height="18" rx="9" fill="rgba(10,30,15,0.8)" stroke="rgba(37,211,102,0.1)" stroke-width="1"/><circle cx="350" cy="234" r="9" fill="#25D366"/><path d="M346 234 L350 230 L354 234 M350 230 L350 238" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M12 12 L12 26 M12 12 L26 12" stroke="rgba(37,211,102,0.35)" stroke-width="1.3" fill="none"/><path d="M368 258 L368 244 M368 258 L354 258" stroke="rgba(37,211,102,0.35)" stroke-width="1.3" fill="none"/></svg>`,
+automation:`<svg width="380" height="270" viewBox="0 0 380 270" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="abg" cx="50%" cy="50%" r="65%"><stop offset="0%" stop-color="#12052A"/><stop offset="100%" stop-color="#06020F"/></radialGradient><radialGradient id="aglow" cx="50%" cy="40%" r="50%"><stop offset="0%" stop-color="#8A2BE2" stop-opacity="0.25"/><stop offset="100%" stop-color="#8A2BE2" stop-opacity="0"/></radialGradient><radialGradient id="aeyeglow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#DA70D6" stop-opacity="0.9"/><stop offset="100%" stop-color="#8A2BE2" stop-opacity="0.4"/></radialGradient><filter id="ablur"><feGaussianBlur stdDeviation="8"/></filter><filter id="aeyeblur"><feGaussianBlur stdDeviation="2"/></filter></defs><rect width="380" height="270" fill="url(#abg)"/><ellipse cx="220" cy="120" rx="130" ry="110" fill="url(#aglow)" filter="url(#ablur)"/><g stroke="rgba(138,43,226,0.07)" stroke-width="1" fill="none"><polyline points="20,30 20,70 60,70 60,40 100,40"/><polyline points="100,40 100,100 140,100 140,50"/><polyline points="20,120 50,120 50,160 80,160 80,130"/><polyline points="320,30 320,70 350,70 350,120"/></g><rect x="202" y="218" width="36" height="28" rx="3" fill="rgba(20,8,45,0.9)" stroke="rgba(138,43,226,0.25)" stroke-width="1"/><rect x="178" y="58" width="84" height="88" rx="12" fill="rgba(12,5,28,0.95)" stroke="rgba(138,43,226,0.35)" stroke-width="1.5"/><rect x="168" y="82" width="12" height="30" rx="3" fill="rgba(15,6,35,0.9)" stroke="rgba(138,43,226,0.25)" stroke-width="1"/><rect x="260" y="82" width="12" height="30" rx="3" fill="rgba(15,6,35,0.9)" stroke="rgba(138,43,226,0.25)" stroke-width="1"/><rect x="218" y="42" width="4" height="18" rx="2" fill="rgba(138,43,226,0.35)"/><circle cx="220" cy="40" r="4" fill="rgba(218,112,214,0.5)" stroke="#DA70D6" stroke-width="0.8"/><rect x="186" y="76" width="68" height="26" rx="5" fill="rgba(6,2,16,0.95)" stroke="rgba(138,43,226,0.3)" stroke-width="1"/><ellipse cx="204" cy="89" rx="7" ry="5" fill="rgba(138,43,226,0.15)" stroke="rgba(218,112,214,0.5)" stroke-width="0.8"/><ellipse cx="204" cy="89" rx="4" ry="3" fill="url(#aeyeglow)" filter="url(#aeyeblur)"/><circle cx="204" cy="89" r="2" fill="#DA70D6"/><ellipse cx="236" cy="89" rx="7" ry="5" fill="rgba(138,43,226,0.15)" stroke="rgba(218,112,214,0.5)" stroke-width="0.8"/><ellipse cx="236" cy="89" rx="4" ry="3" fill="url(#aeyeglow)" filter="url(#aeyeblur)"/><circle cx="236" cy="89" r="2" fill="#DA70D6"/><rect x="192" y="114" width="56" height="16" rx="4" fill="rgba(6,2,16,0.9)" stroke="rgba(138,43,226,0.2)" stroke-width="1"/><rect x="197" y="118" width="46" height="2" rx="1" fill="rgba(138,43,226,0.2)"/><rect x="200" y="122" width="40" height="2" rx="1" fill="rgba(138,43,226,0.15)"/><ellipse cx="220" cy="100" rx="65" ry="55" fill="none" stroke="rgba(138,43,226,0.06)" stroke-width="1"/><ellipse cx="220" cy="100" rx="90" ry="75" fill="none" stroke="rgba(138,43,226,0.04)" stroke-width="1"/><path d="M12 12 L12 26 M12 12 L26 12" stroke="rgba(138,43,226,0.4)" stroke-width="1.3" fill="none"/><path d="M368 258 L368 244 M368 258 L354 258" stroke="rgba(138,43,226,0.4)" stroke-width="1.3" fill="none"/></svg>`,
+social:`<svg width="380" height="270" viewBox="0 0 380 270" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="igbg" cx="80%" cy="20%" r="70%"><stop offset="0%" stop-color="#1A0010"/><stop offset="100%" stop-color="#0A0008"/></radialGradient><linearGradient id="igstory1" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient><filter id="igblur"><feGaussianBlur stdDeviation="8"/></filter></defs><rect width="380" height="270" fill="url(#igbg)"/><rect x="150" y="8" width="218" height="254" rx="20" fill="rgba(8,0,12,0.97)" stroke="rgba(220,60,140,0.22)" stroke-width="1.2"/><rect x="152" y="10" width="214" height="250" rx="19" fill="rgba(5,0,8,1)"/><rect x="152" y="24" width="214" height="236" rx="3" fill="#0D0010"/><rect x="152" y="24" width="214" height="32" fill="#0D0010"/><rect x="314" y="31" width="10" height="10" rx="3" fill="none" stroke="url(#igstory1)" stroke-width="1.2"/><rect x="152" y="56" width="214" height="60" fill="#0A0010"/><circle cx="176" cy="86" r="18" fill="none" stroke="url(#igstory1)" stroke-width="2"/><circle cx="216" cy="86" r="18" fill="none" stroke="url(#igstory1)" stroke-width="2"/><circle cx="256" cy="86" r="18" fill="none" stroke="url(#igstory1)" stroke-width="2"/><circle cx="296" cy="86" r="18" fill="none" stroke="rgba(80,40,60,0.5)" stroke-width="1.5"/><rect x="152" y="138" width="70" height="58" fill="rgba(35,5,22,0.9)"/><rect x="224" y="138" width="70" height="58" fill="rgba(28,4,18,0.9)"/><rect x="296" y="138" width="70" height="58" fill="rgba(30,5,20,0.9)"/><rect x="152" y="198" width="70" height="58" fill="rgba(25,4,16,0.9)"/><rect x="224" y="198" width="70" height="58" fill="rgba(32,5,22,0.95)"/><circle cx="259" cy="227" r="16" fill="rgba(220,60,140,0.08)" stroke="rgba(220,60,140,0.2)" stroke-width="0.8"/><polygon points="254,220 254,234 268,227" fill="rgba(220,60,140,0.4)"/><rect x="296" y="198" width="70" height="58" fill="rgba(28,4,18,0.9)"/><line x1="222" y1="138" x2="222" y2="256" stroke="rgba(10,0,15,0.8)" stroke-width="2"/><line x1="294" y1="138" x2="294" y2="256" stroke="rgba(10,0,15,0.8)" stroke-width="2"/><line x1="152" y1="196" x2="366" y2="196" stroke="rgba(10,0,15,0.8)" stroke-width="2"/><path d="M12 12 L12 26 M12 12 L26 12" stroke="rgba(220,60,140,0.35)" stroke-width="1.3" fill="none"/><path d="M368 258 L368 244 M368 258 L354 258" stroke="rgba(220,60,140,0.35)" stroke-width="1.3" fill="none"/></svg>`
+};
 
-  function getVisible(){
-    const w = wrap.offsetWidth;
-    if(w < 520) return 1;
-    if(w < 780) return 2;
-    if(w < 1040) return 3;
-    return 4;
-  }
+const topCards=[
+  {idx:'01',name:'Website',nameEm:'Design',desc:'Full-stack websites built for impact. Immersive, fast, conversion-focused — turning visitors into clients.',type:'website',status:'live',link:'https://vesastudios.site/websites-gallery',linkLabel:'View Live Work'},
+  {idx:'02',name:'Logo',nameEm:'Design',desc:'Symbols that define. Bold, timeless identities crafted for recognition and lasting brand recall.',type:'logo',status:'live',link:'https://vesastudios.site/logo-design',linkLabel:'View Portfolio'},
+  {idx:'03',name:'Print &',nameEm:'Collateral',desc:'Cards, letterheads, brochures, banners — premium print that speaks authority at every touchpoint.',type:'print',status:'live',link:'https://vesastudios.site/print-collateral',linkLabel:'View Portfolio'}
+];
+const bottomCards=[
+  {idx:'04',name:'AI',nameEm:'Chatbots',desc:'WhatsApp auto-reply bots trained on your brand. Live 24/7, answering, qualifying and closing leads while you sleep.',type:'chatbot',status:'soon',link:null,linkLabel:'Demo Soon'},
+  {idx:'05',name:'AI',nameEm:'Integration',desc:'Custom AI robots and automations — trained on your workflows, deployed across your business, working non-stop.',type:'automation',status:'soon',link:null,linkLabel:'Coming Soon'},
+  {idx:'06',name:'Social',nameEm:'Media',desc:'Scroll-stopping visual kits — posts, stories, reels templates, profile art. Impossible to ignore.',type:'social',status:'live',link:'https://vesastudios.site/social-media',linkLabel:'View Portfolio'}
+];
 
-  // Clone cards to create infinite loop effect
-  function setupInfiniteClones(){
-    originalCards.forEach(card => {
-      const clone = card.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      track.appendChild(clone);
-    });
-  }
-  setupInfiniteClones();
+function buildCard(c){
+  const tag=c.link?'a':'div';
+  const href=c.link?`href="${c.link}" target="_blank"`:'';
+  const statusHtml=c.status==='live'
+    ?`<span class="pf-status">Live</span>`
+    :`<span class="pf-status" style="background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.07);">Soon</span>`;
+  return `<${tag} class="pf-card card-${c.type}" ${href}>
+    <svg class="pf-card-canvas" viewBox="0 0 380 270" preserveAspectRatio="xMidYMid slice">${svgBg[c.type].replace(/<svg[^>]*>/,'').replace('</svg>','')}</svg>
+    <div class="pf-card-noise"></div>
+    <div class="pf-card-shimmer"></div>
+    <div class="pf-card-scan"></div>
+    <div class="pf-card-body">
+      <div>
+        <div class="pf-card-idx">${c.idx}</div>
+        <div class="pf-card-name">${c.name}<em>${c.nameEm}</em></div>
+        <div class="pf-card-desc">${c.desc}</div>
+      </div>
+      <div class="pf-card-foot">
+        <span class="pf-card-link">${c.linkLabel}</span>
+        ${statusHtml}
+      </div>
+    </div>
+  </${tag}>`;
+}
 
-  const allCards = Array.from(track.querySelectorAll('.cat-card'));
-  let posX = 0;
-  let rafId;
-
-  function getCardWidth(){
-    return allCards[0].offsetWidth + 20; // card width + gap
-  }
-
-  function getTotalOriginalWidth(){
-    return getCardWidth() * total;
-  }
-
-  function animate(){
-    if(!paused){
-      posX += SPEED;
-      // When we've scrolled exactly one full set of originals, reset silently
-      if(posX >= getTotalOriginalWidth()){
-        posX -= getTotalOriginalWidth();
-      }
-      track.style.transform = `translateX(-${posX}px)`;
-
-      // Update dots based on which card is most visible
-      const cardW = getCardWidth();
-      const activeIdx = Math.round(posX / cardW) % total;
-      dotsEl.querySelectorAll('.nav-dot').forEach((d,i) => d.classList.toggle('active', i === activeIdx));
-      const pct = (activeIdx / (total - 1)) * 100;
-      progressFill.style.width = pct + '%';
-    }
-    rafId = requestAnimationFrame(animate);
-  }
-
-  function buildDots(){
-    dotsEl.innerHTML = '';
-    for(let i = 0; i < total; i++){
-      const d = document.createElement('div');
-      d.className = 'nav-dot' + (i === 0 ? ' active' : '');
-      dotsEl.appendChild(d);
-    }
-  }
-
-  // Hide prev/next buttons since it's now auto-scrolling
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  if(prevBtn) prevBtn.style.display = 'none';
-  if(nextBtn) nextBtn.style.display = 'none';
-
-  // Pause on hover
-  wrap.addEventListener('mouseenter', () => paused = true);
-  wrap.addEventListener('mouseleave', () => paused = false);
-
-  // Remove CSS transition so animation is smooth (we control it via rAF)
-  track.style.transition = 'none';
-
-  buildDots();
-  animate();
-
-  window.addEventListener('resize', () => { buildDots(); });
+function fillBelt(id,cards){
+  const el=document.getElementById(id);
+  let html='';
+  for(let i=0;i<4;i++) cards.forEach(c=>html+=buildCard(c));
+  el.innerHTML=html;
+}
+fillBelt('beltTop',topCards);
+fillBelt('beltBottom',bottomCards);
 })();
 </script>
 
@@ -2467,6 +2486,83 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
 })();
 </script>
 
+<!-- FAQ -->
+<section id="faq-section">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <div class="faq-eyebrow"><span>FAQ</span></div>
+      <h2 class="faq-title">Common <em>Questions</em></h2>
+      <p class="faq-sub">Everything you need to know before we start building your brand.</p>
+      <a class="faq-cta" href="https://wa.me/919226634637">Still have questions</a>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const faqs = [
+    {
+      q: "What services does Vesa Studios offer?",
+      a: "We offer six core services: <strong>Logo & Brand Identity, Website Design, WhatsApp Automation, AI Integration, Social Media Kits,</strong> and <strong>Print & Collateral.</strong> You can pick a single service or combine them into a full brand ecosystem — entirely your choice."
+    },
+    {
+      q: "How do I get a quote or start a project?",
+      a: "Simply <strong>WhatsApp us at +91 92266 34637</strong> or use the package builder on our site to select your services. We reply with a custom quote within <strong>24 hours</strong> — no commitment needed at that stage."
+    },
+    {
+      q: "How long does a typical project take?",
+      a: "Timelines vary by scope. A <strong>logo identity</strong> takes around 5–7 days, a <strong>website</strong> typically 10–15 days, and a <strong>full brand ecosystem</strong> with automation and AI can take 3–4 weeks. We'll give you a clear timeline before we begin."
+    },
+    {
+      q: "Where is Vesa Studios based? Do you work with clients outside Pune?",
+      a: "We're based in <strong>Pune, Maharashtra</strong> but work with brands across India — and internationally too. Everything is handled remotely with smooth communication over WhatsApp and email."
+    },
+    {
+      q: "How many logo concepts will I receive?",
+      a: "You receive <strong>3 unique logo concepts</strong>, each crafted from your brand brief. After you choose a direction, we refine it through revision rounds until you're completely satisfied."
+    },
+    {
+      q: "What exactly is a WhatsApp Automation or AI Chatbot?",
+      a: "Our <strong>WhatsApp Automation</strong> sets up auto-replies, lead capture bots and broadcast campaigns directly on your WhatsApp Business number. Our <strong>AI Chatbot</strong> is trained on your brand — it answers client questions, qualifies leads and books enquiries 24/7 without you lifting a finger."
+    },
+    {
+      q: "Do I own all the files after delivery?",
+      a: "Yes — <strong>100% yours.</strong> You receive all source files in every format (AI, PDF, PNG, SVG) plus a brand guidelines document. For websites, you get full access to the hosting and code. Nothing is locked to us."
+    }
+  ];
+
+  const list = document.getElementById('faqList');
+  if (!list) return;
+
+  faqs.forEach((f, i) => {
+    const item = document.createElement('div');
+    item.className = 'faq-item';
+    item.innerHTML = `
+      <div class="faq-q">
+        <div class="faq-q-left">
+          <span class="faq-num">0${i+1}</span>
+          <span class="faq-q-text">${f.q}</span>
+        </div>
+        <div class="faq-icon"></div>
+      </div>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p class="faq-a-text">${f.a}</p>
+        </div>
+      </div>`;
+
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+
+    list.appendChild(item);
+  });
+})();
+</script>
+
 <!-- CTA -->
 <div class="cta-sec">
   <div class="cta-rings"><div class="cta-ring"></div><div class="cta-ring"></div><div class="cta-ring"></div></div>
@@ -2521,7 +2617,20 @@ footer{background:var(--dark);padding:56px 48px 28px;border-top:.5px solid var(-
       <a href="/pulse.html">The Pulse</a>
     </div>
   </div>
-  <div class="foot-terms"><a href="https://vesastudios.site/terms.html"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Terms &amp; Conditions</a></div>
+  <div class="foot-terms" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="https://vesastudios.site/legal.html#terms">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Terms &amp; Conditions
+    </a>
+    <a href="https://vesastudios.site/legal.html#privacy">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Privacy Policy
+    </a>
+    <a href="https://vesastudios.site/legal.html#about">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      About Us
+    </a>
+  </div>
   <div class="foot-btm"><span>© 2026 Vesa Studios. All rights reserved.</span><span>Pune, Maharashtra · India</span></div>
 </footer>
 
