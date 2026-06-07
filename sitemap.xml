@@ -1,39 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Main -->
   <url>
     <loc>https://vesastudios.site/</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- Service Pages -->
   <url>
     <loc>https://vesastudios.site/logo-design.html</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://vesastudios.site/print-collateral.html</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://vesastudios.site/social-media.html</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
+  <!-- Portfolio / Gallery -->
   <url>
-    <loc>https://vesastudios.site/terms.html</loc>
-    <lastmod>2026-05-18</lastmod>
+    <loc>https://vesastudios.site/gallery.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Editorial -->
+  <url>
+    <loc>https://vesastudios.site/pulse</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Legal & About -->
+  <url>
+    <loc>https://vesastudios.site/legal.html</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://vesastudios.site/legal.html#terms</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://vesastudios.site/legal.html#privacy</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://vesastudios.site/legal.html#about</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
   </url>
 
 </urlset>
